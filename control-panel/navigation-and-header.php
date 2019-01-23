@@ -236,16 +236,19 @@
 </nav>
 <!-- #Top Bar -->
 <section>
+
     <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
         <!-- User Info -->
         <div class="user-info">
             <div class="image">
-                <img src="images/profile/<?php echo $_SESSION["id"]; ?>.jpg" width="48" height="48" alt="User" />
+                <!--<img src="../upload/user/" width="48" height="48" alt="User" />-->
+                <img src="../upload/user/<?php echo $_SESSION["profile_picture"]; ?>" width="48" height="48" alt="User" />
+            
             </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php echo $_SESSION['name']; ?>
+                    <?php echo $_SESSION['username']; ?>
                 </div>
                 <div class="email"><?php echo $_SESSION['email']; ?></div>
                 <div class="btn-group user-helper-dropdown">
@@ -289,7 +292,7 @@
                     </a>
 
                 </li>
-         
+
                 <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
@@ -297,13 +300,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-activity.php">
+                            <a href="create-user.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-activity.php">
+                            <a href="manage-user.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
@@ -316,8 +319,8 @@
                         </li>
                     </ul>
                 </li>
-      
-                        <li class="qqq">
+
+                <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
                         <span>Customer</span>
@@ -343,7 +346,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
@@ -464,8 +467,8 @@
                         </li>
                     </ul>
                 </li>
-                
-                          <li class="qqq">
+
+                <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
                         <span>Pages</span>
@@ -486,7 +489,7 @@
 
                     </ul>
                 </li>
-                                
+
             </ul>
         </div>
         <!-- #Menu -->
