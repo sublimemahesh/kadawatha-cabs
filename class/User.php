@@ -9,28 +9,34 @@
 class User {
 
     public $id;
-    public $name;
+    public $fullname;
     public $email;
     public $createdAt;
     public $isActive;
     public $authToken;
     public $lastLogin;
+    public $profile_picture;
+    public $mobile_number;
     public $username;
     public $resetCode;
-    private $password;
+    public $password;
+
+//    private $password;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`createdAt`,`isActive`,`authToken`,`lastLogin`,`username`,`resetcode` FROM `user` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`createdAt`,`isActive`,`authToken`,`profile_picture`,`mobile_number`,`lastLogin`,`username`,`resetcode` FROM `user` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->name = $result['name'];
+            $this->fullname = $result['name'];
             $this->email = $result['email'];
+            $this->profile_picture = $result['profile_picture'];
+            $this->mobile_number = $result['mobile_number'];
             $this->createdAt = $result['createdAt'];
             $this->isActive = $result['isActive'];
             $this->lastLogin = $result['lastLogin'];
@@ -42,15 +48,25 @@ class User {
         }
     }
 
-    public function create($name, $email, $username, $passwor) {
+    public function create() {
 
-        $enPass = md5($passwor);
+        $enPass = md5($this->password);
 
         date_default_timezone_set('Asia/Colombo');
 
         $createdAt = date('Y-m-d H:i:s');
 
-        $query = "INSERT INTO `user` (name, email, createdAt, isActive, username, password) VALUES  ('" . $name . "', '" . $email . "', '" . $createdAt . "', '" . 1 . "', '" . $username . "', '" . $enPass . "')";
+//        $query = "INSERT INTO `user` (name, email, createdAt, mobile_number, profile_picture, isActive, username, password) VALUES  ('" . $name . "', '" . $email . "', '" . $createdAt . "','" . $profile_picture . "','" . $mobile_number . "', '" . 1 . "', '" . $username . "', '" . $enPass . "')";
+
+        $query = "INSERT INTO `user` (name, email, createdAt, mobile_number, profile_picture, isActive, username, password) VALUES  ('"
+                . $this->fullname . "','"
+                . $this->email . "', '"
+                . $createdAt . "', '"
+                . $this->mobile_number . "', '"
+                . $this->profile_picture . "', '"
+                . 1 . "', '"
+                . $this->username . "', '"
+                . $enPass . "')";
 
         $db = new Database();
 
@@ -162,21 +178,22 @@ class User {
         }
 
         unset($_SESSION["id"]);
-        unset($_SESSION["name"]);
+        unset($_SESSION["fullname"]);
         unset($_SESSION["email"]);
         unset($_SESSION["isActive"]);
         unset($_SESSION["authToken"]);
         unset($_SESSION["lastLogin"]);
         unset($_SESSION["username"]);
-
+        unset($_SESSION["profile_picture"]);
         return TRUE;
     }
 
     public function update() {
 
         $query = "UPDATE  `user` SET "
-                . "`name` ='" . $this->name . "', "
+                . "`name` ='" . $this->fullname . "', "
                 . "`username` ='" . $this->username . "', "
+                . "`mobile_number` ='" . $this->mobile_number . "', "
                 . "`email` ='" . $this->email . "', "
                 . "`isActive` ='" . $this->isActive . "' "
                 . "WHERE `id` = '" . $this->id . "'";
@@ -199,12 +216,14 @@ class User {
         }
 
         $_SESSION["id"] = $user['id'];
-        $_SESSION["name"] = $user['name'];
+        $_SESSION["fullname"] = $user['name'];
         $_SESSION["email"] = $user['email'];
         $_SESSION["isActive"] = $user['isActive'];
         $_SESSION["authToken"] = $user['authToken'];
         $_SESSION["lastLogin"] = $user['lastLogin'];
         $_SESSION["username"] = $user['username'];
+        $_SESSION["profile_picture"] = $user['profile_picture'];
+        $_SESSION["mobile_number"] = $user['mobile_number'];
     }
 
     private function setAuthToken($id) {
@@ -291,10 +310,10 @@ class User {
             return $result;
         }
     }
-    
-     public function SelectResetCode($code) {
 
-      $query = "SELECT `id` FROM `user` WHERE `resetcode`= '" . $code . "'";
+    public function SelectResetCode($code) {
+
+        $query = "SELECT `id` FROM `user` WHERE `resetcode`= '" . $code . "'";
 
         $db = new Database();
 
@@ -307,10 +326,9 @@ class User {
             return TRUE;
         }
     }
-    
-    
-     public function updatePassword($password,$code) {
-  
+
+    public function updatePassword($password, $code) {
+
         $enPass = md5($password);
 
         $query = "UPDATE  `user` SET "
@@ -326,6 +344,32 @@ class User {
         } else {
             return FALSE;
         }
+    }
+
+    public function all() {
+
+        $query = "SELECT * FROM `user`";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function delete() {
+
+        
+//        unlink(Helper::getSitePath() . "upload/user/" . $this->profile_picture);
+
+        $query = 'DELETE FROM `user` WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
     }
 
 }
