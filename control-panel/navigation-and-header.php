@@ -327,13 +327,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-activity.php">
+                            <a href="create-customer.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-activity.php">
+                            <a href="manage-customer.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>

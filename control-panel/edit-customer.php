@@ -1,13 +1,20 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-?>
+
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$CUSTOMER = new Customer($id);
+?> 
+
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>User</title>
+        <title>Comments</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -37,7 +44,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create User</h2>
+                                <h2>
+                                    Edit Comment
+                                </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-comments.php">
@@ -47,27 +56,35 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/user.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal" method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="fullname" required="true">
-                                                <label class="form-label">Full Name</label>
+                                                <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>">
+                                                <label class="form-label">Name</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="email" id="name" class="form-control"  autocomplete="off" name="email" required="true">
-                                                <label class="form-label">Email</label>
+                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>">
+                                                <label class="form-label">Address</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" required="true">
+                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>">
+                                                <label class="form-label">NIC</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>">
                                                 <label class="form-label">Mobile Number</label>
                                             </div>
                                         </div>
@@ -75,29 +92,16 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="username" required="true">
-                                                <label class="form-label">User Name</label>
+                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>">
+                                                <label class="form-label">City</label>
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="password" id="title" class="form-control"  autocomplete="off" name="password" required="true">
-                                                <label class="form-label">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">                                       
-                                        <div class="form-group form-float">
-                                            <label class="form-label">Profile Image</label>
-                                            <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="profileimage"  required="true">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12"> 
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="hidden" id="id" value="<?php echo $CUSTOMER->id; ?>" name="id"/>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -106,10 +110,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         </div>
                     </div>
                 </div>
-
-
                 <!-- #END# Vertical Layout -->
-
             </div>
         </section>
 

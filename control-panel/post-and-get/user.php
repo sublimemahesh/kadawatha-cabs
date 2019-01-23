@@ -12,8 +12,6 @@ if (isset($_POST['create'])) {
     $USER->mobile_number = $_POST['mobile_number'];
     $USER->username = $_POST['username'];
     $USER->password = $_POST['password'];
-//    $USER->profile_picture = $_POST['profileimage'];
-//    $USER->isActive = $_POST['active'];
 
     $dir_dest = '../../upload/user/';
 

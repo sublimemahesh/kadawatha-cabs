@@ -22,6 +22,7 @@ include_once(dirname(__FILE__) . '/Product.php');
 include_once(dirname(__FILE__) . '/ProductType.php');
 include_once(dirname(__FILE__) . '/Comments.php');
 include_once(dirname(__FILE__) . '/TourPackagePhotosNormal.php');
+include_once(dirname(__FILE__) . '/customer.php');
 
 function dd($data) {
     var_dump($data);
