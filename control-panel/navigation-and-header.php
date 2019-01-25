@@ -244,7 +244,7 @@
             <div class="image">
                 <!--<img src="../upload/user/" width="48" height="48" alt="User" />-->
                 <img src="../upload/user/<?php echo $_SESSION["profile_picture"]; ?>" width="48" height="48" alt="User" />
-            
+
             </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -346,11 +346,66 @@
                         </li>
                     </ul>
                 </li>
+                <li class="qqq">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Vehicle Type</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-vehicle-type.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-vehicle-type.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="arrange-product-type.php">
+                                <i class="material-icons">compare_arrows</i>
+                                <span>Arrange</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="qqq">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Vehicle</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-vehicle.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-vehicle.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="arrange-product-type.php">
+                                <i class="material-icons">compare_arrows</i>
+                                <span>Arrange</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
-                        <span>Tour Package</span>
+                        <span>Package</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
@@ -382,38 +437,7 @@
                                     </a>
                                  
                                 </li>-->
-                <li class="qqq">
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Vehicle</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-product-type.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-product-type.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="arrange-product-type.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="arrange-product-type.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Vehicle Type</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
 
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">

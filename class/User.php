@@ -58,7 +58,7 @@ class User {
 
 //        $query = "INSERT INTO `user` (name, email, createdAt, mobile_number, profile_picture, isActive, username, password) VALUES  ('" . $name . "', '" . $email . "', '" . $createdAt . "','" . $profile_picture . "','" . $mobile_number . "', '" . 1 . "', '" . $username . "', '" . $enPass . "')";
 
-        $query = "INSERT INTO `user` (name, email, createdAt, mobile_number, profile_picture, isActive, username, password) VALUES  ('"
+        $query = "INSERT INTO `user` (`name`, `email`, `createdAt`,`mobile_number`, `profile_picture`, `isActive`, `username`, `password`) VALUES  ('"
                 . $this->fullname . "','"
                 . $this->email . "', '"
                 . $createdAt . "', '"
@@ -192,6 +192,7 @@ class User {
 
         $query = "UPDATE  `user` SET "
                 . "`name` ='" . $this->fullname . "', "
+                . "`profile_picture` ='" . $this->profile_picture . "', "
                 . "`username` ='" . $this->username . "', "
                 . "`mobile_number` ='" . $this->mobile_number . "', "
                 . "`email` ='" . $this->email . "', "
@@ -362,7 +363,7 @@ class User {
 
     public function delete() {
 
-        
+
 //        unlink(Helper::getSitePath() . "upload/user/" . $this->profile_picture);
 
         $query = 'DELETE FROM `user` WHERE id="' . $this->id . '"';
