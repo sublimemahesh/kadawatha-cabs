@@ -22,7 +22,10 @@ include_once(dirname(__FILE__) . '/Product.php');
 include_once(dirname(__FILE__) . '/ProductType.php');
 include_once(dirname(__FILE__) . '/Comments.php');
 include_once(dirname(__FILE__) . '/TourPackagePhotosNormal.php');
-include_once(dirname(__FILE__) . '/customer.php');
+include_once(dirname(__FILE__) . '/Customer.php');
+include_once(dirname(__FILE__) . '/VehicleType.php');
+include_once(dirname(__FILE__) . '/Vehicle.php');
+
 
 function dd($data) {
     var_dump($data);
