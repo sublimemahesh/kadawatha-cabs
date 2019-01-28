@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * Description of User
+ *
+ * @author sublime holdings
+ * @web www.sublime.lk
+ */
+class Driver {
+
+    public $id;
+    public $name;
+    public $licence_number;
+    public $licence_image;
+    public $nic;
+    public $phone_numbers;
+    public $address;
+    public $city;
+
+
+    public function __construct($id) {
+        if ($id) {
+
+            $query = "SELECT `id`, `name`, `licence_number`, `licence_image`, `nic`, `phone_numbers`, `address`, `city` FROM `driver` WHERE `id`=" . $id;
+
+            $db = new Database();
+
+            $result = mysql_fetch_array($db->readQuery($query));
+
+            $this->id = $result['id'];
+            $this->name = $result['name'];
+            $this->licence_number = $result['licence_number'];
+            $this->licence_image = $result['licence_image'];
+            $this->nic = $result['nic'];
+            $this->phone_numbers = $result['phone_numbers'];
+            $this->address = $result['address'];
+            $this->city = $result['city'];
+
+            return $result;
+            
+        }
+    }
+
+    public function create() {
+
+        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image`, `nic`, `phone_numbers`, `address`, `city`) VALUES  ('"
+                . $this->id . "','"
+                . $this->name . "','"
+                . $this->licence_number . "', '"
+                . $this->licence_image . "', '"
+                . $this->nic . "', '"
+                . $this->phone_numbers . "', '"
+                . $this->address . "', '"
+                . $this->city . "' 
+                )";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        if ($result) {
+            $last_id = mysql_insert_id();
+            return $this->__construct($last_id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function update() {
+
+        $query = "UPDATE  `user` SET "
+                . "`name` ='" . $this->fullname . "', "
+                . "`profile_picture` ='" . $this->profile_picture . "', "
+                . "`username` ='" . $this->username . "', "
+                . "`mobile_number` ='" . $this->mobile_number . "', "
+                . "`email` ='" . $this->email . "', "
+                . "`isActive` ='" . $this->isActive . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function all() {
+
+        $query = "SELECT * FROM `driver`";
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function delete() {
+
+        $query = 'DELETE FROM `driver` WHERE id="' . $this->id . '"';
+
+        $db = new Database();
+
+        return $db->readQuery($query);
+    }
+
+}
