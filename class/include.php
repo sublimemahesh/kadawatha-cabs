@@ -25,6 +25,7 @@ include_once(dirname(__FILE__) . '/TourPackagePhotosNormal.php');
 include_once(dirname(__FILE__) . '/Customer.php');
 include_once(dirname(__FILE__) . '/VehicleType.php');
 include_once(dirname(__FILE__) . '/Vehicle.php');
+include_once(dirname(__FILE__) . '/Driver.php');
 
 
 function dd($data) {
