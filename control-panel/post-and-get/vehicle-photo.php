@@ -4,14 +4,14 @@ include_once(dirname(__FILE__) . '/../../class/include.php');
 
 if (isset($_POST['create'])) {
 
-    $ROOM_PHOTO = new RoomPhoto(NULL);
+    $VEHICLE_PHOTO = new VehiclePhoto(NULL);
     $VALID = new Validator();
 
-    $ROOM_PHOTO->room = $_POST['id'];
-    $ROOM_PHOTO->caption = mysql_real_escape_string($_POST['caption']);
+    $VEHICLE_PHOTO->vehicle_id = $_POST['id'];
+    $VEHICLE_PHOTO->caption =$_POST['caption'];
 
-    $dir_dest = '../../upload/room/gallery/';
-    $dir_dest_thumb = '../../upload/room/gallery/thumb/';
+    $dir_dest = '../../upload/vehicle/gallery/';
+    $dir_dest_thumb = '../../upload/vehicle/gallery/thumb/';
 
     $handle = new Upload($_FILES['image']);
 
@@ -53,15 +53,15 @@ if (isset($_POST['create'])) {
         }
     }
 
-    $ROOM_PHOTO->image_name = $imgName;
+    $VEHICLE_PHOTO->image = $imgName;
 
-    $VALID->check($ROOM_PHOTO, [
+    $VALID->check($VEHICLE_PHOTO, [
         'caption' => ['required' => TRUE],
-        'image_name' => ['required' => TRUE]
+        'image' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
-        $ROOM_PHOTO->create();
+        $VEHICLE_PHOTO->create();
 
         if (!isset($_SESSION)) {
             session_start();
@@ -84,8 +84,8 @@ if (isset($_POST['create'])) {
 
 if (isset($_POST['update'])) {
 
-    $dir_dest = '../../upload/room/gallery/';
-    $dir_dest_thumb = '../../upload/room/gallery/thumb/';
+    $dir_dest = '../../upload/vehicle/gallery/';
+    $dir_dest_thumb = '../../upload/vehicle/gallery/thumb/';
 
     $handle = new Upload($_FILES['image']);
 
@@ -126,19 +126,19 @@ if (isset($_POST['update'])) {
         }
     }
 
-    $ROOM_PHOTO = new RoomPhoto($_POST['id']);
+    $VEHICLE_PHOTO = new VehiclePhoto($_POST['id']);
 
-    $ROOM_PHOTO->image_name = $_POST['oldImageName'];
-    $ROOM_PHOTO->caption = filter_input(INPUT_POST, 'caption');
+    $VEHICLE_PHOTO->image = $_POST['oldImageName'];
+    $VEHICLE_PHOTO->caption = filter_input(INPUT_POST, 'caption');
 
     $VALID = new Validator();
-    $VALID->check($ROOM_PHOTO, [
+    $VALID->check($VEHICLE_PHOTO, [
         'caption' => ['required' => TRUE],
-        'image_name' => ['required' => TRUE]
+        'image' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
-        $ROOM_PHOTO->update();
+        $VEHICLE_PHOTO->update();
 
         if (!isset($_SESSION)) {
             session_start();
@@ -164,7 +164,7 @@ if (isset($_POST['save-data'])) {
     foreach ($_POST['sort'] as $key => $img) {
         $key = $key + 1;
 
-        $ROOM_PHOTO = RoomPhoto::arrange($key, $img);
+        $VEHICLE_PHOTO = VehiclePhoto::arrange($key, $img);
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }

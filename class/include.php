@@ -13,7 +13,6 @@ include_once(dirname(__FILE__) . '/TourDatePhoto.php');
 include_once(dirname(__FILE__) . '/Room.php');
 include_once(dirname(__FILE__) . '/RoomPhoto.php');
 include_once(dirname(__FILE__) . '/Offer.php');
-include_once(dirname(__FILE__) . '/OfferPhoto.php');
 include_once(dirname(__FILE__) . '/PhotoAlbum.php');
 include_once(dirname(__FILE__) . '/Slider.php');
 include_once(dirname(__FILE__) . '/Page.php');
@@ -26,6 +25,7 @@ include_once(dirname(__FILE__) . '/Customer.php');
 include_once(dirname(__FILE__) . '/VehicleType.php');
 include_once(dirname(__FILE__) . '/Vehicle.php');
 include_once(dirname(__FILE__) . '/Driver.php');
+include_once(dirname(__FILE__) . '/VehiclePhoto.php');
 
 
 function dd($data) {

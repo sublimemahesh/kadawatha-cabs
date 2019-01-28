@@ -54,20 +54,26 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Vehicle Owner Name</th>
                                                 <th>Vehicle Type</th>
                                                 <th>Vehicle Number</th>
                                                 <th>Vehicle Name</th>
                                                 <th>Contact Number</th>
+                                                <th>City</th>
+                                                <th>Driver</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Vehicle Owner Name</th>
                                                 <th>Vehicle Type</th>
                                                 <th>Vehicle Number</th>
                                                 <th>Vehicle Name</th>
                                                 <th>Contact Number</th>
+                                                <th>City</th>
+                                                <th>Driver</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
@@ -77,22 +83,27 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 $key++;
 
                                                 $VEHICLENAME = new VehicleType($vehicle['vehicle_type']);
+                                                $DRIVERENAME = new Driver($vehicle['driver']);
                                                 ?>
                                                 <tr id="row_<?php echo $vehicle['id']; ?>">
                                                     <td><?php echo $key ?></td>
+                                                    <td><?php echo $vehicle['owner']; ?></td>
                                                     <td><?php echo $VEHICLENAME->type ?></td>
                                                     <td><?php echo $vehicle['vehicle_number']; ?></td>
                                                     <td><?php echo $vehicle['vehicle_name']; ?></td>
                                                     <td><?php echo $vehicle['contact_number']; ?></td>
+                                                    <td><?php echo $vehicle['city']; ?></td>
+                                                    <td><?php echo $DRIVERENAME->name; ?></td>
+
                                                     <td> 
                                                         <a href="edit-vehicle.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
                                                         |
-                                                        <a href="create-location-details.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-user user-Details"></button></a>
+                                                        <a href="view-vehicle-photos.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-time user-Details " title ="Vehicle Photo Album"></button></a>
                                                         | 
-                                                        <a href="edit-user-password.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm"></button></a>
+                                                        <a href="edit-user-password.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm"></button></a>
                                                         |
 
-                                                        <a href="#"  class="delete-user" data-id="<?php echo $user['id']; ?>">
+                                                        <a href="#"  class="delete-user" data-id="<?php echo $vehicle['id']; ?>">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
                                                     </td>

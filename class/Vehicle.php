@@ -10,6 +10,7 @@ class vehicle {
 
     public $id;
     public $vehicle_type;
+    public $owner;
     public $vehicle_number;
     public $vehicle_name;
     public $contact_number;
@@ -26,7 +27,7 @@ class vehicle {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `vehicle_type`, `vehicle_number`, `vehicle_name`, `contact_number`, `city`, `vehicle_image`, `condition`, `no_of_passenger`, `no_of_baggage`, `no_of_door`, `driver` FROM `vehicle` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `vehicle_type`, `owner`,`vehicle_number`, `vehicle_name`, `contact_number`, `city`, `vehicle_image`, `condition`, `no_of_passenger`, `no_of_baggage`, `no_of_door`, `driver` FROM `vehicle` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -34,6 +35,7 @@ class vehicle {
 
             $this->id = $result['id'];
             $this->vehicle_type = $result['vehicle_type'];
+            $this->owner = $result['owner'];
             $this->vehicle_number = $result['vehicle_number'];
             $this->vehicle_name = $result['vehicle_name'];
             $this->contact_number = $result['contact_number'];
@@ -51,8 +53,9 @@ class vehicle {
 
     public function create() {
 
-        $query = "INSERT INTO `vehicle` (`vehicle_type`, `vehicle_number`, `vehicle_name`, `contact_number`, `city`, `vehicle_image`, `condition`, `no_of_passenger`, `no_of_baggage`, `no_of_door`, `driver`) VALUES  ('"
+        $query = "INSERT INTO `vehicle` (`vehicle_type`, `owner`, `vehicle_number`, `vehicle_name`, `contact_number`, `city`, `vehicle_image`, `condition`, `no_of_passenger`, `no_of_baggage`, `no_of_door`, `driver`) VALUES  ('"
                 . $this->vehicle_type . "','"
+                . $this->owner . "', '"
                 . $this->vehicle_number . "', '"
                 . $this->vehicle_name . "', '"
                 . $this->contact_number . "', '"
@@ -79,6 +82,7 @@ class vehicle {
 
         $query = "UPDATE  `vehicle` SET "
                 . "`vehicle_type` ='" . $this->vehicle_type . "', "
+                . "`owner` ='" . $this->owner . "', "
                 . "`vehicle_number` ='" . $this->vehicle_number . "', "
                 . "`vehicle_name` ='" . $this->vehicle_name . "', "
                 . "`contact_number` ='" . $this->contact_number . "', "
@@ -118,14 +122,27 @@ class vehicle {
 
     public function delete() {
 
-
-//        unlink(Helper::getSitePath() . "upload/user/" . $this->profile_picture);
-
-        $query = 'DELETE FROM `user` WHERE id="' . $this->id . '"';
+        $query = 'DELETE FROM `vehicle` WHERE id="' . $this->id . '"';
 
         $db = new Database();
 
         return $db->readQuery($query);
     }
+    
+    public function getVehicleTypeById($vehicle_type) {
+
+        $query = "SELECT * FROM `vehicle` WHERE `vehicle_type`= $vehicle_type ";
+
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+        return $array_res;
+    }
+
 
 }
