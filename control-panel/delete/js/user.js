@@ -29,7 +29,7 @@ $(document).ready(function () {
                             showConfirmButton: false
                         });
 
-                        $('#div' + id).remove();
+                        $('#row_' + id).remove();
 
                     }
                 }

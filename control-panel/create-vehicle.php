@@ -4,6 +4,9 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 $VEHICLETYPE = new VehicleType(NULL);
 $vehicleType = $VEHICLETYPE->all();
+
+$DRIVER = new Driver(NULL);
+$driver = $DRIVER->all();
 ?>
 <!DOCTYPE html>
 <html> 
@@ -66,6 +69,19 @@ $vehicleType = $VEHICLETYPE->all();
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-md-12">
+                                        <div class="form-group form-float">
+
+                                            <div class="form-line">
+                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true">
+                                                <label class="form-label">Owner Name</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
+                                    
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -98,7 +114,7 @@ $vehicleType = $VEHICLETYPE->all();
                                             </div>
                                         </div>
                                     </div>
-                                   
+
 
                                     <label class="form-label">Condition Type</label>
                                     <div class="col-md-12">
@@ -148,8 +164,11 @@ $vehicleType = $VEHICLETYPE->all();
                                             <div class="form-line">
                                                 <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE">
                                                     <option value="">Please Select Driver</option>
-                                                    <option value="1">Driver 1</option>
-                                                    <option value="2">Driver 2</option>
+                                                    <?php foreach ($driver as $name) {
+                                                        ?>
+                                                        <option value="<?php echo $name['id']; ?>"><?php echo $name['name']; ?></option>
+                                                        <?php
+                                                    }
                                                     ?>
                                                 </select>
                                             </div>

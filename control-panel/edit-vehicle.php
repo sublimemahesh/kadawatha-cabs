@@ -9,6 +9,9 @@ if (isset($_GET['id'])) {
 $VEHICLE = new vehicle($id);
 $VEHICLETYPE = new VehicleType(NULL);
 $types = $VEHICLETYPE->all();
+
+$DRIVER = new Driver($id);
+$Drivername = $DRIVER->all();
 ?> 
 
 <!DOCTYPE html>
@@ -16,7 +19,7 @@ $types = $VEHICLETYPE->all();
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Comments</title>
+        <title>Edit Vehicle</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -47,7 +50,7 @@ $types = $VEHICLETYPE->all();
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Edit Comment
+                                    Edit Vehicle
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -69,11 +72,11 @@ $types = $VEHICLETYPE->all();
                                                     <?php foreach ($types as $type) {
                                                         ?>
                                                         <option value="<?php echo $type['id']; ?>" <?php
-                                                        if ($VEHICLE->vehicle_type === $type['id']) {
-                                                            echo 'selected';
-                                                        }
+                                                    if ($VEHICLE->vehicle_type === $type['id']) {
+                                                        echo 'selected';
+                                                    }
                                                         ?>>
-                                                                    <?php echo $type['type']; ?>
+                                                                <?php echo $type['type']; ?>
                                                         </option>
                                                         <?php
                                                     }
@@ -83,6 +86,17 @@ $types = $VEHICLETYPE->all();
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-float">
+
+                                            <div class="form-line">
+                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true" value="<?php echo $VEHICLE->owner; ?>">
+                                                <label class="form-label">Owner Name</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
 
@@ -181,9 +195,18 @@ $types = $VEHICLETYPE->all();
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE">
-                                                    <option value="">Please Select Driver</option>
-                                                    <option value="1">Driver 1</option>
-                                                    <option value="2">Driver 2</option>
+                                                    <option value=""> -- Please Select Driver -- </option>
+                                                    <?php foreach ($Drivername as $name) {
+                                                        ?>
+                                                        <option value="<?php echo $name['id']; ?>" <?php
+                                                    if ($DRIVER->id === $name['id']) {
+                                                        echo 'selected';
+                                                    }
+                                                        ?>>
+                                                                <?php  echo $name['name']; ?>
+                                                        </option>
+                                                        <?php
+                                                    }
                                                     ?>
                                                 </select>
                                             </div>

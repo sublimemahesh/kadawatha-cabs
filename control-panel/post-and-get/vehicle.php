@@ -8,6 +8,7 @@ if (isset($_POST['create'])) {
     $VALID = new Validator();
 
     $VEHICLE->vehicle_type = $_POST['type'];
+    $VEHICLE->owner = $_POST['owner'];
     $VEHICLE->vehicle_number = $_POST['vehicle_number'];
     $VEHICLE->vehicle_name = $_POST['vehicle_name'];
     $VEHICLE->contact_number = $_POST['contactnum'];
@@ -18,7 +19,7 @@ if (isset($_POST['create'])) {
     $VEHICLE->no_of_door = $_POST['noofdoor'];
     $VEHICLE->driver = $_POST['drivertype'];
 
-    
+
     $dir_dest = '../../upload/vehicle/';
 
     $handle = new Upload($_FILES['vehicle_image']);
@@ -45,6 +46,7 @@ if (isset($_POST['create'])) {
 
     $VALID->check($VEHICLE, [
         'vehicle_type' => ['required' => TRUE],
+        'owner' => ['required' => TRUE],
         'vehicle_number' => ['required' => TRUE],
         'vehicle_name' => ['required' => TRUE],
         'contact_number' => ['required' => TRUE],
@@ -59,7 +61,7 @@ if (isset($_POST['create'])) {
 
     if ($VALID->passed()) {
         $VEHICLE->create();
-     
+
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -108,8 +110,9 @@ if (isset($_POST['update'])) {
 
     $VEHICLE = new vehicle($_POST['id']);
 
-    $VEHICLE->vehicle_image= $_POST['oldImageName'];
+    $VEHICLE->vehicle_image = $_POST['oldImageName'];
     $VEHICLE->vehicle_type = $_POST['type'];
+    $VEHICLE->owner = $_POST['owner'];
     $VEHICLE->vehicle_number = $_POST['vehicle_number'];
     $VEHICLE->vehicle_name = $_POST['vehicle_name'];
     $VEHICLE->contact_number = $_POST['contactnum'];
@@ -119,11 +122,12 @@ if (isset($_POST['update'])) {
     $VEHICLE->no_of_baggage = $_POST['noofbaggage'];
     $VEHICLE->no_of_door = $_POST['noofdoor'];
     $VEHICLE->driver = $_POST['drivertype'];
-    
+
 
     $VALID = new Validator();
     $VALID->check($VEHICLE, [
         'vehicle_type' => ['required' => TRUE],
+        'owner' => ['required' => TRUE],
         'vehicle_number' => ['required' => TRUE],
         'vehicle_name' => ['required' => TRUE],
         'contact_number' => ['required' => TRUE],
@@ -133,8 +137,6 @@ if (isset($_POST['update'])) {
         'no_of_baggage' => ['required' => TRUE],
         'no_of_door' => ['required' => TRUE],
         'driver' => ['required' => TRUE]
- 
-        
     ]);
 
     if ($VALID->passed()) {

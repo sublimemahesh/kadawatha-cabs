@@ -11,27 +11,27 @@
  *
  * @author Suharshana DsW
  */
-class OfferPhoto {
+class VehiclePhoto {
 
     public $id;
-    public $offer;
-    public $image_name;
+    public $vehicle_id;
     public $caption;
+    public $image;
     public $queue;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`offer`,`image_name`,`caption`,`queue` FROM `offer_photo` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `vehicle_id`, `caption`, `image`, `queue` FROM `vehicle_photos` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
-            $this->offer = $result['offer'];
-            $this->image_name = $result['image_name'];
+            $this->vehicle_id = $result['vehicle_id'];
             $this->caption = $result['caption'];
+            $this->image = $result['image'];
             $this->queue = $result['queue'];
 
             return $this;
@@ -40,12 +40,12 @@ class OfferPhoto {
 
     public function create() {
 
-        $query = "INSERT INTO `offer_photo` (`offer`,`image_name`,`caption`,`queue`) VALUES  ('"
-                . $this->offer . "','"
-                . $this->image_name . "', '"
+        $query = "INSERT INTO `vehicle_photos`(`vehicle_id`, `caption`, `image`, `queue`) VALUES  ('"
+                . $this->vehicle_id . "','"
                 . $this->caption . "', '"
+                . $this->image . "', '"
                 . $this->queue . "')";
-
+   
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -75,10 +75,10 @@ class OfferPhoto {
 
     public function update() {
 
-        $query = "UPDATE  `offer_photo` SET "
-                . "`offer` ='" . $this->offer . "', "
-                . "`image_name` ='" . $this->image_name . "', "
+        $query = "UPDATE  `vehicle_photos` SET "
+                . "`vehicle_id` ='" . $this->vehicle_id . "', "
                 . "`caption` ='" . $this->caption . "', "
+                . "`image` ='" . $this->image . "', "
                 . "`queue` ='" . $this->queue . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -102,10 +102,10 @@ class OfferPhoto {
         return $db->readQuery($query);
     }
 
-    public function getOfferPhotosById($offer) {
+    public function getVehiclePhotosById($vehicle_id) {
 
-        $query = "SELECT * FROM `offer_photo` WHERE `offer`= $offer ORDER BY queue ASC";
-
+        $query = "SELECT * FROM `vehicle_photos` WHERE `vehicle_id`= $vehicle_id ORDER BY queue ASC";
+      
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -118,7 +118,7 @@ class OfferPhoto {
     }
 
     public function arrange($key, $img) {
-        $query = "UPDATE `offer_photo` SET `queue` = '" . $key . "'  WHERE id = '" . $img . "'";
+        $query = "UPDATE `vehicle_photos` SET `queue` = '" . $key . "'  WHERE id = '" . $img . "'";
         $db = new Database();
         $result = $db->readQuery($query);
         return $result;

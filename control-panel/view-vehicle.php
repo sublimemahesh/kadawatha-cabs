@@ -1,13 +1,21 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    
+ $VEHICLE = new vehicle($id);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title>Manage Customer - Kadabawata Cabs</title>
+        <title>Manage Locations - Tour Sri Lanka</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -44,7 +52,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Vehicle Type
+                                    View Vehicle
                                 </h2>
                             </div>
                             <div class="body">
@@ -54,38 +62,43 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Vehicle Type</th>
-                                                <th>Option</th>
+                                                <th>Vehicle Owner Name</th>
+                                                <th>Vehicle Number</th>
+                                                <th>Vehicle Name</th>
+                                                <th>Contact Number</th>
+                                                <th>City</th>
+                                                <th>Driver</th>
 
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Vehicle Type</th>
-                                                <th>Option</th>
+                                                <th>Vehicle Owner Name</th>
+                                                <th>Vehicle Number</th>
+                                                <th>Vehicle Name</th>
+                                                <th>Contact Number</th>
+                                                <th>City</th>
+                                                <th>Driver</th>
+
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (VehicleType::all() as $key => $vehicleType) {
+                                            foreach (vehicle::getVehicleTypeById($id) as $key => $vehicle) {
                                                 $key++;
+
+                                                $VEHICLENAME = new VehicleType($vehicle['vehicle_type']);
+                                                $DRIVERENAME = new Driver($vehicle['driver']);
                                                 ?>
-                                                <tr id="row_<?php echo $vehicleType['id']; ?>">
+                                                <tr id="row_<?php echo $vehicle['id']; ?>">
                                                     <td><?php echo $key ?></td>
-                                                    <td><?php echo $vehicleType['type']; ?></td>
-
-                                                    <td> 
-                                                        <a href="edit-vehicle-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit"></button></a>
-                                                        |
-                                                        <a href="view-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-road user-Details" title="View-Vehicle"></button></a>
-                                                       
-                                                        |
-
-                                                        <a href="#"  class="delete-Vehicletype" data-id="<?php echo $vehicleType['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete" data-id="<?php echo $user['id']; ?>"></button>
-                                                        </a>
-                                                    </td>
+                                                    <td><?php echo $vehicle['owner']; ?></td>
+                                                    <td><?php echo $vehicle['vehicle_number']; ?></td>
+                                                    <td><?php echo $vehicle['vehicle_name']; ?></td>
+                                                    <td><?php echo $vehicle['contact_number']; ?></td>
+                                                    <td><?php echo $vehicle['city']; ?></td>
+                                                    <td><?php echo $DRIVERENAME->name; ?></td>
                                                 </tr>
                                                 <?php
                                             }
@@ -126,7 +139,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/pages/tables/jquery-datatable.js"></script>
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/Vehicle-type.js" type="text/javascript"></script>
+        <script src="delete/js/user.js" type="text/javascript"></script>
     </body>
 </html>
 
