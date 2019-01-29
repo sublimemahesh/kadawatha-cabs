@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>User</title>
+        <title>Create User || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -40,7 +40,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 <h2>Create User</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-comments.php">
+                                        <a href="manage-user.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>

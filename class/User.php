@@ -363,9 +363,6 @@ class User {
 
     public function delete() {
 
-
-//        unlink(Helper::getSitePath() . "upload/user/" . $this->profile_picture);
-
         $query = 'DELETE FROM `user` WHERE id="' . $this->id . '"';
 
         $db = new Database();

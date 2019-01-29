@@ -11,17 +11,17 @@ class Driver {
     public $id;
     public $name;
     public $licence_number;
-    public $licence_image;
+    public $licence_image_front;
+    public $licence_image_back;
     public $nic;
     public $phone_numbers;
     public $address;
     public $city;
 
-
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `name`, `licence_number`, `licence_image`, `nic`, `phone_numbers`, `address`, `city` FROM `driver` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city` FROM `driver` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -30,24 +30,25 @@ class Driver {
             $this->id = $result['id'];
             $this->name = $result['name'];
             $this->licence_number = $result['licence_number'];
-            $this->licence_image = $result['licence_image'];
+            $this->licence_image_front = $result['licence_image_front'];
+            $this->licence_image_back = $result['licence_image_back'];
             $this->nic = $result['nic'];
             $this->phone_numbers = $result['phone_numbers'];
             $this->address = $result['address'];
             $this->city = $result['city'];
 
             return $result;
-            
         }
     }
 
     public function create() {
 
-        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image`, `nic`, `phone_numbers`, `address`, `city`) VALUES  ('"
+        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`) VALUES  ('"
                 . $this->id . "','"
                 . $this->name . "','"
                 . $this->licence_number . "', '"
-                . $this->licence_image . "', '"
+                . $this->licence_image_front . "', '"
+                . $this->licence_image_back . "', '"
                 . $this->nic . "', '"
                 . $this->phone_numbers . "', '"
                 . $this->address . "', '"
@@ -67,13 +68,15 @@ class Driver {
 
     public function update() {
 
-        $query = "UPDATE  `user` SET "
-                . "`name` ='" . $this->fullname . "', "
-                . "`profile_picture` ='" . $this->profile_picture . "', "
-                . "`username` ='" . $this->username . "', "
-                . "`mobile_number` ='" . $this->mobile_number . "', "
-                . "`email` ='" . $this->email . "', "
-                . "`isActive` ='" . $this->isActive . "' "
+        $query = "UPDATE  `driver` SET "
+                . "`name` ='" . $this->name . "', "
+                . "`licence_number` ='" . $this->licence_number . "', "
+                . "`licence_image_front` ='" . $this->licence_image_front . "', "
+                . "`licence_image_back` ='" . $this->licence_image_back . "', "
+                . "`nic` ='" . $this->nic . "', "
+                . "`phone_numbers` ='" . $this->phone_numbers . "', "
+                . "`address` ='" . $this->address . "', "
+                . "`city` ='" . $this->city . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -102,7 +105,7 @@ class Driver {
     }
 
     public function delete() {
-
+//  unlink(Helper::getSitePath() . "upload/Driver/back_side" . $this->licence_image_back);
         $query = 'DELETE FROM `driver` WHERE id="' . $this->id . '"';
 
         $db = new Database();

@@ -14,7 +14,7 @@ $DRIVER = new Driver($id);
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Comments</title>
+        <title> Edit Driver || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@ $DRIVER = new Driver($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Edit Comment
+                                    Edit Driver
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -106,19 +106,31 @@ $DRIVER = new Driver($id);
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">                                       
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="profileimage">
-
-                                                <img src="../upload/Driver/<?php echo $DRIVER->licence_image; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="profileimage" alt="old image">
+                                    <div class="col-md-12">  
+                                        <div class="col-md-6">  
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" name="licence_image_front">
+                                                    <img src="../upload/Driver/front_side/<?php echo $DRIVER->licence_image_front; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="licence_image_front" alt="old image-front side">
+                                                </div>
                                             </div>
-                                        </div>
+                                        </div>    
+
+                                        <div class="col-md-6">  
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" name="licence_image_back">
+                                                    <img src="../upload/Driver/back_side/<?php echo $DRIVER->licence_image_back; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="licence_image_back" alt="old image -back side">
+                                                </div>
+                                            </div>
+                                        </div> 
+
                                     </div>
 
 
                                     <div class="col-md-12">
-                                        <input type="hidden" id="oldImageName" value="<?php echo $DRIVER->licence_image; ?>" name="oldImageName"/>
+                                        <input type="hidden" id="oldImageNameFront" value="<?php echo $DRIVER->licence_image_front; ?>" name="oldImageNameFront"/>
+                                        <input type="hidden" id="oldImageNameBack" value="<?php echo $DRIVER->licence_image_back; ?>" name="oldImageNameBack"/>
                                         <input type="hidden" id="id" value="<?php echo $DRIVER->id; ?>" name="id"/>
             <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
