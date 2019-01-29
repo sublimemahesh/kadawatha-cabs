@@ -53,14 +53,13 @@ class vehicle {
 
     public function create() {
 
-        $query = "INSERT INTO `vehicle` (`vehicle_type`, `owner`, `vehicle_number`, `vehicle_name`, `contact_number`, `city`, `vehicle_image`, `condition`, `no_of_passenger`, `no_of_baggage`, `no_of_door`, `driver`) VALUES  ('"
+        $query = "INSERT INTO `vehicle` (`vehicle_type`, `owner`, `vehicle_number`, `vehicle_name`, `contact_number`, `city`, `condition`, `no_of_passenger`, `no_of_baggage`, `no_of_door`, `driver`) VALUES  ('"
                 . $this->vehicle_type . "','"
                 . $this->owner . "', '"
                 . $this->vehicle_number . "', '"
                 . $this->vehicle_name . "', '"
                 . $this->contact_number . "', '"
                 . $this->city . "', '"
-                . $this->vehicle_image . "', '"
                 . $this->condition . "', '"
                 . $this->no_of_passenger . "', '"
                 . $this->no_of_baggage . "', '"
@@ -87,7 +86,7 @@ class vehicle {
                 . "`vehicle_name` ='" . $this->vehicle_name . "', "
                 . "`contact_number` ='" . $this->contact_number . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`vehicle_image` ='" . $this->vehicle_image . "' ,"
+//                . "`vehicle_image` ='" . $this->vehicle_image . "' ,"
                 . "`condition` ='" . $this->condition . "' ,"
                 . "`no_of_passenger` ='" . $this->no_of_passenger . "', "
                 . "`no_of_baggage` ='" . $this->no_of_baggage . "' ,"
@@ -128,7 +127,7 @@ class vehicle {
 
         return $db->readQuery($query);
     }
-    
+
     public function getVehicleTypeById($vehicle_type) {
 
         $query = "SELECT * FROM `vehicle` WHERE `vehicle_type`= $vehicle_type ";
@@ -143,6 +142,5 @@ class vehicle {
         }
         return $array_res;
     }
-
 
 }

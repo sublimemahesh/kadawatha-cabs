@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>User</title>
+        <title> Create Driver || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -37,7 +37,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create User</h2>
+                                <h2>Create Driver</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-driver.php">
@@ -96,11 +96,21 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">                                       
-                                        <div class="form-group form-float">
-                                            <label class="form-label">Licence Image</label>
-                                            <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="licence_image"  required="true">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Licence Image - Front Side</label>
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" name="licence_image_front"  required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-float">
+                                                <label class="form-label">Licence Image -Back Side</label>
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" name="licence_image_back"  required="true">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

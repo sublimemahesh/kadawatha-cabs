@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title>Manage Customer - Tour Sri Lanka</title>
+     <title> Manage Customer || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -86,7 +86,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $customer['mobile_number']; ?></td>
                                                     <td><?php echo $customer['city']; ?></td>
                                                     <td> 
-                                                        <a href="edit-customer.php?id=<?php echo $customer['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                        <a href="edit-customer.php?id=<?php echo $customer['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="edit"></button></a>
 <!--                                                        |
                                                         <a href="create-location-details.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-user user-Details"></button></a>-->
 <!--                                                        | 
@@ -94,7 +94,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         |
 
                                                         <a href="#"  class="delete-customer" data-id="<?php echo $customer['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>"></button>
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>" title="delete"></button>
                                                         </a>
                                                     </td>
                                                 </tr>

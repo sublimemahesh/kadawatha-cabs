@@ -55,8 +55,9 @@ if (isset($_POST['create'])) {
         'no_of_passenger' => ['required' => TRUE],
         'no_of_baggage' => ['required' => TRUE],
         'no_of_door' => ['required' => TRUE],
-        'driver' => ['required' => TRUE],
-        'vehicle_image' => ['required' => TRUE]
+        'driver' => ['required' => TRUE]
+//        ,
+//        'vehicle_image' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
@@ -86,31 +87,31 @@ if (isset($_POST['create'])) {
 if (isset($_POST['update'])) {
     $dir_dest = '../../upload/vehicle/';
 
-    $handle = new Upload($_FILES['vehicle_image']);
+//    $handle = new Upload($_FILES['vehicle_image']);
 
     $imgName = null;
 
-    if ($handle->uploaded) {
-        $handle->image_resize = true;
-        $handle->file_new_name_body = TRUE;
-        $handle->file_overwrite = TRUE;
-        $handle->file_new_name_ext = FALSE;
-        $handle->image_ratio_crop = 'C';
-        $handle->file_new_name_body = $_POST ["oldImageName"];
-        $handle->image_x = 300;
-        $handle->image_y = 300;
-
-        $handle->Process($dir_dest);
-
-        if ($handle->processed) {
-            $info = getimagesize($handle->file_dst_pathname);
-            $imgName = $handle->file_dst_name;
-        }
-    }
+//    if ($handle->uploaded) {
+//        $handle->image_resize = true;
+//        $handle->file_new_name_body = TRUE;
+//        $handle->file_overwrite = TRUE;
+//        $handle->file_new_name_ext = FALSE;
+//        $handle->image_ratio_crop = 'C';
+//        $handle->file_new_name_body = $_POST ["oldImageName"];
+//        $handle->image_x = 300;
+//        $handle->image_y = 300;
+//
+//        $handle->Process($dir_dest);
+//
+//        if ($handle->processed) {
+//            $info = getimagesize($handle->file_dst_pathname);
+//            $imgName = $handle->file_dst_name;
+//        }
+//    }
 
     $VEHICLE = new vehicle($_POST['id']);
 
-    $VEHICLE->vehicle_image = $_POST['oldImageName'];
+//    $VEHICLE->vehicle_image = $_POST['oldImageName'];
     $VEHICLE->vehicle_type = $_POST['type'];
     $VEHICLE->owner = $_POST['owner'];
     $VEHICLE->vehicle_number = $_POST['vehicle_number'];

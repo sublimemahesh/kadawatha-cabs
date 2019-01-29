@@ -19,7 +19,7 @@ $Drivername = $DRIVER->all();
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Edit Vehicle</title>
+            <title> Edit Vehicle Type || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -54,7 +54,7 @@ $Drivername = $DRIVER->all();
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-comments.php">
+                                        <a href="manage-vehicle-type.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>

@@ -2,8 +2,14 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+
+$VEHICLE = new vehicle($id);
 $VEHICLETYPE = new VehicleType(NULL);
-$vehicleType = $VEHICLETYPE->all();
+$types = $VEHICLETYPE->all();
 
 $DRIVER = new Driver(NULL);
 $driver = $DRIVER->all();
@@ -13,7 +19,7 @@ $driver = $DRIVER->all();
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>User</title>
+        <title> Create Vehicle || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -43,7 +49,7 @@ $driver = $DRIVER->all();
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Add Vehicle</h2>
+                                <h2>Create Vehicle</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-vehicle.php">
@@ -58,10 +64,16 @@ $driver = $DRIVER->all();
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE">
-                                                    <option value="">Please Select Vehicle Type</option>
-                                                    <?php foreach ($vehicleType as $type) {
+                                                   <option value=""> -- Please Select -- </option>
+                                                    <?php foreach ($types as $type) {
                                                         ?>
-                                                        <option value="<?php echo $type['id']; ?>"><?php echo $type['type']; ?></option>
+                                                        <option value="<?php echo $type['id']; ?>" <?php
+                                                    if ($VEHICLE->vehicle_type === $type['id']) {
+                                                        echo 'selected';
+                                                    }
+                                                        ?>>
+                                                                <?php echo $type['type']; ?>
+                                                        </option>
                                                         <?php
                                                     }
                                                     ?>
@@ -69,10 +81,9 @@ $driver = $DRIVER->all();
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
-
                                             <div class="form-line">
                                                 <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true">
                                                 <label class="form-label">Owner Name</label>
@@ -80,8 +91,8 @@ $driver = $DRIVER->all();
 
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -116,27 +127,27 @@ $driver = $DRIVER->all();
                                     </div>
 
 
-                                    <label class="form-label">Condition Type</label>
+                                    <label class="form-label ">Condition Type</label>
                                     <div class="col-md-12">
 
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <input class="filled-in chk-col-pink" type="radio"  name="condition" value="DAc" id="DAc" />
-                                                <label for="DAc">D/Ac</label>
+                                                <input class="filled-in chk-col-pink" type="radio"  name="condition" value="AC" id="AC" />
+                                                <label for="AC">AC</label>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <input class="filled-in chk-col-pink" type="radio"  name="condition" value="NonAc" id="nonAc" />
-                                                <label for="nonAc">Non Ac</label>
+                                                <input class="filled-in chk-col-pink" type="radio"  name="condition" value="NonAC" id="nonAC" />
+                                                <label for="nonAC">Non AC</label>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 passnum">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true">
+                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" min="0">
                                                 <label class="form-label">No Of Passenger</label>
                                             </div>
                                         </div>
@@ -144,7 +155,7 @@ $driver = $DRIVER->all();
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true">
+                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" min="0">
                                                 <label class="form-label">No Of Baggage</label>
                                             </div>
                                         </div>
@@ -152,12 +163,11 @@ $driver = $DRIVER->all();
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true">
+                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" min="0">
                                                 <label class="form-label">No Of Door</label>
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
@@ -176,14 +186,14 @@ $driver = $DRIVER->all();
                                     </div>
 
 
-                                    <div class="col-md-12">                                       
+<!--                                    <div class="col-md-12">                                       
                                         <div class="form-group form-float">
                                             <label class="form-label">vehicle Image</label>
                                             <div class="form-line">
                                                 <input type="file" id="image" class="form-control" name="vehicle_image"  required="true">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-12"> 
                                         <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                     </div>
