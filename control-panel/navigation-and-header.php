@@ -311,12 +311,12 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="arrange-activity.php">
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </li>
 
@@ -338,12 +338,12 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="arrange-activity.php">
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </li>
                 <li class="qqq">
@@ -364,12 +364,12 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="arrange-product-type.php">
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
                             </a>
-                        </li>
+                        </li>-->
 
                     </ul>
                 </li>
@@ -392,12 +392,12 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="arrange-product-type.php">
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
                             </a>
-                        </li>
+                        </li>-->
 
                     </ul>
                 </li>
@@ -420,39 +420,34 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="arrange-room.php">
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
-                        <span>Package</span>
+                        <span>Packages</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-tour-package.php">
+                            <a href="create-packages.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-tour-package.php">
+                            <a href="manage-packages.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="arrange-tour-package.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
 

@@ -6,7 +6,7 @@
  * @author sublime holdings
  * @web www.sublime.lk
  */
-class vehicle {
+class Vehicle {
 
     public $id;
     public $vehicle_type;

@@ -1,3 +1,4 @@
+
 <?php
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
@@ -5,12 +6,9 @@ include_once(dirname(__FILE__) . '/../../auth.php');
 
 if ($_POST['option'] == 'delete') {
 
-    $ATTRACTION_PHOTO = new AttractionPhoto($_POST['id']);
+    $PACKAGES = new Packages($_POST['id']);
 
-    unlink(Helper::getSitePath() . "upload/attraction/gallery/" . $ATTRACTION_PHOTO->image_name);
-    unlink(Helper::getSitePath() . "upload/attraction/gallery/thumb/" . $ATTRACTION_PHOTO->image_name);
-
-    $result = $ATTRACTION_PHOTO->delete();
+    $result = $PACKAGES->delete();
 
     if ($result) {
 

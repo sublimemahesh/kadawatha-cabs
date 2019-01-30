@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    $('.delete-offer').click(function () {
+    $('.delete-Packages').click(function () {
 
         var id = $(this).attr("data-id");
 
         swal({
             title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            text: "You will not be able to recover this package!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -14,7 +14,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/offer.php",
+                url: "delete/ajax/vehicle-type.php",
                 type: "POST",
                 data: {id: id, option: 'delete'},
                 dataType: "JSON",
@@ -23,13 +23,13 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "Your imaginary file has been deleted.",
+                            text: "package has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false
                         });
 
-                        $('#div' + id).remove();
+                        $('#row_' + id).remove();
 
                     }
                 }
