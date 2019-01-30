@@ -2,12 +2,12 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$COUNT_COMMENT = count(Comments::pendingComments());
+//$COUNT_COMMENT = count(Comments::pendingComments());
 //$COUNT_ACTIVITY = count(Activities::all());
 //$COUNT_ATTRACTION = count(Attraction::all());
-$COUNT_ROOM = count(Room::all());
-$SLIDER_IMAGES = count(Slider::all());
-$COUNT_TOUR = count(TourPackage::all());
+//$COUNT_ROOM = count(Room::all());
+//$SLIDER_IMAGES = count(Slider::all());
+//$COUNT_TOUR = count(TourPackage::all());
 //$COUNT_GALLERY = count(AlbumPhoto::getAlbumPhotosById(6));
 ?> 
 <!DOCTYPE html>

@@ -1,13 +1,20 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-?>
+
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+$PACKAGES = new Packages($id);
+?> 
+
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Products</title>
+        <title>Edit Packages</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -37,65 +44,72 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create Product Types</h2>
+                                <h2>
+                                    Edit Vehicle Type
+                                </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-product-type.php">
+                                        <a href="manage-packages.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/product-type.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal" method="post" action="post-and-get/packages.php" enctype="multipart/form-data"> 
                                     <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="name" required="true">
-                                                <label class="form-label">Title</label>
+                                                <input type="text" id="name" class="form-control" autocomplete="off" name="name" value="<?php echo $PACKAGES->name;?>">
+                                                <label class="form-label">Package Name</label>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">                                       
+                                    <div class="col-md-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="image"  required="true">
+                                                <input type="text" id="code" class="form-control" autocomplete="off" name="code" value="<?php echo $PACKAGES->code;?>">
+                                                <label class="form-label">Package Code</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="price" class="form-control" autocomplete="off" name="price" value="<?php echo $PACKAGES->price;?>">
+                                                <label class="form-label">Price</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="time" class="form-control" autocomplete="off" name="time" value="<?php echo $PACKAGES->time;?>">
+                                                <label class="form-label">Time</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" id="distance" class="form-control" autocomplete="off" name="distance" value="<?php echo $PACKAGES->distance;?>">
+                                                <label class="form-label">Distance</label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="short_description" class="form-control" autocomplete="off" name="short_description" required="true">
-                                                <label class="form-label">Short Description</label>
-                                            </div>
-                                        </div>
+                                        <input type="hidden" id="id" value="<?php echo $PACKAGES->id; ?>" name="id"/>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                     </div>
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <label for="description">Description</label>
-                                        <div class="form-line">
-                                            <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-12"> 
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
-                                    </div>
-                                </form>
-                                <div class="row clearfix">  </div>
-                                <hr/>
+                                    <div class="row clearfix">  </div>
+                                    <hr/>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <!-- #END# Vertical Layout -->
-
             </div>
         </section>
 
