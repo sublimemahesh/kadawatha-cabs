@@ -96,15 +96,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $DRIVERENAME->name; ?></td>
 
                                                     <td> 
-                                                        <a href="edit-vehicle.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                        <a href="edit-vehicle.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title ="Edit Vehicle"></button></a>
                                                         |
-                                                        <a href="view-vehicle-photos.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-time user-Details " title ="Vehicle Photo Album"></button></a>
-                                                        | 
-                                                        <a href="edit-user-password.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm"></button></a>
+                                                        <a href="view-vehicle-photos.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-time user-Details " title ="View Vehicle Photo Album"></button></a>
                                                         |
-
-                                                        <a href="#"  class="delete-user" data-id="<?php echo $vehicle['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>"></button>
+                                                        <a href="#"  class="delete-vehicle" data-id="<?php echo $vehicle['id']; ?>">
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title ="Delete Vehicle " data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -147,7 +144,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/pages/tables/jquery-datatable.js"></script>
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/user.js" type="text/javascript"></script>
+        <script src="delete/js/vehicle.js" type="text/javascript"></script>
     </body>
 </html>
 

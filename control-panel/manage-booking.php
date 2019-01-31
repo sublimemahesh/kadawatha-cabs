@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title> Manage Customer || WEB SITE CONTROL PANEL </title>
+        <title>Manage Booking - Kadabawata Cabs</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -44,7 +44,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Customer
+                                    Manage Booking
                                 </h2>
                             </div>
                             <div class="body">
@@ -54,44 +54,41 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Address</th>
-                                                <th>NIC</th>
-                                                <th>Mobile Number</th>
-                                                <th>City</th>
+                                                <th>Customer</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Total Cost</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Address</th>
-                                                <th>NIC</th>
-                                                <th>Mobile Number</th>
-                                                <th>City</th>
+                                                <th>Customer</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Total Cost</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (Customer::all() as $key => $customer) {
+                                            foreach (Booking::all() as $key => $booking) {
                                                 $key++;
                                                 ?>
-                                                <tr id="row_<?php echo $customer['id']; ?>">
+                                                <tr id="row_<?php echo $booking['id']; ?>">
                                                     <td><?php echo $key ?></td>
-                                                    <td><?php echo $customer['name']; ?></td>
-                                                    <td><?php echo $customer['address']; ?></td>
-                                                    <td><?php echo $customer['nic']; ?></td>
-                                                    <td><?php echo $customer['mobile_number']; ?></td>
-                                                    <td><?php echo $customer['city']; ?></td>
-                                                    <td> 
-                                                        <a href="edit-customer.php?id=<?php echo $customer['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Customer"></button></a>
+                                                    <td><?php echo $booking['customer']; ?></td>
+                                                    <td><?php echo $booking['start_date']; ?></td>
+                                                    <td><?php echo $booking['end_date']; ?></td>
+                                                    <td><?php echo $booking['total_cost']; ?></td>
 
+                                                    <td> 
+                                                        <a href="edit-booking.php?id=<?php echo $booking['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Booking"></button></a>
                                                         |
 
-                                                        <a href="#"  class="delete-customer" data-id="<?php echo $customer['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>" title="Delete Customer"></button>
+                                                        <a href="#"  class="delete-booking" data-id="<?php echo $booking['id']; ?>">
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-booking" title="Delete Booking" data-id="<?php echo $booking['id']; ?>"></button>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -134,7 +131,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/pages/tables/jquery-datatable.js"></script>
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/customer.js" type="text/javascript"></script>
+        <script src="delete/js/booking.js" type="text/javascript"></script>
     </body>
 </html>
 

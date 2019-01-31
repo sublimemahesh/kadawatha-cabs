@@ -21,6 +21,7 @@ class User {
     public $resetCode;
     public $password;
 
+
 //    private $password;
 
     public function __construct($id) {
