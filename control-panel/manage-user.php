@@ -80,15 +80,15 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                      <td><?php echo $user['mobile_number']; ?></td>
                                                     <td><?php echo $user['email']; ?></td>
                                                     <td> 
-                                                        <a href="edit-user.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                        <a href="edit-user.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit User"></button></a>
                                                         |
-                                                        <a href="create-location-details.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-user user-Details"></button></a>
+                                                        <a href="#?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-user user-Details" title="User Permission"></button></a>
                                                         | 
-                                                        <a href="edit-user-password.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm"></button></a>
+                                                        <a href="edit-user-password.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm" title="Change User Passowrd"></button></a>
                                                         |
                                                       
-                                                            <a href="#"  class="delete-user" data-id="<?php echo $user['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>"></button>
+                                                            <a href="#"  class="delete-user" data-id="<?php echo $user['id']; ?> ">
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete User" data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
                                                     </td>
                                                 </tr>

@@ -88,11 +88,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $packages['distance']; ?></td>
 
                                                     <td> 
-                                                        <a href="edit-packages.php?id=<?php echo $packages['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit"></button></a>
+                                                        <a href="edit-packages.php?id=<?php echo $packages['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Package"></button></a>
                                                         |
                                        
                                                         <a href="#"  class="delete-Packages" data-id="<?php echo $packages['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete" data-id="<?php echo $packages['id']; ?>"></button>
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete Package" data-id="<?php echo $packages['id']; ?>"></button>
                                                         </a>
                                                     </td>
                                                 </tr>

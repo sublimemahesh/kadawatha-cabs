@@ -10,13 +10,13 @@ include_once(dirname(__FILE__) . '/Validator.php');
 include_once(dirname(__FILE__) . '/Offer.php');
 include_once(dirname(__FILE__) . '/Slider.php');
 include_once(dirname(__FILE__) . '/Page.php');
-include_once(dirname(__FILE__) . '/Banner.php');
 include_once(dirname(__FILE__) . '/Customer.php');
 include_once(dirname(__FILE__) . '/VehicleType.php');
 include_once(dirname(__FILE__) . '/Vehicle.php');
 include_once(dirname(__FILE__) . '/Driver.php');
 include_once(dirname(__FILE__) . '/VehiclePhoto.php');
 include_once(dirname(__FILE__) . '/Packages.php');
+include_once(dirname(__FILE__) . '/Booking.php');
 
 
 function dd($data) {

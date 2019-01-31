@@ -278,20 +278,20 @@
                         <span>Home</span>
                     </a>
                 </li>
-                <li class="qqq">
+<!--                <li class="qqq">
                     <a href="create-slider.php" class="">
                         <i class="material-icons">chevron_right</i>
                         <span>Slider</span>
                     </a>
 
-                </li>
-                <li class="qqq">
+                </li>-->
+<!--                <li class="qqq">
                     <a href="create-banner.php" class="">
                         <i class="material-icons">chevron_right</i>
                         <span>Banner</span>
                     </a>
 
-                </li>
+                </li>-->
 
                 <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -459,27 +459,27 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-comment.php">
+                            <a href="create-booking.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-comments.php">
+                            <a href="manage-booking.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
                         </li>
                         <li>
-                            <a href="arrange-comments.php">
+<!--                            <a href="arrange-comments.php">
                                 <i class="material-icons">compare_arrows</i>
                                 <span>Arrange</span>
-                            </a>
+                            </a>-->
                         </li>
                     </ul>
                 </li>
 
-                <li class="qqq">
+<!--                <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
                         <span>Pages</span>
@@ -499,7 +499,7 @@
                         </li>
 
                     </ul>
-                </li>
+                </li>-->
 
             </ul>
         </div>

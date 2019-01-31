@@ -76,14 +76,14 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $vehicleType['type']; ?></td>
 
                                                     <td> 
-                                                        <a href="edit-vehicle-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit"></button></a>
+                                                        <a href="edit-vehicle-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Vehicle"></button></a>
                                                         |
-                                                        <a href="view-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-road user-Details" title="View-Vehicle"></button></a>
+                                                        <a href="view-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-road user-Details" title="View Vehicle"></button></a>
                                                        
                                                         |
 
                                                         <a href="#"  class="delete-Vehicletype" data-id="<?php echo $vehicleType['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete" data-id="<?php echo $user['id']; ?>"></button>
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete Vehicle" data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
                                                     </td>
                                                 </tr>

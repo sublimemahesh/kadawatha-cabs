@@ -84,12 +84,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $driver['city']; ?></td>
                                                   
                                                     <td> 
-                                                        <a href="edit-driver.php?id=<?php echo $driver['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                        <a href="edit-driver.php?id=<?php echo $driver['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Driver"></button></a>
                                                                                                               
                                                         |
 
                                                         <a href="#"  class="delete-driver" data-id="<?php echo $driver['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-driver" data-id="<?php echo $user['id']; ?>"></button>
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-driver" title="Delete Driver" data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
                                                     </td>
                                                 </tr>
