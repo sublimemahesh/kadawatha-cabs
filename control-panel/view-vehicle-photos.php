@@ -46,7 +46,7 @@ $VEHICLE = new Vehicle($id);
                                 <h2>Create Vehicle Photos</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-tour-package.php">
+                                        <a href="manage-vehicle.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -91,7 +91,7 @@ $VEHICLE = new Vehicle($id);
                                                 <div class="img-caption">
                                                     <p class="maxlinetitle"><?php echo $vehicle_photo['caption']; ?></p>
                                                     <div class="d">
-                                                        <a href="#" class="delete-tour-date-photo" data-id="<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
+                                                        <a href="#" class="delete-vehicle-photo" data-id="<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
                                                         <a href="edit-vehicle-photo.php?id=<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
                                                         <a href="arrange-vehicle-photos.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
                                                     </div>
@@ -130,7 +130,7 @@ $VEHICLE = new Vehicle($id);
         <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
         <script src="js/pages/ui/dialogs.js"></script>
         <script src="js/demo.js"></script>
-        <script src="delete/js/tour-date-photo.js" type="text/javascript"></script>
+        <script src="delete/js/vehicle-photo.js" type="text/javascript"></script>
 
         <script>
             tinymce.init({

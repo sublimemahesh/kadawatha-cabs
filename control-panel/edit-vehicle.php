@@ -54,7 +54,7 @@ $Drivername = $DRIVER->all();
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-vehicle-type.php">
+                                        <a href="manage-vehicle.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -144,7 +144,7 @@ $Drivername = $DRIVER->all();
                                                     ?> 
 
                                                            name="condition" value="DAc" id="DAc" />
-                                                    <label for="DAc">D/Ac</label>
+                                                    <label for="DAc">Ac</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">

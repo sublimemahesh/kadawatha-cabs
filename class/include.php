@@ -17,6 +17,7 @@ include_once(dirname(__FILE__) . '/Driver.php');
 include_once(dirname(__FILE__) . '/VehiclePhoto.php');
 include_once(dirname(__FILE__) . '/Packages.php');
 include_once(dirname(__FILE__) . '/Booking.php');
+include_once(dirname(__FILE__) . '/Permission.php');
 
 
 function dd($data) {

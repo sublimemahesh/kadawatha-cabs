@@ -57,66 +57,100 @@ $USER = new User($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/user.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $USER->fullname; ?>">
-                                                <label class="form-label">Name</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Full Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $USER->fullname; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Email</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control" placeholder="Enter Email" autocomplete="off" name="email" value="<?php echo $USER->email; ?>">
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control" placeholder="Enter Email" autocomplete="off" name="email" value="<?php echo $USER->email; ?>">
-                                              
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <div class="form-group form-float">
+                                                <label for="name">Mobile Number</label>
                                             </div>
                                         </div>
-                                    </div>
-                                        <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control" placeholder="Mobile Number" autocomplete="off" name="mobile_number" value="<?php echo $USER->mobile_number; ?>">
-                                              
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control" placeholder="Mobile Number" autocomplete="off" name="mobile_number" value="<?php echo $USER->mobile_number; ?>">
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control" placeholder="User Name" autocomplete="off" name="username" value="<?php echo $USER->username; ?>">
-                                              
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">User Name</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="title" class="form-control" placeholder="User Name" autocomplete="off" name="username" value="<?php echo $USER->username; ?>">
+                                                    </div>  
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                                                        
-                                    <div class="col-md-12">                                       
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="profileimage">
-                                                <img src="../upload/user/<?php echo $USER->profile_picture; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="profileimage" alt="old image">
+
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">Profile Image</label>
+                                            </div>       
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="file" id="image" class="form-control" name="profileimage">
+                                                        <img src="../upload/user/<?php echo $USER->profile_picture; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="profileimage" alt="old image">
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+
+                                            </div> 
+
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group">
+                                                    <input class="filled-in chk-col-pink" type="checkbox" <?php
+                                                    if ($USER->isActive == 1) {
+                                                        echo 'checked';
+                                                    }
+                                                    ?> name="active" value="1" id="rememberme" />
+                                                    <label for="rememberme">Activate</label>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            </div> 
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <input type="hidden" id="oldImageName" value="<?php echo $USER->profile_picture; ?>" name="oldImageName"/>
+                                                <input type="hidden" id="id" value="<?php echo $USER->id; ?>" name="id"/>
+                    <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
+                                                <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input class="filled-in chk-col-pink" type="checkbox" <?php
-                                            if ($USER->isActive == 1) {
-                                                echo 'checked';
-                                            }
-                                            ?> name="active" value="1" id="rememberme" />
-                                            <label for="rememberme">Activate</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="hidden" id="oldImageName" value="<?php echo $USER->profile_picture; ?>" name="oldImageName"/>
-                                        <input type="hidden" id="id" value="<?php echo $USER->id; ?>" name="id"/>
-            <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
-                                    </div>
-                                    <div class="row clearfix">  </div>
-                                    <hr/>
+                                        <div class="row clearfix">  </div>
+                                        <hr/>
                                 </form>
                             </div>
                         </div>

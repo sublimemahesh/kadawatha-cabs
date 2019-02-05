@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title>Manage Customer - Kadabawata Cabs</title>
+               <title> Manage Vehicle Type || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -126,7 +126,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/pages/tables/jquery-datatable.js"></script>
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/Vehicle-type.js" type="text/javascript"></script>
+        <script src="delete/js/vehicle-type.js" type="text/javascript"></script>
     </body>
 </html>
 

@@ -68,24 +68,29 @@ $packages = $PACKAGES->all();
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/booking.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="customer" name="customer" required="TRUE">
-                                                    <option value=""> -- Please Select Customer -- </option>
-                                                    <?php foreach ($customer as $cusname) {
-                                                        ?>
-                                                        <option value="<?php echo $cusname['id']; ?>" <?php
-                                                        if ($CUSTOMER->id === $cusname['id']) {
-                                                            echo 'selected';
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Customer</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="customer" name="customer" required="TRUE">
+                                                        <option value=""> -- Please Select Customer -- </option>
+                                                        <?php foreach ($customer as $cusname) {
+                                                            ?>
+                                                            <option value="<?php echo $cusname['id']; ?>" <?php
+                                                            if ($CUSTOMER->id === $cusname['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $cusname['name']; ?>
+                                                            </option>
+                                                            <?php
                                                         }
-                                                        ?>>
-                                                                    <?php echo $cusname['name']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +99,7 @@ $packages = $PACKAGES->all();
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time" value="<?php echo $BOOKING->start_date ?>">
-                                          
+
                                                 </div>
                                             </div>
                                         </div>
@@ -191,10 +196,10 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="col-md-12">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <input class="filled-in chk-col-pink" type="checkbox" <?php
-                                            if ($BOOKING->isActive ==1) {
+                                            if ($BOOKING->isActive == 1) {
                                                 echo 'checked';
                                             }
                                             ?> name="active" value="1" id="rememberme" />
@@ -230,9 +235,9 @@ $packages = $PACKAGES->all();
         <script src="js/add-new-ad.js" type="text/javascript"></script>
         <script src="plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
-        
-          
-        
+
+
+
         <script>
             tinymce.init({
                 selector: "#description",
