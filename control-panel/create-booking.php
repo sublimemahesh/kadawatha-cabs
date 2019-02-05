@@ -63,29 +63,37 @@ $packages = $PACKAGES->all();
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/booking.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="customer" name="customer" required="TRUE">
-                                                    <option value=""> -- Please Select Customer -- </option>
-                                                    <?php foreach ($customer as $cusname) {
-                                                        ?>
-                                                        <option value="<?php echo $cusname['id']; ?>" <?php
-                                                        if ($CUSTOMER->id === $cusname['id']) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>>
-                                                                    <?php echo $cusname['name']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Customer</label>
                                         </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="customer" name="customer" required="TRUE">
+                                                        <option value=""> -- Please Select Customer -- </option>
+                                                        <?php foreach ($customer as $cusname) {
+                                                            ?>
+                                                            <option value="<?php echo $cusname['id']; ?>" <?php
+                                                            if ($CUSTOMER->id === $cusname['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $cusname['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>  
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="col-md-6">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Start Date</label>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="datetime" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time">
@@ -93,103 +101,126 @@ $packages = $PACKAGES->all();
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">End Date</label>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
+                                                        <option value=""> -- Please Select Vehicle -- </option>
+                                                        <?php foreach ($vehicle as $vehname) {
+                                                            ?>
+                                                            <option value="<?php echo $vehname['id']; ?>" <?php
+                                                            if ($VEHICLETYPE->id === $vehname['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $vehname['type']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Driver</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver" required="TRUE">
+                                                        <option value=""> -- Please Select Driver -- </option>
+                                                        <?php foreach ($driver as $driname) {
+                                                            ?>
+                                                            <option value="<?php echo $driname['id']; ?>" <?php
+                                                            if ($DRIVER->id === $driname['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $driname['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Total Cost</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true">
+                                                    <label class="form-label">Total Cost </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Packages</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package" required="TRUE">
+                                                        <option value=""> -- Please Select Package -- </option>
+                                                        <?php foreach ($packages as $pack) {
+                                                            ?>
+                                                            <option value="<?php echo $pack['id']; ?>" <?php
+                                                            if ($PACKAGES->id === $pack['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $pack['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Comment</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <textarea id="description" name="comment" class="form-control" rows="5"></textarea> 
+                                                    <input type="hidden" value="1" name="active" />
 
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
-
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
-                                                    <option value=""> -- Please Select Vehicle -- </option>
-                                                    <?php foreach ($vehicle as $vehname) {
-                                                        ?>
-                                                        <option value="<?php echo $vehname['id']; ?>" <?php
-                                                        if ($VEHICLETYPE->id === $vehname['id']) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>>
-                                                                    <?php echo $vehname['type']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver" required="TRUE">
-                                                    <option value=""> -- Please Select Driver -- </option>
-                                                    <?php foreach ($driver as $driname) {
-                                                        ?>
-                                                        <option value="<?php echo $driname['id']; ?>" <?php
-                                                        if ($DRIVER->id === $driname['id']) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>>
-                                                                    <?php echo $driname['name']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true">
-                                                <label class="form-label">Total Cost </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package" required="TRUE">
-                                                    <option value=""> -- Please Select Package -- </option>
-                                                    <?php foreach ($packages as $pack) {
-                                                        ?>
-                                                        <option value="<?php echo $pack['id']; ?>" <?php
-                                                        if ($PACKAGES->id === $pack['id']) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>>
-                                                                    <?php echo $pack['name']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <label class="form-label">Comment</label>
-                                            <div class="form-line">
-                                                <textarea id="description" name="comment" class="form-control" rows="5"></textarea> 
-                                                <input type="hidden" value="1" name="active" />
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12"> 
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                     </div>
                                     <div class="row clearfix">  </div>

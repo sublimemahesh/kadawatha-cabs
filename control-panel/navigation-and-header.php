@@ -278,47 +278,43 @@
                         <span>Home</span>
                     </a>
                 </li>
-<!--                <li class="qqq">
-                    <a href="create-slider.php" class="">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Slider</span>
-                    </a>
-
-                </li>-->
-<!--                <li class="qqq">
-                    <a href="create-banner.php" class="">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Banner</span>
-                    </a>
-
-                </li>-->
-
-                <li class="qqq">
+                <!--                <li class="qqq">
+                                    <a href="create-slider.php" class="">
+                                        <i class="material-icons">chevron_right</i>
+                                        <span>Slider</span>
+                                    </a>
+                
+                                </li>-->
+                <!--                <li class="qqq">
+                                    <a href="create-banner.php" class="">
+                                        <i class="material-icons">chevron_right</i>
+                                        <span>Banner</span>
+                                    </a>
+                
+                                </li>-->
+                <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
-                        <span>User</span>
+                        <span>Bookings</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-user.php">
+                            <a href="create-booking.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-user.php">
+                            <a href="manage-booking.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
                         </li>
-<!--                        <li>
-                            <a href="arrange-activity.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>-->
+
                     </ul>
                 </li>
+
+
 
                 <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -338,12 +334,27 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-<!--                        <li>
-                            <a href="arrange-activity.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
+
+                    </ul>
+                </li>
+                <li class="qqq">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
+                        <span>Vehicle</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-vehicle.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
                             </a>
-                        </li>-->
+                        </li>
+                        <li>
+                            <a href="manage-vehicle.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="qqq">
@@ -364,43 +375,17 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-<!--                        <li>
-                            <a href="arrange-product-type.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>-->
+                        <!--                        <li>
+                                                    <a href="arrange-product-type.php">
+                                                        <i class="material-icons">compare_arrows</i>
+                                                        <span>Arrange</span>
+                                                    </a>
+                                                </li>-->
 
                     </ul>
                 </li>
 
-                <li class="qqq">
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Vehicle</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-vehicle.php">
-                                <i class="material-icons">add</i>
-                                <span>Add New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-vehicle.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
-<!--                        <li>
-                            <a href="arrange-product-type.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>-->
 
-                    </ul>
-                </li>
 
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -420,12 +405,12 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-<!--                        <li>
-                            <a href="arrange-room.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>
-                        </li>-->
+                        <!--                        <li>
+                                                    <a href="arrange-room.php">
+                                                        <i class="material-icons">compare_arrows</i>
+                                                        <span>Arrange</span>
+                                                    </a>
+                                                </li>-->
                     </ul>
                 </li>
 
@@ -451,55 +436,49 @@
                     </ul>
                 </li>
 
-
-                <li>
+                <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
-                        <span>Booking</span>
+                        <span>User</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-booking.php">
+                            <a href="create-user.php">
                                 <i class="material-icons">add</i>
                                 <span>Add New</span>
                             </a>
                         </li>
                         <li>
-                            <a href="manage-booking.php">
+                            <a href="manage-user.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
                             </a>
-                        </li>
-                        <li>
-<!--                            <a href="arrange-comments.php">
-                                <i class="material-icons">compare_arrows</i>
-                                <span>Arrange</span>
-                            </a>-->
                         </li>
                     </ul>
                 </li>
 
-<!--                <li class="qqq">
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">chevron_right</i>
-                        <span>Pages</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="create-pages.php">
-                                <i class="material-icons">add</i>
-                                <span>Add new</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="manage-pages.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
 
-                    </ul>
-                </li>-->
+                <!--                <li class="qqq">
+                                    <a href="javascript:void(0);" class="menu-toggle">
+                                        <i class="material-icons">chevron_right</i>
+                                        <span>Pages</span>
+                                    </a>
+                                    <ul class="ml-menu">
+                                        <li>
+                                            <a href="create-pages.php">
+                                                <i class="material-icons">add</i>
+                                                <span>Add new</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="manage-pages.php">
+                                                <i class="material-icons">list</i>
+                                                <span>Manage</span>
+                                            </a>
+                                        </li>
+                
+                                    </ul>
+                                </li>-->
 
             </ul>
         </div>

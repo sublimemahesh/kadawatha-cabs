@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-          <title> Manage User || WEB SITE CONTROL PANEL </title>
+          <title> Manage Permission || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -44,7 +44,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage User
+                                    Manage Permission
                                 </h2>
                             </div>
                             <div class="body">
@@ -81,8 +81,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $user['email']; ?></td>
                                                     <td> 
                                                         <a href="edit-user.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit User"></button></a>
-                                                        |
-                                                        <a href="#?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-user user-Details" title="User Permission"></button></a>
+                                                        <!--|-->
+                                                        <!--<a href="manage-permission.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-user user-Details" title="User Permission"></button></a>-->
                                                         | 
                                                         <a href="edit-user-password.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm" title="Change User Passowrd"></button></a>
                                                         |

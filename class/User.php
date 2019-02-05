@@ -20,14 +20,14 @@ class User {
     public $username;
     public $resetCode;
     public $password;
-
+    public $permissions;
 
 //    private $password;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`name`,`email`,`createdAt`,`isActive`,`authToken`,`profile_picture`,`mobile_number`,`lastLogin`,`username`,`resetcode` FROM `user` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`name`,`email`,`createdAt`,`isActive`,`authToken`,`profile_picture`,`mobile_number`,`lastLogin`,`username`,`resetcode`,`permissions` FROM `user` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -44,6 +44,7 @@ class User {
             $this->username = $result['username'];
             $this->authToken = $result['authToken'];
             $this->resetCode = $result['resetcode'];
+            $this->permissions = $result['permissions'];
 
             return $result;
         }
@@ -365,10 +366,26 @@ class User {
     public function delete() {
 
         $query = 'DELETE FROM `user` WHERE id="' . $this->id . '"';
-
+   
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+    public function updatePermission() {
+
+        $query = "UPDATE  `user` SET "
+                . "`permissions` ='" . $this->permissions . "' "
+                . "WHERE `id` = '" . $this->id . "'";
+    
+        $db = new Database();
+
+        $result = $db->readQuery($query);
+
+        if ($result) {
+            return $this->__construct($this->id);
+        } else {
+            return FALSE;
+        }
     }
 
 }

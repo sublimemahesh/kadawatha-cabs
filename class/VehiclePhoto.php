@@ -95,8 +95,8 @@ class VehiclePhoto {
 
     public function delete() {
 
-        $query = 'DELETE FROM `offer_photo` WHERE id="' . $this->id . '"';
-
+        $query = 'DELETE FROM `vehicle_photos` WHERE id="' . $this->id . '"';
+      
         $db = new Database();
 
         return $db->readQuery($query);

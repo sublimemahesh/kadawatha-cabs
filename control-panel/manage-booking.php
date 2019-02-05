@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title>Manage Booking - Kadabawata Cabs</title>
+        <title>Manage Bookings || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -44,7 +44,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Booking
+                                    Manage Bookings
                                 </h2>
                             </div>
                             <div class="body">

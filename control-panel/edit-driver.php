@@ -49,7 +49,7 @@ $DRIVER = new Driver($id);
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-comments.php">
+                                        <a href="manage-driver.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>

@@ -1,4 +1,3 @@
-
 <?php
 
 include_once(dirname(__FILE__) . '/../../../class/include.php');
@@ -6,12 +5,10 @@ include_once(dirname(__FILE__) . '/../../auth.php');
 
 if ($_POST['option'] == 'delete') {
 
-    $USER = new User($_POST['id']);
+    $VEHICLE = new VehiclePhoto($_POST['id']);
     
-//  unlink('../../../upload/user/' . $USER->profile_picture);
-    
-    $result = $USER->delete();
-
+    $result = $VEHICLE->delete();
+//  unlink('../../../upload/user/' . $VEHICLE->image);
     if ($result) {
 
         $data = array("status" => TRUE);
