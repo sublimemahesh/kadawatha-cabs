@@ -34,7 +34,6 @@ $packages = $PACKAGES->all();
 
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
     </head>
-
     <body class="theme-red">
         <?php
         include './navigation-and-header.php';
@@ -70,25 +69,24 @@ $packages = $PACKAGES->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="customer" name="customer" required="TRUE">
-                                                        <option value=""> -- Please Select Customer -- </option>
-                                                        <?php foreach ($customer as $cusname) {
-                                                            ?>
-                                                            <option value="<?php echo $cusname['id']; ?>" <?php
-                                                            if ($CUSTOMER->id === $cusname['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $cusname['name']; ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="" attempt="">
+                                                    <label class="form-label">Enter Customer name </label>
+                                                    <div id="suggesstion-box">
+                                                        <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
+                                                    </div>
+
                                                 </div>
+
+                                                <div class="newcus">
+                                                    <input type="hidden" name="id" value="" id="name-id"  />
+                                                    <button type="button" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" data-whatever=""></button>
+                                                </div>
+
                                             </div>
-                                        </div>  
+                                        </div>
                                     </div>
+
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Start Date</label>
@@ -221,7 +219,8 @@ $packages = $PACKAGES->all();
                                     </div>
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="submit" name="create" id="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -235,6 +234,9 @@ $packages = $PACKAGES->all();
                 <!-- #END# Vertical Layout -->
 
             </div>
+            <?php
+            include './new-customer-model.php';
+            ?>
         </section>
 
         <!-- Jquery Core Js -->
@@ -244,10 +246,13 @@ $packages = $PACKAGES->all();
         <script src="plugins/node-waves/waves.js"></script>
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
-        <script src="js/add-new-ad.js" type="text/javascript"></script>
+        <!--<script src="js/add-new-ad.js" type="text/javascript"></script>-->
         <script src="plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="js/customer-suggection.js"></script>
+        <script src="js/pop-customer.js"></script>
         <script>
             tinymce.init({
                 selector: "#description",

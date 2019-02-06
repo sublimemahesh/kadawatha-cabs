@@ -45,7 +45,7 @@ $CUSTOMER = new Customer($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                  Edit Customer
+                                    Edit Customer
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -57,54 +57,78 @@ $CUSTOMER = new Customer($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>">
-                                                <label class="form-label">Name</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Full Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>">
+                                                    <label class="form-label"> Full Name</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>">
-                                                <label class="form-label">Address</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Address</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>">
+                                                    <label class="form-label">Address</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">NIC</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>">
+                                                    <label class="form-label">NIC</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>">
-                                                <label class="form-label">NIC</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Mobile Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>">
+                                                    <label class="form-label">Mobile Number</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>">
-                                                <label class="form-label">Mobile Number</label>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">City</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="title" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>">
+                                                        <label class="form-label">City</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>">
-                                                <label class="form-label">City</label>
-                                            </div>
-                                        </div>
-                                    </div>
 
 
-                                    <div class="col-md-12">
-                                        <input type="hidden" id="id" value="<?php echo $CUSTOMER->id; ?>" name="id"/>
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
-                                    </div>
-                                    <div class="row clearfix">  </div>
-                                    <hr/>
+                                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                            <input type="hidden" id="id" value="<?php echo $CUSTOMER->id; ?>" name="id"/>
+                                            <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        </div>
+                                        <div class="row clearfix">  </div>
+                                        <hr/>
                                 </form>
                             </div>
                         </div>

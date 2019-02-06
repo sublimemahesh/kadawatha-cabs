@@ -55,7 +55,6 @@ class Customer {
         }
     }
 
-
     public function update() {
 
         $query = "UPDATE  `customer` SET "
@@ -98,6 +97,21 @@ class Customer {
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function allNamesByKeyword($keyword) {
+
+        $query = "SELECT * FROM `customer` WHERE `name` LIKE '{$keyword}%'";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 
 }

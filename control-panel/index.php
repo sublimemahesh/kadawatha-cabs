@@ -2,10 +2,10 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-//$COUNT_COMMENT = count(Comments::pendingComments());
-//$COUNT_ACTIVITY = count(Activities::all());
-//$COUNT_ATTRACTION = count(Attraction::all());
-//$COUNT_ROOM = count(Room::all());
+$COUNT_VEHICLES = count(Vehicle::ALL());
+$COUNT_DRIVERS = count(Driver::all());
+$COUNT_PACKAGES= count(Packages::all());
+$COUNT_BOOKINGS = count(Booking::all());
 //$SLIDER_IMAGES = count(Slider::all());
 //$COUNT_TOUR = count(TourPackage::all());
 //$COUNT_GALLERY = count(AlbumPhoto::getAlbumPhotosById(6));
@@ -16,7 +16,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Dashbord - www.sublime.lk</title>
+        <title>Dashbord - www.synotec.lk</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -64,54 +64,55 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                 <!-- Widgets -->
                 <div class="row clearfix">
-                    <a href="view-album-photos.php?id=1">
+        
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">photo</i>
+                                    <i class="material-icons">commute</i>
                                 </div>
                                 <div class="content">
-                                    <div class="text">Gallery Images</div>
-                                    <div class="number count-to" data-from="0" data-to="<?php echo $COUNT_GALLERY; ?>" data-speed="1000"" data-fresh-interval="20"></div>
+                                    <div class="text">VEHICLES</div>
+                                    <div class="number count-to" data-from="0" data-to="<?php echo $COUNT_VEHICLES; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="create-slider.php">
+                  
+          
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">burst_mode</i>
+                                    <i class="material-icons">recent_actors</i>
                                 </div>
                                 <div class="content">
-                                    <div class="text">SLIDER IMAGES</div>
-                                    <div class="number count-to" data-from="0" data-to="<?php echo $SLIDER_IMAGES; ?>" data-speed="1000" data-fresh-interval="20"></div>
+                                    <div class="text">DRIVERS</div>
+                                    <div class="number count-to" data-from="0" data-to="<?php echo $COUNT_DRIVERS; ?>" data-speed="1000" data-fresh-interval="20"></div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="manage-comments.php">
+                
+                 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons">chrome_reader_mode</i>
                                 </div>
                                 <div class="content">
-                                    <div class="text">NEW COMMENTS</div>
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_COMMENT; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <div class="text">PACKAGES</div>
+                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_PACKAGES; ?>" data-speed="1500" data-fresh-interval="1"></div>
 
                                 </div>
                             </div>
                         </div>
-                    </a>
+               
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box bg-orange hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">dvr</i>
+                                <i class="material-icons">library_books</i>
                             </div>
                             <div class="content">
-                                <div class="text">TOTAL PAGES</div>
-                                <div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>
+                                <div class="text">BOOKINGS</div>
+                                <!--<div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>-->
+                                     <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>
                             </div>
                         </div>
                     </div>
@@ -120,19 +121,18 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header bg-blue-grey">
                                 <h2>
-                                    TOUR PACKAGES <small>   
+                                    VEHICLES <small>   
 
                                     </small>
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_TOUR; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_VEHICLES; ?>" data-speed="1500" data-fresh-interval="1"></div>
                                 </ul>
                             </div>
                             <div class="body">
                                 <div class="list-group">
-                                    <a href="create-tour-package.php"><button type="button" class="list-group-item">Add new</button></a>
-                                    <a href="manage-tour-package.php"><button type="button" class="list-group-item">Manage</button></a>
-                                    <a href="arrange-tour-package.php"><button type="button" class="list-group-item">Arrange</button></a>
+                                    <a href="create-vehicle.php"><button type="button" class="list-group-item">Add new vehicles</button></a>
+                                    <a href="manage-vehicle.php"><button type="button" class="list-group-item">Manage vehicles</button></a>
                                 </div>
                             </div>
                         </div>
@@ -141,18 +141,18 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header bg-blue-grey">
                                 <h2>
-                                    ATTRACTIONS
+                                    DRIVERS
     <!--                                    <small>  </small>-->
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_ATTRACTION; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_DRIVERS; ?>" data-speed="1500" data-fresh-interval="1"></div>
                                 </ul>
                             </div>
                             <div class="body">
                                 <div class="list-group">
-                                    <a href="create-attraction.php"><button type="button" class="list-group-item">Add new</button></a>
-                                    <a href="manage-attraction.php"><button type="button" class="list-group-item">Manage</button></a>
-                                    <a href="arrange-attraction.php"><button type="button" class="list-group-item">Arrange</button></a>
+                                    <a href="create-driver.php"><button type="button" class="list-group-item">Add new drivers</button></a>
+                                    <a href="manage-driver.php"><button type="button" class="list-group-item">Manage drivers</button></a>
+
                                 </div>
                             </div>
                         </div>
@@ -161,18 +161,18 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header bg-blue-grey">
                                 <h2>
-                                    ACTIVITIES
+                                    PACKAGES
     <!--                                    <small></small>-->
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_ACTIVITY; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_PACKAGES; ?>" data-speed="1500" data-fresh-interval="1"></div>
                                 </ul>
                             </div>
                             <div class="body">
                                 <div class="list-group">
-                                    <a href="create-activity.php"><button type="button" class="list-group-item">Add new</button></a>
-                                    <a href="manage-activity.php"><button type="button" class="list-group-item">Manage</button></a>
-                                    <a href="arrange-activity.php"><button type="button" class="list-group-item">Arrange</button></a>
+                                    <a href="create-packages.php"><button type="button" class="list-group-item">Add new packages</button></a>
+                                    <a href="manage-packages.php"><button type="button" class="list-group-item">Manage packages</button></a>
+
                                 </div>
                             </div>
                         </div>
@@ -181,19 +181,17 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header bg-blue-grey">
                                 <h2>
-                                    ACCOMMODATION
+                                    BOOKINGS
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_ROOM; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>
                                 </ul>
                             </div>
                             <div class="body">
 
                                 <div class="list-group">
-                                    <a href="create-room.php"><button type="button" class="list-group-item">Add new</button></a>
-                                    <a href="manage-room.php"><button type="button" class="list-group-item">Manage</button></a>
-                                    <a href="arrange-room.php"><button type="button" class="list-group-item">Arrange</button></a>
-
+                                    <a href="create-booking.php"><button type="button" class="list-group-item">Add new bookings</button></a>
+                                    <a href="manage-booking.php"><button type="button" class="list-group-item">Manage bookings</button></a>
                                 </div>
                             </div>
                         </div>

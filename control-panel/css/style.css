@@ -8135,3 +8135,37 @@ html.ie11 .bs-searchbox .form-control {
 .passnum{
     margin-top: -38px;
 }
+
+/*suggection customer*/
+.name-list {
+    float:left;
+    list-style:none;
+    padding:0;
+    width:571px;
+    position: absolute;
+    z-index: 1;
+}
+.name-list {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.name-list li {
+    padding: 10px;
+    background: #f0f0f0;
+    border-bottom: #bbb9b9 1px solid;
+    color: #000;
+}
+.name-list li:hover {
+    cursor: pointer;
+    background: #0000ff !important;
+    color: white !important;
+}
+.selected {
+    background: #0000ff !important;
+    color: white !important;
+}
+.newcus{
+    float: right;
+    margin-top: -26px;
+}

@@ -6,7 +6,6 @@ if (isset($_POST['create'])) {
 
     $BOOKING = new Booking(NULL);
     $VALID = new Validator();
-
     $BOOKING->customer = $_POST['customer'];
     $BOOKING->start_date = $_POST['start_date'];
     $BOOKING->end_date = $_POST['end_date'];
