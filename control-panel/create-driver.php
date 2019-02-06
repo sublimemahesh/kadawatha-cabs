@@ -115,7 +115,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                     <div class="col-md-12"> 
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>      
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
