@@ -23,7 +23,7 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "Driver has been deleted.",
+                            text: "User has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false

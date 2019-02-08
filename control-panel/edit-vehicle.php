@@ -10,7 +10,7 @@ $VEHICLE = new vehicle($id);
 $VEHICLETYPE = new VehicleType(NULL);
 $types = $VEHICLETYPE->all();
 
-$DRIVER = new Driver($id);
+$DRIVER = new Driver(NULL);
 $Drivername = $DRIVER->all();
 ?> 
 
@@ -19,7 +19,7 @@ $Drivername = $DRIVER->all();
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-            <title> Edit Vehicle Type || WEB SITE CONTROL PANEL </title>
+        <title> Edit Vehicle Type || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -62,170 +62,212 @@ $Drivername = $DRIVER->all();
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/vehicle.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
 
-
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE">
-                                                    <option value=""> -- Please Select -- </option>
-                                                    <?php foreach ($types as $type) {
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE">
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <?php foreach ($types as $type) {
+                                                            ?>
+                                                            <option value="<?php echo $type['id']; ?>" <?php
+                                                            if ($VEHICLE->vehicle_type === $type['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $type['type']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
                                                         ?>
-                                                        <option value="<?php echo $type['id']; ?>" <?php
-                                                    if ($VEHICLE->vehicle_type === $type['id']) {
-                                                        echo 'selected';
-                                                    }
-                                                        ?>>
-                                                                <?php echo $type['type']; ?>
-                                                        </option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Owner Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true" value="<?php echo $VEHICLE->owner; ?>">
+                                                    <label class="form-label">Owner Name</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicle_number" required="true" value="<?php echo $VEHICLE->vehicle_number; ?>">
+                                                    <label class="form-label">Vehicle Number</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="vehicle_name" required="true" value="<?php echo $VEHICLE->vehicle_name; ?>">
+                                                    <label class="form-label">Vehicle Name</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Contact Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true" value="<?php echo $VEHICLE->contact_number ?>">
+                                                    <label class="form-label">Contact Number</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">City</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" value="<?php echo $VEHICLE->city ?>">
+                                                    <label class="form-label">City</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Condition</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <input class="filled-in chk-col-pink" type="radio" 
                                                         <?php
-                                                    }
-                                                    ?>
-                                                </select>
+                                                        if ($VEHICLE->condition == 'AC') {
+                                                            echo 'checked';
+                                                        }
+                                                        ?> 
+
+                                                               name="condition" value="AC" id="AC" />
+                                                        <label for="AC">Ac</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <input class="filled-in chk-col-pink" type="radio"  
+                                                        <?php
+                                                        if ($VEHICLE->condition == 'nonAC') {
+                                                            echo 'checked';
+                                                        }
+                                                        ?> 
+                                                               name="condition" value="nonAC" id="nonAC" />
+                                                        <label for="nonAC">Non Ac</label>
+                                                    </div>
+                                                </div>
+
+
 
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true" value="<?php echo $VEHICLE->owner; ?>">
-                                                <label class="form-label">Owner Name</label>
-                                            </div>
-
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">No Of Passenger</label>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
 
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicle_number" required="true" value="<?php echo $VEHICLE->vehicle_number; ?>">
-                                                <label class="form-label">Vehicle Number</label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="vehicle_name" required="true" value="<?php echo $VEHICLE->vehicle_name; ?>">
-                                                <label class="form-label">Vehicle Name</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true" value="<?php echo $VEHICLE->vehicle_number ?>">
-                                                <label class="form-label">Contact Number</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" value="<?php echo $VEHICLE->city ?>">
-                                                <label class="form-label">City</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <input class="filled-in chk-col-pink" type="radio" 
-                                                    <?php
-                                                    if ($VEHICLE->condition == 'DAc') {
-                                                        echo 'checked';
-                                                    }
-                                                    ?> 
-
-                                                           name="condition" value="DAc" id="DAc" />
-                                                    <label for="DAc">Ac</label>
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" value="<?php echo $VEHICLE->no_of_passenger ?>">
+                                                    <label class="form-label">No Of Passenger</label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <input class="filled-in chk-col-pink" type="radio"  
-                                                    <?php
-                                                    if ($VEHICLE->condition == 'nonAc') {
-                                                        echo 'checked';
-                                                    }
-                                                    ?> 
-                                                           name="condition" value="NonAc" id="nonAc" />
-                                                    <label for="nonAc">Non Ac</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">No Of Baggage</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" value="<?php echo $VEHICLE->no_of_baggage ?>">
+                                                    <label class="form-label">No Of Baggage</label>
                                                 </div>
                                             </div>
-
-
-
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-
-                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" value="<?php echo $VEHICLE->no_of_passenger ?>">
-                                                <label class="form-label">No Of Passenger</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">No Of Baggage</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" value="<?php echo $VEHICLE->no_of_door ?>">
+                                                    <label class="form-label">No Of Door</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" value="<?php echo $VEHICLE->no_of_baggage ?>">
-                                                <label class="form-label">No Of Baggage</label>
-                                            </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Driver</label>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" value="<?php echo $VEHICLE->no_of_door ?>">
-                                                <label class="form-label">No Of Door</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE">
-                                                    <option value=""> -- Please Select Driver -- </option>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE">
+                                                      <option value=""> -- Please Select Driver -- </option>
                                                     <?php foreach ($Drivername as $name) {
                                                         ?>
-                                                        <option value="<?php echo $name['id']; ?>" <?php
-                                                    if ($DRIVER->id === $name['id']) {
-                                                        echo 'selected';
-                                                    }
+                                                                <option value="<?php echo $name['id']; ?>" <?php
+                                                        if ($VEHICLE->driver === $name['id']) {
+                                                            echo 'selected';
+                                                        }
                                                         ?>>
-                                                                <?php  echo $name['name']; ?>
-                                                        </option>
+                                                        <?php echo $name['name']; ?>
+                                                                </option>
                                                         <?php
                                                     }
                                                     ?>
-                                                </select>
+                                                    </select>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-
-
-                                    <div class="col-md-12">                                       
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="vehicle_image">
-                                                <img src="../upload/vehicle/<?php echo $VEHICLE->vehicle_image; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="profileimage" alt="old image">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="oldImageName" value="<?php echo $VEHICLE->vehicle_image; ?>" name="oldImageName"/>
                                         <input type="hidden" id="id" value="<?php echo $VEHICLE->id; ?>" name="id"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>

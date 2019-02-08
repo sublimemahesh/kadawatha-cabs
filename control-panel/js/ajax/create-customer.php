@@ -14,9 +14,8 @@ if ($_POST['option'] == 'createCus') {
    
     if ($result) {
        
-        $data = array("status" => TRUE);
             header('Content-type: application/json');
-        echo json_encode($data);
+        echo json_encode($result);
         exit();
     }
     

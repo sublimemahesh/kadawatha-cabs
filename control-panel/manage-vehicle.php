@@ -56,9 +56,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Vehicle Owner Name</th>
                                                 <th>Vehicle Type</th>
-                                                <th>Vehicle Number</th>
+                                                <th>Vehicle No</th>
                                                 <th>Vehicle Name</th>
-                                                <th>Contact Number</th>
+                                                <th>Contact No</th>
                                                 <th>City</th>
                                                 <th>Driver</th>
                                                 <th>Options</th>
@@ -69,9 +69,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Vehicle Owner Name</th>
                                                 <th>Vehicle Type</th>
-                                                <th>Vehicle Number</th>
+                                                <th>Vehicle No</th>
                                                 <th>Vehicle Name</th>
-                                                <th>Contact Number</th>
+                                                <th>Contact No</th>
                                                 <th>City</th>
                                                 <th>Driver</th>
                                                 <th>Options</th>
@@ -98,7 +98,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td> 
                                                         <a href="edit-vehicle.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title ="Edit Vehicle"></button></a>
                                                         |
-                                                        <a href="view-vehicle-photos.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-time user-Details " title ="View Vehicle Photo Album"></button></a>
+                                                        <a href="view-vehicle-photos.php?id=<?php echo $vehicle['id']; ?>"> <button class="glyphicon glyphicon-picture user-Details " title ="View Vehicle Photo Album"></button></a>
                                                         |
                                                         <a href="#"  class="delete-vehicle" data-id="<?php echo $vehicle['id']; ?>">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-user" title ="Delete Vehicle " data-id="<?php echo $user['id']; ?>"></button>

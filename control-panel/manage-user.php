@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-          <title> Manage Permission || WEB SITE CONTROL PANEL </title>
+        <title> Manage Users|| WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -26,6 +26,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="css/style.css" rel="stylesheet" >
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
+        <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="theme-red">
         <?php
@@ -44,7 +45,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Permission
+                                    Manage Users
                                 </h2>
                             </div>
                             <div class="body">
@@ -57,6 +58,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>Name</th>
                                                 <th>Mobile Number</th>
                                                 <th>Email</th>
+                                                <th>Status</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
@@ -66,6 +68,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>Name</th>
                                                 <th>Mobile Number</th>
                                                 <th>Email</th>
+                                                <th>Status</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
@@ -77,8 +80,19 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <tr id="row_<?php echo $user['id']; ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $user['name']; ?></td>
-                                                     <td><?php echo $user['mobile_number']; ?></td>
+                                                    <td><?php echo $user['mobile_number']; ?></td>
                                                     <td><?php echo $user['email']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($user['isActive'] == 1) {
+                                                            echo '<button class="fa fa-check-square user-acti" ></button>';
+                                                    
+                                                        } else {
+                                                               echo '<button class="fa fa-square user-deact" ></button>';
+                                                        }
+                                                        ?>
+
+                                                    </td>
                                                     <td> 
                                                         <a href="edit-user.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit User"></button></a>
                                                         <!--|-->
@@ -86,8 +100,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         | 
                                                         <a href="edit-user-password.php?id=<?php echo $user['id']; ?>"> <button class="glyphicon glyphicon glyphicon-lock user-perm" title="Change User Passowrd"></button></a>
                                                         |
-                                                      
-                                                            <a href="#"  class="delete-user" data-id="<?php echo $user['id']; ?> ">
+
+                                                        <a href="#"  class="delete-user" data-id="<?php echo $user['id']; ?> ">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete User" data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
                                                     </td>

@@ -42,10 +42,9 @@ $('#name-list-append').on('click', '.name', function () {
     $('#name-id').val(consigneeId.replace("c", ""));
     $('#name').val(consignee);
     $('#name-list-append').empty();
-
-    $('#name').change(function () {
+      $('#name').change(function () {
         $('#name-id').val("");
-    });
+         });
 });
 $('#name-list-append').on('mouseover', '.name', function () {
     var consigneeId = this.id;

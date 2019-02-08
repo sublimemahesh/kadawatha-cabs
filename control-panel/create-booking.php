@@ -69,17 +69,17 @@ $packages = $PACKAGES->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
+                                                    
                                                     <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="" attempt="">
+                                                    <input type="hidden" name="id" value="" id="name-id"  />
                                                     <label class="form-label">Enter Customer name </label>
                                                     <div id="suggesstion-box">
                                                         <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
                                                     </div>
-
                                                 </div>
 
                                                 <div class="newcus">
-                                                    <input type="hidden" name="id" value="" id="name-id"  />
-                                                    <button type="button" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" data-whatever=""></button>
+                                                    <button type="button" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" data-whatever="" title="create customer"></button>
                                                 </div>
 
                                             </div>
@@ -220,7 +220,6 @@ $packages = $PACKAGES->all();
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="submit" name="create" id="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
-
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -252,7 +251,7 @@ $packages = $PACKAGES->all();
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/customer-suggection.js"></script>
-        <script src="js/pop-customer.js"></script>
+        <script src="js/create-customer.js"></script>
         <script>
             tinymce.init({
                 selector: "#description",

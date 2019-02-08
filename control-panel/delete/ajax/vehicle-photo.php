@@ -6,9 +6,10 @@ include_once(dirname(__FILE__) . '/../../auth.php');
 if ($_POST['option'] == 'delete') {
 
     $VEHICLE = new VehiclePhoto($_POST['id']);
-    
+
     $result = $VEHICLE->delete();
-//  unlink('../../../upload/user/' . $VEHICLE->image);
+    unlink('../../../upload/vehicle/gallery/' . $VEHICLE->image);
+    unlink('../../../upload/vehicle/gallery/thumb/' . $VEHICLE->image);
     if ($result) {
 
         $data = array("status" => TRUE);

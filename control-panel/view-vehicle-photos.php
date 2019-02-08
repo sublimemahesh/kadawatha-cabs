@@ -8,13 +8,11 @@ if (isset($_GET['id'])) {
 $VEHICLE = new Vehicle($id);
 ?> 
 <!DOCTYPE html>
-
-
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-         <title> Create Vehicle Photos || WEB SITE CONTROL PANEL </title>
+        <title> Create Vehicle Photo || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -43,7 +41,7 @@ $VEHICLE = new Vehicle($id);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create Vehicle Photos</h2>
+                                <h2>Create Vehicle Photo</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-vehicle.php">
@@ -54,65 +52,75 @@ $VEHICLE = new Vehicle($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/vehicle-photo.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">                                       
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="file" id="image" class="form-control" name="image"  required="true">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Image</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">                                 
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="file" id="image" class="form-control" name="image"  required="true">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="caption" class="form-control" autocomplete="off" name="caption" required="true">
-                                                <label class="form-label">Caption</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Caption</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">    
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="caption" class="form-control" autocomplete="off" name="caption" required="true">
+                                                    <label class="form-label">Caption</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12"> 
+
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
                                         <input type="hidden" id="id" value="<?php echo $VEHICLE->id; ?>" name="id"/>
                                         <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                     </div>
-                                    <hr/>
+
                                 </form>
                                 <div class="row">
                                 </div>
                                 <hr/>
                                 <div class="row clearfix">
-                                    <?php
-                                    $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
-                                    if (count($VEHICLE_PHOTO) > 0) {
-                                        foreach ($VEHICLE_PHOTO as $key => $vehicle_photo) {
-                                            ?>
-                                            <div class="col-md-3"  id="div<?php echo $vehicle_photo['id']; ?>">
-                                                <div class="photo-img-container">
-                                                    <img src="../upload/vehicle/gallery/thumb/<?php echo $vehicle_photo['image']; ?>" class="img-responsive ">
-                                                </div>
-                                                <div class="img-caption">
-                                                    <p class="maxlinetitle"><?php echo $vehicle_photo['caption']; ?></p>
-                                                    <div class="d">
-                                                        <a href="#" class="delete-vehicle-photo" data-id="<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
-                                                        <a href="edit-vehicle-photo.php?id=<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
-                                                        <a href="arrange-vehicle-photos.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
+<!--                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">-->
+                                        <?php
+                                        $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
+                                        if (count($VEHICLE_PHOTO) > 0) {
+                                            foreach ($VEHICLE_PHOTO as $key => $vehicle_photo) {
+                                                ?>
+                                                <div class="col-md-3"  id="div<?php echo $vehicle_photo['id']; ?>">
+                                                    <div class="photo-img-container">
+                                                        <img src="../upload/vehicle/gallery/thumb/<?php echo $vehicle_photo['image']; ?>" class="img-responsive ">
+                                                    </div>
+                                                    <div class="img-caption">
+                                                        <p class="maxlinetitle"><?php echo $vehicle_photo['caption']; ?></p>
+                                                        <div class="d">
+                                                            <a href="#" class="delete-vehicle-photo" data-id="<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
+                                                            <a href="edit-vehicle-photo.php?id=<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                            <a href="arrange-vehicle-photos.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <?php
-                                        }
-                                    } else {
-                                        ?> 
-                                        <b style="padding-left: 15px;">No Offer photos in the database.</b> 
-                                    <?php } ?> 
+                                                <?php
+                                            }
+                                        } else {
+                                            ?> 
+                                            <b style="padding-left: 15px;">No Vehicle photos in the database.</b> 
+                                        <?php } ?> 
 
+                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <!-- #END# Vertical Layout -->
-
             </div>
         </section>
 

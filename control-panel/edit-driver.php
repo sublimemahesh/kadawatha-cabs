@@ -57,78 +57,112 @@ $DRIVER = new Driver($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/driver.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="driver_name" required="true" value="<?php echo $DRIVER->name; ?>">
-                                                <label class="form-label">Driver Name</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Driver Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="driver_name" required="true" value="<?php echo $DRIVER->name; ?>">
+                                                    <label class="form-label">Driver Name</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="licence_num" required="true" value="<?php echo $DRIVER->licence_number ?>">
-                                                <label class="form-label">Licence Number</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Licence Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="licence_num" required="true" value="<?php echo $DRIVER->licence_number ?>">
+                                                    <label class="form-label">Licence Number</label>
+                                                </div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Mobile Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="phone_numbers" required="true" value="<?php echo $DRIVER->phone_numbers ?>">
+                                                    <label class="form-label">Mobile Number</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">NIC</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" required="true" value="<?php echo $DRIVER->nic ?>">
+                                                    <label class="form-label">NIC</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Address</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" required="true" value="<?php echo $DRIVER->address ?>">
+                                                    <label class="form-label">Address</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">City</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" value="<?php echo $DRIVER->city ?>">
+                                                    <label class="form-label">City</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Licence</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="col-md-4">  
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <img src="../upload/Driver/front_side/<?php echo $DRIVER->licence_image_front; ?>" id="image" class="view-img-licence img img-responsive img-thumbnail" name="licence_image_front" alt="old image-front side">
+                                                        <input type="file" id="image" class="form-control" name="licence_image_front">
+                                                    </div>
+                                                </div>
                                             </div>    
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="phone_numbers" required="true" value="<?php echo $DRIVER->phone_numbers ?>">
-                                                <label class="form-label">Mobile Number</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" required="true" value="<?php echo $DRIVER->nic ?>">
-                                                <label class="form-label">NIC</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="address" required="true" value="<?php echo $DRIVER->address ?>">
-                                                <label class="form-label">Address</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" value="<?php echo $DRIVER->city ?>">
-                                                <label class="form-label">City</label>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-12">  
-                                        <div class="col-md-6">  
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="file" id="image" class="form-control" name="licence_image_front">
-                                                    <img src="../upload/Driver/front_side/<?php echo $DRIVER->licence_image_front; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="licence_image_front" alt="old image-front side">
+                                            <div class="col-md-4">  
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <img src="../upload/Driver/back_side/<?php echo $DRIVER->licence_image_back; ?>" id="image" class="view-img-licence img img-responsive img-thumbnail" name="licence_image_back" alt="old image -back side">
+                                                        <input type="file" id="image" class="form-control" name="licence_image_back">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>    
-
-                                        <div class="col-md-6">  
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="file" id="image" class="form-control" name="licence_image_back">
-                                                    <img src="../upload/Driver/back_side/<?php echo $DRIVER->licence_image_back; ?>" id="image" class="view-edit-img-comments img img-responsive img-thumbnail" name="licence_image_back" alt="old image -back side">
-                                                </div>
-                                            </div>
-                                        </div> 
-
+                                            </div> 
+                                        </div>
                                     </div>
 
 
-                                    <div class="col-md-12">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="oldImageNameFront" value="<?php echo $DRIVER->licence_image_front; ?>" name="oldImageNameFront"/>
                                         <input type="hidden" id="oldImageNameBack" value="<?php echo $DRIVER->licence_image_back; ?>" name="oldImageNameBack"/>
                                         <input type="hidden" id="id" value="<?php echo $DRIVER->id; ?>" name="id"/>

@@ -114,4 +114,19 @@ class Customer {
         return $array_res;
     }
 
+    public function getCudtomerById($id) {
+
+        $query = "SELECT * FROM `customer` WHERE `id`= '" . $id . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
+        }
+    }
+
 }

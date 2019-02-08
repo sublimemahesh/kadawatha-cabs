@@ -56,9 +56,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
+                                                <th>City</th>
                                                 <th>NIC</th>
                                                 <th>Mobile Number</th>
-                                                <th>City</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
@@ -67,9 +67,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
+                                                <th>City</th>
                                                 <th>NIC</th>
                                                 <th>Mobile Number</th>
-                                                <th>City</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
@@ -82,14 +82,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $customer['name']; ?></td>
                                                     <td><?php echo $customer['address']; ?></td>
+                                                    <td><?php echo $customer['city']; ?></td>
                                                     <td><?php echo $customer['nic']; ?></td>
                                                     <td><?php echo $customer['mobile_number']; ?></td>
-                                                    <td><?php echo $customer['city']; ?></td>
                                                     <td> 
                                                         <a href="edit-customer.php?id=<?php echo $customer['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Customer"></button></a>
-
                                                         |
-
                                                         <a href="#"  class="delete-customer" data-id="<?php echo $customer['id']; ?>">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-user" data-id="<?php echo $user['id']; ?>" title="Delete Customer"></button>
                                                         </a>
