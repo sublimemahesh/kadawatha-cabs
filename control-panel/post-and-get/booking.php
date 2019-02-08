@@ -6,7 +6,7 @@ if (isset($_POST['create'])) {
 
     $BOOKING = new Booking(NULL);
     $VALID = new Validator();
-    $BOOKING->customer = $_POST['customer'];
+    $BOOKING->customer = $_POST['id'];
     $BOOKING->start_date = $_POST['start_date'];
     $BOOKING->end_date = $_POST['end_date'];
     $BOOKING->vehicle = $_POST['vehicle'];
@@ -26,6 +26,7 @@ if (isset($_POST['create'])) {
         'package' => ['required' => TRUE],
         'comment' => ['required' => TRUE]
     ]);
+  
 
     if ($VALID->passed()) {
         $BOOKING->create();

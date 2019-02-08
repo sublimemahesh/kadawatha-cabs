@@ -14,7 +14,7 @@ $PACKAGES = new Packages($id);
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Edit Packages</title>
+        <title>Edit Package</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@ $PACKAGES = new Packages($id);
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Edit Vehicle Type
+                                    Edit Package
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -57,48 +57,74 @@ $PACKAGES = new Packages($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/packages.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control" autocomplete="off" name="name" value="<?php echo $PACKAGES->name;?>">
-                                                <label class="form-label">Package Name</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Package Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="name" value="<?php echo $PACKAGES->name; ?>">
+                                                    <label class="form-label">Package Name</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="code" class="form-control" autocomplete="off" name="code" value="<?php echo $PACKAGES->code;?>">
-                                                <label class="form-label">Package Code</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Package Code</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="code" class="form-control" autocomplete="off" name="code" value="<?php echo $PACKAGES->code; ?>">
+                                                    <label class="form-label">Package Code</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="price" class="form-control" autocomplete="off" name="price" value="<?php echo $PACKAGES->price;?>">
-                                                <label class="form-label">Price</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Price (Rs)</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="price" class="form-control" autocomplete="off" name="price" value="<?php echo $PACKAGES->price; ?>">
+                                                    <label class="form-label">Price (Rs)</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="time" class="form-control" autocomplete="off" name="time" value="<?php echo $PACKAGES->time;?>">
-                                                <label class="form-label">Time</label>
-                                            </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Time (h)</label>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="distance" class="form-control" autocomplete="off" name="distance" value="<?php echo $PACKAGES->distance;?>">
-                                                <label class="form-label">Distance</label>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="time" class="form-control" autocomplete="off" name="time" value="<?php echo $PACKAGES->time; ?>">
+                                                    <label class="form-label">Time (h)</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Distance (km)</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="distance" class="form-control" autocomplete="off" name="distance" value="<?php echo $PACKAGES->distance; ?>">
+                                                    <label class="form-label">Distance (km)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $PACKAGES->id; ?>" name="id"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                     </div>

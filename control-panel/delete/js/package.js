@@ -14,7 +14,7 @@ $(document).ready(function () {
         }, function () {
 
             $.ajax({
-                url: "delete/ajax/vehicle-type.php",
+                url: "delete/ajax/package.php",
                 type: "POST",
                 data: {id: id, option: 'delete'},
                 dataType: "JSON",
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
                         swal({
                             title: "Deleted!",
-                            text: "package has been deleted.",
+                            text: "Package has been deleted.",
                             type: 'success',
                             timer: 2000,
                             showConfirmButton: false

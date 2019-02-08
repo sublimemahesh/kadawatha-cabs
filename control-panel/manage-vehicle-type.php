@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-               <title> Manage Vehicle Type || WEB SITE CONTROL PANEL </title>
+        <title> Manage Vehicle Type || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -26,6 +26,8 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="css/style.css" rel="stylesheet" >
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
+
+        <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="theme-red">
         <?php
@@ -78,8 +80,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td> 
                                                         <a href="edit-vehicle-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Vehicle"></button></a>
                                                         |
-                                                        <a href="view-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-road user-Details" title="View Vehicle"></button></a>
-                                                       
+                                                        <a href="view-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class=" fa fa-car user-Details" title="View Vehicle"></button></a>
+
                                                         |
 
                                                         <a href="#"  class="delete-Vehicletype" data-id="<?php echo $vehicleType['id']; ?>">

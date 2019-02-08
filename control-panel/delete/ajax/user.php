@@ -8,7 +8,7 @@ if ($_POST['option'] == 'delete') {
 
     $USER = new User($_POST['id']);
     
-//  unlink('../../../upload/user/' . $USER->profile_picture);
+  unlink('../../../upload/user/' . $USER->profile_picture);
     
     $result = $USER->delete();
 

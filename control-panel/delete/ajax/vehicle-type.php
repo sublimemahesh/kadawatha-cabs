@@ -6,9 +6,9 @@ include_once(dirname(__FILE__) . '/../../auth.php');
 
 if ($_POST['option'] == 'delete') {
 
-    $VEHICLETYPE = new VehicleType($_POST['id']);
+    $VEHICLE = new Vehicle($_POST['id']);
 
-    $result = $VEHICLETYPE->delete();
+    $result = $VEHICLE->delete();
 
     if ($result) {
 

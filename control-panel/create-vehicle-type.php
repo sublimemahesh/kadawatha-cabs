@@ -48,16 +48,21 @@ include_once(dirname(__FILE__) . '/auth.php');
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/vehicle-type.php" enctype="multipart/form-data"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicletype" required="true">
-                                                <label class="form-label">Vehicle Type</label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicletype" required="true">
+                                                    <label class="form-label">Vehicle Type</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12"> 
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                     </div>
                                     <div class="row clearfix">  </div>

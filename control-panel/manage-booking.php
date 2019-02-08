@@ -75,10 +75,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <?php
                                             foreach (Booking::all() as $key => $booking) {
                                                 $key++;
+                                                $CUSTOMERNAME = new Customer($booking['customer']);
                                                 ?>
                                                 <tr id="row_<?php echo $booking['id']; ?>">
                                                     <td><?php echo $key ?></td>
-                                                    <td><?php echo $booking['customer']; ?></td>
+                                                    <td><?php echo $CUSTOMERNAME->fullname ?></td>
                                                     <td><?php echo $booking['start_date']; ?></td>
                                                     <td><?php echo $booking['end_date']; ?></td>
                                                     <td><?php echo $booking['total_cost']; ?></td>

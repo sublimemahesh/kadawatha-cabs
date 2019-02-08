@@ -20,7 +20,7 @@ $(document).ready(function () {
             document.getElementById("name").value = $('#fullname').val();
 
             $.ajax({
-                url: "js/ajax/pop-customer.php",
+                url: "js/ajax/create-customer.php",
                 type: "POST",
                 dataType: "JSON",
                 data: {
@@ -32,8 +32,9 @@ $(document).ready(function () {
                     option: 'createCus'
                 },
 
-                success: function (jsonStr) {
-                    if (jsonStr.status) {
+                success: function (customer) {
+
+                    if (customer) {
 
                         swal({
                             title: "Successfully Added!",
@@ -51,7 +52,11 @@ $(document).ready(function () {
 
                         $('.form-line').addClass('form-line focused');
                         $('.form-line focused').removeClass('form-line');
-                          ;
+
+                        $('#name').val(customer.name);
+                        $('#name-id').val(customer.id);
+
+
                     }
                 }
 

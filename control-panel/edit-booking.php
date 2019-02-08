@@ -5,13 +5,12 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-
 $BOOKING = new Booking($id);
 
 $CUSTOMER = new Customer($id);
-$customer = $CUSTOMER->all();
+$CUSTOMERNAME = new Customer($BOOKING->customer);
 
-$VEHICLETYPE = new VehicleType($id);
+$VEHICLETYPE = new VehicleType(NULL);
 $vehicle = $VEHICLETYPE->all();
 
 $DRIVER = new Driver($id);
@@ -72,19 +71,69 @@ $packages = $PACKAGES->all();
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Customer</label>
                                         </div>
+
+
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="customer" name="customer" required="TRUE">
-                                                        <option value=""> -- Please Select Customer -- </option>
-                                                        <?php foreach ($customer as $cusname) {
+                                                    <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="<?php echo $CUSTOMERNAME->fullname ?>" attempt="">
+                                                    <input type="hidden" name="customer" value="" id="name-id"  />
+                                                    <label class="form-label">Enter Customer name </label>
+                                                    <div id="suggesstion-box">
+                                                        <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="newcus">
+                                                    <button type="button" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" data-whatever="" title="create customer"></button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Start Date</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time" value="<?php echo $BOOKING->start_date ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">End Date</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time" value="<?php echo $BOOKING->end_date ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
+                                                        <option value=""> -- Please Select Vehicle -- </option>
+                                                        <?php foreach ($vehicle as $vehname) {
                                                             ?>
-                                                            <option value="<?php echo $cusname['id']; ?>" <?php
-                                                            if ($CUSTOMER->id === $cusname['id']) {
+                                                            <option value="<?php echo $vehname['id']; ?>" <?php
+                                                            if ($BOOKING->vehicle === $vehname['id']) {
                                                                 echo 'selected';
                                                             }
                                                             ?>>
-                                                                        <?php echo $cusname['name']; ?>
+                                                                        <?php echo $vehname['type']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -94,120 +143,102 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="col-md-6">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Driver</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time" value="<?php echo $BOOKING->start_date ?>">
-
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver" required="TRUE">
+                                                        <option value=""> -- Please Select Driver -- </option>
+                                                        <?php foreach ($driver as $driname) {
+                                                            ?>
+                                                            <option value="<?php echo $driname['id']; ?>" <?php
+                                                            if ($BOOKING->driver === $driname['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $driname['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6">
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Total Cost</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time" value="<?php echo $BOOKING->end_date ?>">
-
+                                                    <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true" value="<?php echo $BOOKING->total_cost ?>">
+                                                    <label class="form-label">Total Cost </label>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-
-
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
-                                                    <option value=""> -- Please Select Vehicle -- </option>
-                                                    <?php foreach ($vehicle as $vehname) {
-                                                        ?>
-                                                        <option value="<?php echo $vehname['id']; ?>" <?php
-                                                        if ($VEHICLETYPE->id === $vehname['id']) {
-                                                            echo 'selected';
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Package </label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package" required="TRUE">
+                                                        <option value=""> -- Please Select Package -- </option>
+                                                        <?php foreach ($packages as $pack) {
+                                                            ?>
+                                                            <option value="<?php echo $pack['id']; ?>" <?php
+                                                            if ($BOOKING->package === $pack['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $pack['name']; ?>
+                                                            </option>
+                                                            <?php
                                                         }
-                                                        ?>>
-                                                                    <?php echo $vehname['type']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver" required="TRUE">
-                                                    <option value=""> -- Please Select Driver -- </option>
-                                                    <?php foreach ($driver as $driname) {
                                                         ?>
-                                                        <option value="<?php echo $driname['id']; ?>" <?php
-                                                        if ($DRIVER->id === $driname['id']) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>>
-                                                                    <?php echo $driname['name']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true" value="<?php echo $BOOKING->total_cost ?>">
-                                                <label class="form-label">Total Cost </label>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Comment </label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <label class="form-label"></label>
+                                                <div class="form-line">
+                                                    <textarea id="description" name="comment" class="form-control" rows="5" ><?php echo $BOOKING->comment ?></textarea> 
+                                                    <!--<input type="hidden" value="1" name="active" />-->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package" required="TRUE">
-                                                    <option value=""> -- Please Select Package -- </option>
-                                                    <?php foreach ($packages as $pack) {
-                                                        ?>
-                                                        <option value="<?php echo $pack['id']; ?>" <?php
-                                                        if ($PACKAGES->id === $pack['id']) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>>
-                                                                    <?php echo $pack['name']; ?>
-                                                        </option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group form-float">
-                                            <label class="form-label">Comment</label>
-                                            <div class="form-line">
-                                                <textarea id="description" name="comment" class="form-control" rows="5" ><?php echo $BOOKING->comment ?></textarea> 
-                                                <!--<input type="hidden" value="1" name="active" />-->
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group">
+                                                <input class="filled-in chk-col-pink" type="checkbox" <?php
+                                                if ($BOOKING->isActive == 1) {
+                                                    echo 'checked';
+                                                }
+                                                ?> name="active" value="1" id="rememberme" />
+                                                <label for="rememberme">Activate</label>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input class="filled-in chk-col-pink" type="checkbox" <?php
-                                            if ($BOOKING->isActive == 1) {
-                                                echo 'checked';
-                                            }
-                                            ?> name="active" value="1" id="rememberme" />
-                                            <label for="rememberme">Activate</label>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12"> 
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $BOOKING->id; ?>" name="id"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                     </div>
@@ -223,6 +254,9 @@ $packages = $PACKAGES->all();
                 <!-- #END# Vertical Layout -->
 
             </div>
+            <?php
+            include './new-customer-model.php';
+            ?>
         </section>
 
         <!-- Jquery Core Js -->
@@ -235,7 +269,9 @@ $packages = $PACKAGES->all();
         <script src="js/add-new-ad.js" type="text/javascript"></script>
         <script src="plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
-
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="js/customer-suggection.js"></script>
+        <script src="js/create-customer.js"></script>
 
 
         <script>
