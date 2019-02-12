@@ -129,10 +129,7 @@ if (isset($_POST['update'])) {
             $info = getimagesize($handle->file_dst_pathname);
             $imgName = $handle->file_dst_name;
         }
-    }
 
-
-    if ($handle1->uploaded) {
         $handle1->image_resize = true;
         $handle1->file_new_name_body = TRUE;
         $handle1->file_overwrite = TRUE;

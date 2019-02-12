@@ -64,8 +64,8 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="driver_name" required="true" value="<?php echo $DRIVER->name; ?>">
-                                                    <label class="form-label">Driver Name</label>
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="driver_name" placeholder="Driver Name" required="true" value="<?php echo $DRIVER->name; ?>">
+                                                    <!--<label class="form-label">Driver Name</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -77,8 +77,8 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="licence_num" required="true" value="<?php echo $DRIVER->licence_number ?>">
-                                                    <label class="form-label">Licence Number</label>
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="licence_num" placeholder="Licence Number" required="true" value="<?php echo $DRIVER->licence_number ?>">
+                                                    <!--<label class="form-label">Licence Number</label>-->
                                                 </div>    
                                             </div>
                                         </div>
@@ -90,8 +90,8 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="phone_numbers" required="true" value="<?php echo $DRIVER->phone_numbers ?>">
-                                                    <label class="form-label">Mobile Number</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" placeholder="Mobile Number" name="phone_numbers" required="true" value="<?php echo $DRIVER->phone_numbers ?>">
+                                                    <!--<label class="form-label">Mobile Number</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -103,8 +103,8 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" required="true" value="<?php echo $DRIVER->nic ?>">
-                                                    <label class="form-label">NIC</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" placeholder="NIC" required="true" value="<?php echo $DRIVER->nic ?>">
+                                                    <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -116,8 +116,8 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" required="true" value="<?php echo $DRIVER->address ?>">
-                                                    <label class="form-label">Address</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" required="true" placeholder="Address" value="<?php echo $DRIVER->address ?>">
+                                                    <!--<label class="form-label">Address</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -129,8 +129,8 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" value="<?php echo $DRIVER->city ?>">
-                                                    <label class="form-label">City</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" placeholder="City" required="true" value="<?php echo $DRIVER->city ?>">
+                                                    <!--<label class="form-label">City</label>-->
                                                 </div>
                                             </div>
                                         </div>

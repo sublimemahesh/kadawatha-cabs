@@ -57,7 +57,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>Customer</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
-                                                <th>Total Cost</th>
+                                                <th>Total Cost (Rs)</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
@@ -67,7 +67,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>Customer</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
-                                                <th>Total Cost</th>
+                                                <th>Total Cost (Rs)</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>

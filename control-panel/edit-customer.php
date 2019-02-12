@@ -64,8 +64,8 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>">
-                                                    <label class="form-label"> Full Name</label>
+                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>" placeholder="Full Name">
+                                                    <!--<label class="form-label"> Full Name</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -77,8 +77,8 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>">
-                                                    <label class="form-label">Address</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>" placeholder="Address">
+                                                    <!--<label class="form-label">Address</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -90,8 +90,8 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>">
-                                                    <label class="form-label">City</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>" placeholder="City">
+                                                    <!--<label class="form-label">City</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -103,8 +103,8 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>">
-                                                    <label class="form-label">NIC</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>" placeholder="NIC">
+                                                    <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -116,8 +116,8 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>">
-                                                    <label class="form-label">Mobile Number</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>" placeholder="Mobile Number">
+                                                    <!--<label class="form-label">Mobile Number</label>-->
                                                 </div>
                                             </div>
                                         </div>

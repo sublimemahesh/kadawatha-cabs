@@ -93,8 +93,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true">
-                                                    <label class="form-label">Owner Name</label>
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true" placeholder="Owner Name">
+                                                    <!--<label class="form-label">Owner Name</label>-->
                                                 </div>
 
                                             </div>
@@ -108,8 +108,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicle_number" required="true">
-                                                    <label class="form-label">Vehicle Number</label>
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicle_number" required="true" placeholder="Vehicle Number">
+                                                    <!--<label class="form-label">Vehicle Number</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -121,8 +121,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="vehicle_name" required="true">
-                                                    <label class="form-label">Vehicle Name</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="vehicle_name" required="true" placeholder="Vehicle Name">
+                                                    <!--<label class="form-label">Vehicle Name</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -134,8 +134,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true">
-                                                    <label class="form-label">Contact Number</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true" placeholder="Contact Number">
+                                                    <!--<label class="form-label">Contact Number</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -147,8 +147,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true">
-                                                    <label class="form-label">City</label>
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" placeholder="City">
+                                                    <!--<label class="form-label">City</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@ $driver = $DRIVER->all();
 
 
                                     <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label ">
                                             <label for="name">Condition Type</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -183,8 +183,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" min="0">
-                                                    <label class="form-label">No Of Passenger</label>
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" min="0" placeholder="No Of Passenger">
+                                                    <!--<label class="form-label">No Of Passenger</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -196,8 +196,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" min="0">
-                                                    <label class="form-label">No Of Baggage</label>
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" min="0" placeholder="No Of Baggage">
+                                                    <!--<label class="form-label">No Of Baggage</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -209,8 +209,8 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" min="0">
-                                                    <label class="form-label">No Of Door</label>
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" min="0" placeholder="No Of Door">
+                                                    <!--<label class="form-label">No Of Door</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -223,7 +223,7 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE" >
                                                         <option value="">Please Select Driver</option>
                                                         <?php foreach ($driver as $name) {
                                                             ?>

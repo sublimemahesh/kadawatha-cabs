@@ -5,17 +5,18 @@ include_once(dirname(__FILE__) . '/auth.php');
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $VEHICLE = new vehicle($id);
     
- $VEHICLE = new vehicle($id);
+    $VEHICLETYPE = new VehicleType($VEHICLE->vehicle_type);
+    $DRIVERNAME = new Driver($VEHICLE->driver);
 }
-
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title>Manage Locations - Tour Sri Lanka</title>
+        <title>View Vehicle || WEB SITE CONTROL PANEL</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -34,6 +35,7 @@ if (isset($_GET['id'])) {
         <link href="css/style.css" rel="stylesheet" >
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
+        <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="theme-red">
         <?php
@@ -55,57 +57,54 @@ if (isset($_GET['id'])) {
                                     View Vehicle
                                 </h2>
                             </div>
-                            <div class="body">
+                            <div class="body tablebody">
                                 <!-- <div class="table-responsive">-->
-                                <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Vehicle Owner Name</th>
-                                                <th>Vehicle Number</th>
-                                                <th>Vehicle Name</th>
-                                                <th>Contact Number</th>
-                                                <th>City</th>
-                                                <th>Driver</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Vehicle Owner Name</th>
-                                                <th>Vehicle Number</th>
-                                                <th>Vehicle Name</th>
-                                                <th>Contact Number</th>
-                                                <th>City</th>
-                                                <th>Driver</th>
-
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <?php
-                                            foreach (vehicle::getVehicleTypeById($id) as $key => $vehicle) {
-                                                $key++;
-
-                                                $VEHICLENAME = new VehicleType($vehicle['vehicle_type']);
-                                                $DRIVERENAME = new Driver($vehicle['driver']);
-                                                ?>
-                                                <tr id="row_<?php echo $vehicle['id']; ?>">
-                                                    <td><?php echo $key ?></td>
-                                                    <td><?php echo $vehicle['owner']; ?></td>
-                                                    <td><?php echo $vehicle['vehicle_number']; ?></td>
-                                                    <td><?php echo $vehicle['vehicle_name']; ?></td>
-                                                    <td><?php echo $vehicle['contact_number']; ?></td>
-                                                    <td><?php echo $vehicle['city']; ?></td>
-                                                    <td><?php echo $DRIVERENAME->name; ?></td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>  
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="table table-bordered table-striped table-hover viewtable">
+                                    <tr>
+                                        <th width="260">Vehicle Type </th>
+                                        <td><?php echo $VEHICLETYPE->type ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Owner</th>
+                                        <td><?php echo $VEHICLE->owner ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Vehicle Number</th>
+                                        <td><?php echo $VEHICLE->vehicle_number ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Vehicle Name</th>
+                                        <td><?php echo $VEHICLE->vehicle_name ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Number</th>
+                                        <td><?php echo $VEHICLE->contact_number ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>City</th>
+                                        <td><?php echo $VEHICLE->city ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Condition</th>
+                                        <td><?php echo $VEHICLE->condition ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>No of Passenger</th>
+                                        <td><?php echo $VEHICLE->no_of_passenger ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>No of Baggage</th>
+                                        <td><?php echo $VEHICLE->no_of_baggage ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>No of Door</th>
+                                        <td><?php echo $VEHICLE->no_of_door ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Driver</th>
+                                        <td><?php echo $DRIVERNAME->name ?></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>

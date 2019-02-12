@@ -80,7 +80,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td> 
                                                         <a href="edit-vehicle-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Vehicle"></button></a>
                                                         |
-                                                        <a href="view-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class=" fa fa-car user-Details" title="View Vehicle"></button></a>
+                                                        <a href="view-vehicles-by-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class=" fa fa-car user-Details" title="View Vehicles By Type"></button></a>
 
                                                         |
 
