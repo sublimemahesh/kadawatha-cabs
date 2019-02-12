@@ -55,8 +55,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="name" required="true">
-                                                    <label class="form-label">Package Name</label>
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" placeholder="Package Name" name="name" required="true">
+                                                    <!--<label class="form-label">Package Name</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -68,8 +68,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="code" class="form-control"  autocomplete="off" name="code" required="true">
-                                                    <label class="form-label">Package Code</label>
+                                                    <input type="text" id="code" class="form-control"  autocomplete="off" name="code" placeholder="Package Code" required="true">
+                                                    <!--<label class="form-label">Package Code</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -81,8 +81,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="price" class="form-control"  autocomplete="off" name="price" required="true">
-                                                    <label class="form-label">Price (Rs)</label>
+                                                    <input type="text" id="price" class="form-control"  autocomplete="off" name="price" required="true" placeholder="Price (Rs)">
+                                                    <!--<label class="form-label">Price (Rs)</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -94,8 +94,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="time" class="form-control"  autocomplete="off" name="time" required="true">
-                                                    <label class="form-label">Time (h)</label>
+                                                    <input type="text" id="time" class="form-control"  autocomplete="off" name="time" required="true" placeholder="Time (h)">
+                                                    <!--<label class="form-label">Time (h)</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -107,8 +107,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="distance" class="form-control"  autocomplete="off" name="distance" required="true" min="0">
-                                                    <label class="form-label">Distance (km)</label>
+                                                    <input type="number" id="distance" class="form-control"  autocomplete="off" name="distance" required="true" min="0" placeholder="Distance (km)">
+                                                    <!--<label class="form-label">Distance (km)</label>-->
                                                 </div>
                                             </div>
                                         </div>

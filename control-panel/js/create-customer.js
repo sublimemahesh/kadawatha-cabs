@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    $("#btnNewCustomer").click(function (e) {
+             document.getElementById("fullname").value =$('#name').val();
+    });
+});
+
+
+$(document).ready(function () {
     $("#createCustomer").click(function (e) {
 //        e.preventDefault();
         if (!$('#fullname').val() || $('#fullname').val().length === 0) {
@@ -17,7 +24,7 @@ $(document).ready(function () {
             var mobile_number = $('#mobile_number').val();
             var city = $('#city').val();
 
-            document.getElementById("name").value = $('#fullname').val();
+//            document.getElementById("#fullname").value = $('#name').val();
 
             $.ajax({
                 url: "js/ajax/create-customer.php",
@@ -44,7 +51,7 @@ $(document).ready(function () {
                             showConfirmButton: false
                         });
 
-                        $('#exampleModal').hide();
+
                         $('.modal-backdrop').addClass('modal-backdrop1');
                         $('.modal-backdrop1').removeClass('modal-backdrop');
                         $('.modal-backdrop1').removeClass('fade');
@@ -56,7 +63,7 @@ $(document).ready(function () {
                         $('#name').val(customer.name);
                         $('#name-id').val(customer.id);
 
-
+                        $('#exampleModal').modal('hide');
                     }
                 }
 
@@ -64,5 +71,6 @@ $(document).ready(function () {
         }
     });
 
-
 });
+
+  

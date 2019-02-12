@@ -8186,3 +8186,11 @@ html.ie11 .bs-searchbox .form-control {
     border-radius: 3px;
     border: 0px;
 }
+.viewtable {
+    text-align: center;
+}
+.tablebody{
+    margin-right: 300px;
+    margin-left: 300px;
+}
+

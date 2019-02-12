@@ -50,7 +50,17 @@ $USER = new User($id);
                                     Change Password
                                 </h2>
 
+                                 <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="manage-user.php">
+                                            <i class="material-icons">list</i> 
+                                        </a>
+                                    </li>
+                                </ul>
+                                
+                                
                             </div>
+                            
                             <div class="body row">
                                 <form class="form-horizontal col-sm-9 col-md-9" method="post" action="post-and-get/change-user-password.php" enctype="multipart/form-data"> 
 

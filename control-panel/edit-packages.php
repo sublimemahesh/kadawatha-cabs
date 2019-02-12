@@ -64,8 +64,8 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="name" value="<?php echo $PACKAGES->name; ?>">
-                                                    <label class="form-label">Package Name</label>
+                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="name" placeholder="Package Name" value="<?php echo $PACKAGES->name; ?>">
+                                                    <!--<label class="form-label">Package Name</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -77,8 +77,8 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="code" class="form-control" autocomplete="off" name="code" value="<?php echo $PACKAGES->code; ?>">
-                                                    <label class="form-label">Package Code</label>
+                                                    <input type="text" id="code" class="form-control" autocomplete="off" name="code" placeholder="Package Code" value="<?php echo $PACKAGES->code; ?>">
+                                                    <!--<label class="form-label">Package Code</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -90,8 +90,8 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="price" class="form-control" autocomplete="off" name="price" value="<?php echo $PACKAGES->price; ?>">
-                                                    <label class="form-label">Price (Rs)</label>
+                                                    <input type="text" id="price" class="form-control" autocomplete="off" name="price" placeholder="Price (Rs)" value="<?php echo $PACKAGES->price; ?>">
+<!--                                                    <label class="form-label">Price (Rs)</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -103,8 +103,8 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="time" class="form-control" autocomplete="off" name="time" value="<?php echo $PACKAGES->time; ?>">
-                                                    <label class="form-label">Time (h)</label>
+                                                    <input type="text" id="time" class="form-control" autocomplete="off" name="time" value="<?php echo $PACKAGES->time; ?>" placeholder="Time (h)">
+<!--                                                    <label class="form-label">Time (h)</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -117,8 +117,8 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="distance" class="form-control" autocomplete="off" name="distance" value="<?php echo $PACKAGES->distance; ?>">
-                                                    <label class="form-label">Distance (km)</label>
+                                                    <input type="text" id="distance" class="form-control" autocomplete="off" name="distance" placeholder="Distance (km)" value="<?php echo $PACKAGES->distance; ?>">
+                                                    <!--<label class="form-label">Distance (km)</label>-->
                                                 </div>
                                             </div>
                                         </div>

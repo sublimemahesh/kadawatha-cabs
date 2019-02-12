@@ -13,7 +13,7 @@ $('#name').keyup(function (e) {
                     dataType: "json",
                     data: {keyword: keyword, option: 'GETNAME'},
                     success: function (result) {
-                   
+
                         var html = '';
                         $.each(result, function (key) {
                             if (key < 20) {
@@ -23,7 +23,7 @@ $('#name').keyup(function (e) {
                                 } else {
                                     html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
                                 }
-                              
+
                             }
                         });
                         $('#name-list-append').empty();
@@ -42,9 +42,9 @@ $('#name-list-append').on('click', '.name', function () {
     $('#name-id').val(consigneeId.replace("c", ""));
     $('#name').val(consignee);
     $('#name-list-append').empty();
-      $('#name').change(function () {
+    $('#name').change(function () {
         $('#name-id').val("");
-         });
+    });
 });
 $('#name-list-append').on('mouseover', '.name', function () {
     var consigneeId = this.id;
@@ -56,10 +56,13 @@ $('#name-list-append').on('mouseover', '.name', function () {
     });
 });
 
-$('#name').keypress(function (e) {
+$('#name').keydown(function (e) {
     var $selected = $('li.selected'), $li = $('li.name');
+//    var key_code = e.which || e.keyCode;
     if (e.keyCode == 40) {
+
         var res = $selected.removeClass('selected').next().addClass('selected');
+
         if ($selected.next().length == 0) {
             $li.eq(0).addClass('selected');
         }

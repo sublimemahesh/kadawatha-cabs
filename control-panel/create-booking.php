@@ -33,6 +33,15 @@ $packages = $PACKAGES->all();
         <link href="css/themes/all-themes.css" rel="stylesheet" />
 
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .modal {
+  overflow-y:scroll !important;
+}
+/*            .modal {
+  overflow-y:scroll !important;
+}*/
+        </style>
+        
     </head>
     <body class="theme-red">
         <?php
@@ -60,6 +69,9 @@ $packages = $PACKAGES->all();
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            include './new-customer-model.php';
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/booking.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -69,17 +81,17 @@ $packages = $PACKAGES->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    
-                                                    <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="" attempt="">
+
+                                                    <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="" attempt="" placeholder="Enter Customer name">
                                                     <input type="hidden" name="id" value="" id="name-id"  />
-                                                    <label class="form-label">Enter Customer name </label>
+
                                                     <div id="suggesstion-box">
                                                         <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
                                                     </div>
                                                 </div>
 
                                                 <div class="newcus">
-                                                    <button type="button" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" data-whatever="" title="create customer"></button>
+                                                    <button type="button" id="btnNewCustomer" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" title="create customer"></button>
                                                 </div>
 
                                             </div>
@@ -171,8 +183,8 @@ $packages = $PACKAGES->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true">
-                                                    <label class="form-label">Total Cost </label>
+                                                    <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true" placeholder="Total Cost">
+                                                    <!--<label class="form-label">Total Cost </label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -233,9 +245,7 @@ $packages = $PACKAGES->all();
                 <!-- #END# Vertical Layout -->
 
             </div>
-            <?php
-            include './new-customer-model.php';
-            ?>
+
         </section>
 
         <!-- Jquery Core Js -->

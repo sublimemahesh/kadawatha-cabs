@@ -1,13 +1,20 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $VEHICLE = new vehicle($id);
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title> Manage Packages || WEB SITE CONTROL PANEL </title>
+        <title>View Vehicles By Type || WEB SITE CONTROL PANEL</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -26,6 +33,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="css/style.css" rel="stylesheet" >
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
+        <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="theme-red">
         <?php
@@ -44,7 +52,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Packages
+                                    View Vehicles By Type
                                 </h2>
                             </div>
                             <div class="body">
@@ -54,46 +62,41 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Package Name</th>
-                                                <th>Package Code</th>
-                                                <th>Price (Rs)</th>
-                                                <th>Time (h)</th>
-                                                <th>Distance (km)</th>
-                                                <th>Option</th>
+                                                <th>Vehicle Owner Name</th>
+                                                <th>Vehicle Number</th>                                     
+                                                <th>Contact Number</th>
+                                                <th>Driver</th>
+                                                <th>option</th>
 
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Package Name</th>
-                                                <th>Package Code</th>
-                                                <th>Price (Rs)</th>
-                                                <th>Time (h)</th>
-                                                <th>Distance (km)</th>
-                                                <th>Option</th>
+                                                <th>Vehicle Owner Name</th>
+                                                <th>Vehicle Number</th>
+                                                <th>Contact Number</th>
+                                                <th>Driver</th>
+                                                <th>option</th>
+
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (Packages::all() as $key => $packages) {
+                                            foreach (vehicle::getVehicleTypeById($id) as $key => $vehicle) {
                                                 $key++;
-                                                ?>
-                                                <tr id="row_<?php echo $packages['id']; ?>">
-                                                    <td><?php echo $key ?></td>
-                                                    <td><?php echo $packages['name']; ?></td>
-                                                    <td><?php echo $packages['code']; ?></td>
-                                                    <td><?php echo $packages['price']; ?></td>
-                                                    <td><?php echo $packages['time']; ?></td>
-                                                    <td><?php echo $packages['distance']; ?></td>
 
+                                                $VEHICLENAME = new VehicleType($vehicle['vehicle_type']);
+                                                $DRIVERENAME = new Driver($vehicle['driver']);
+                                                ?>
+                                                <tr id="row_<?php echo $vehicle['id']; ?>">
+                                                    <td><?php echo $key ?></td>
+                                                    <td><?php echo $vehicle['owner']; ?></td>
+                                                    <td><?php echo $vehicle['vehicle_number']; ?></td>
+                                                    <td><?php echo $vehicle['contact_number']; ?></td>
+                                                    <td><?php echo $DRIVERENAME->name; ?></td>
                                                     <td> 
-                                                        <a href="edit-packages.php?id=<?php echo $packages['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Package"></button></a>
-                                                        |
-                                       
-                                                        <a href="#"  class="delete-Packages" data-id="<?php echo $packages['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete Package" data-id="<?php echo $packages['id']; ?>"></button>
-                                                        </a>
+                                                        <a href="view-vehicle.php?id=<?php echo $vehicle['id']; ?>"> <button class="fa fa-bars user-Details " title="View Vehicle"></button></a>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -135,7 +138,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/pages/tables/jquery-datatable.js"></script>
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
-        <script src="delete/js/package.js" type="text/javascript"></script>
+        <script src="delete/js/user.js" type="text/javascript"></script>
     </body>
 </html>
 

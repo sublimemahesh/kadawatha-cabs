@@ -1,8 +1,8 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal" role="dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" id="exampleModalLabel">Create Customer</h4>
             </div>
             <div class="modal-body">
@@ -14,8 +14,8 @@
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="fullname" class="form-control"  autocomplete="off" name="fullname" required="true">
-                                <label class="form-label">Full Name</label>
+                                <input type="text" id="fullname" class="form-control"  autocomplete="off" name="fullname" required="true" placeholder="Full Name">
+
                             </div>
                         </div>
                     </div>
@@ -28,8 +28,7 @@
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="address" class="form-control"  autocomplete="off" name="address" >
-                                <label class="form-label">Address</label>
+                                <input type="text" id="address" class="form-control"  autocomplete="off" name="address" placeholder="Address" >
                             </div>
                         </div>  
                     </div>
@@ -42,8 +41,7 @@
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="city" class="form-control"  autocomplete="off" name="city" >
-                                <label class="form-label">City</label>
+                                <input type="text" id="city" class="form-control"  autocomplete="off" name="city" placeholder="City" >
                             </div>
                         </div>
                     </div>    
@@ -56,8 +54,7 @@
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="nic" class="form-control"  autocomplete="off" name="nic" >
-                                <label class="form-label">NIC</label>
+                                <input type="text" id="nic" class="form-control"  autocomplete="off" name="nic" placeholder="NIC">
                             </div>
                         </div>
                     </div>
@@ -69,8 +66,7 @@
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" id="mobile_number" class="form-control"  autocomplete="off" name="mobile_number" >
-                                <label class="form-label">Mobile Number</label>
+                                <input type="text" id="mobile_number" class="form-control"  autocomplete="off" name="mobile_number" placeholder="Mobile Number" >
                             </div>
                         </div>
                     </div> 

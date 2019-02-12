@@ -71,8 +71,8 @@ $VEHICLE = new Vehicle($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">    
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="caption" class="form-control" autocomplete="off" name="caption" required="true">
-                                                    <label class="form-label">Caption</label>
+                                                    <input type="text" id="caption" class="form-control" autocomplete="off" name="caption" placeholder="Caption"  required="true">
+                                                 
                                                 </div>
                                             </div>
                                         </div>
