@@ -1,22 +1,23 @@
-$('#name').keyup(function (e) {
-    var nameId = $('#name-id').val();
+$('#driver').keyup(function (e) {
 
+    var nameId = $('#driver-id').val();
     if (e.which != 38) {
         if (e.which != 40) {
             if (e.which != 13) {
-                var keyword = $('#name').val();
+                var keyword = $('#driver').val();
                 if (keyword == '') {
-                    $('#name-list-append').empty();
+                    $('#driver-list-append').empty();
                 }
                 $.ajax({
                     type: 'POST',
-                    url: 'js/ajax/customer-suggestion.php',
+                    url: 'js/ajax/driver-suggestion.php',
                     dataType: "json",
                     data: {keyword: keyword, option: 'GETNAME'},
                     success: function (result) {
 
                         var html = '';
                         $.each(result, function (key) {
+
                             if (key < 20) {
                                 if (key === 0) {
 //                                    html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
@@ -26,9 +27,10 @@ $('#name').keyup(function (e) {
                                 }
 
                             }
+
                         });
-                        $('#name-list-append').empty();
-                        $('#name-list-append').append(html);
+                        $('#driver-list-append').empty();
+                        $('#driver-list-append').append(html);
                     }
                 });
             }
@@ -36,28 +38,29 @@ $('#name').keyup(function (e) {
     }
 
 });
-$('#name-list-append').on('click', '.name', function () {
+$('#driver-list-append').on('click', '.name', function () {
 
     var consigneeId = this.id;
     var consignee = $(this).text();
-    $('#name-id').val(consigneeId.replace("c", ""));
-    $('#name').val(consignee);
-    $('#name-list-append').empty();
-    $('#name').change(function () {
-        $('#name-id').val("");
+    $('#driver-id').val(consigneeId.replace("c", ""));
+    $('#driver').val(consignee);
+    $('#driver-list-append').empty();
+    $('#driver').change(function () {
+        $('#driver-id').val("");
     });
 });
-$('#name-list-append').on('mouseover', '.name', function () {
+$('#driver-list-append').on('mouseover', '.name', function () {
     var consigneeId = this.id;
     var consignee = $(this).text();
-    $('#name-id').val(consigneeId.replace("c", ""));
-    $('#name').val(consignee);
-    $('#name').change(function () {
-        $('#name-id').val("");
+    $('#driver-id').val(consigneeId.replace("c", ""));
+    $('#driver').val(consignee);
+    $('#driver').change(function () {
+        $('#driver-id').val("");
     });
 });
 
-$('#name').keydown(function (e) {
+
+$('#driver').keydown(function (e) {
     var $selected = $('li.selected'), $li = $('li.name');
 //    var key_code = e.which || e.keyCode;
     if (e.keyCode == 40) {
@@ -71,7 +74,7 @@ $('#name').keydown(function (e) {
 //                var consigneeId = $('li.selected').attr('id');
             var consignee = $('li.selected').text();
 //                $('#name-id').val(consigneeId.replace("c", ""));
-            $('#name').val(consignee);
+            $('#driver').val(consignee);
         }
 
     } else if (e.keyCode === 38) {
@@ -83,7 +86,7 @@ $('#name').keydown(function (e) {
 //                var consigneeId = $('li.selected').attr('id');
             var consignee = $('li.selected').text();
 //                $('#name-id').val(consigneeId.replace("c", ""));
-            $('#name').val(consignee);
+            $('#driver').val(consignee);
         }
 
     } else if (e.which === 13) {
@@ -91,23 +94,23 @@ $('#name').keydown(function (e) {
         var selected = $('.selected').attr("id");
 //            var consigneename = $('.selected').text();
         var consigneeId = selected.replace("c", "");
-        $('#name-id').val(consigneeId);
-        $('#name').attr('attempt', 1);
+        $('#driver-id').val(consigneeId);
+        $('#driver').attr('attempt', 1);
 
         var consigneename = $('li.selected').text();
-        $('#name').val(consigneename);
+        $('#driver').val(consigneename);
 
-        $('#name-list-append').empty();
+        $('#driver-list-append').empty();
 
-        $('#name').change(function (e) {
-            $('#name').attr('attempt', 0);
+        $('#driver').change(function (e) {
+            $('#driver').attr('attempt', 0);
 
         });
     }
 });
-$('#name').change(function () {
-    if ($('#name').attr('attempt') != 1) {
-        $('#name-id').val("");
+$('#driver').change(function () {
+    if ($('#driver').attr('attempt') != 1) {
+        $('#driver-id').val("");
     }
 
 });
