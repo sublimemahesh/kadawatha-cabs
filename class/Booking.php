@@ -23,11 +23,12 @@ class Booking {
     public $package;
     public $comment;
     public $isActive;
+    public $created_at;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `customer`, `start_date`, `end_date`, `vehicle`, `driver`, `total_cost`, `package`, `comment`,`isActive` FROM `booking` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `customer`, `start_date`, `end_date`, `vehicle`, `driver`, `total_cost`, `package`,`created_at`, `comment`,`isActive` FROM `booking` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -41,6 +42,7 @@ class Booking {
             $this->driver = $result['driver'];
             $this->total_cost = $result['total_cost'];
             $this->package = $result['package'];
+            $this->package = $result['created_at'];
             $this->comment = $result['comment'];
             $this->isActive = $result['isActive'];
             return $this;
@@ -48,8 +50,10 @@ class Booking {
     }
 
     public function create() {
+        date_default_timezone_set('Asia/Colombo');
+        $createdAt = date('Y-m-d');
 
-        $query = "INSERT INTO `booking`(`customer`, `start_date`, `end_date`, `vehicle`, `driver`, `total_cost`, `package`, `comment`,`isActive`) VALUES  ('"
+        $query = "INSERT INTO `booking`(`customer`, `start_date`, `end_date`, `vehicle`, `driver`, `total_cost`, `package`, `created_at`, `comment`,`isActive`) VALUES  ('"
                 . $this->customer . "','"
                 . $this->start_date . "', '"
                 . $this->end_date . "', '"
@@ -57,6 +61,7 @@ class Booking {
                 . $this->driver . "', '"
                 . $this->total_cost . "', '"
                 . $this->package . "', '"
+                . $createdAt . "', '"
                 . $this->comment . "', '"
                 . 1 . "')";
 
@@ -88,7 +93,7 @@ class Booking {
     }
 
     public function update() {
-   
+
         $query = "UPDATE  `booking` SET "
                 . "`customer` ='" . $this->customer . "', "
                 . "`start_date` ='" . $this->start_date . "', "
@@ -100,7 +105,7 @@ class Booking {
                 . "`comment` ='" . $this->comment . "' ,"
                 . "`isActive` ='" . $this->isActive . "' "
                 . "WHERE `id` = '" . $this->id . "'";
-      
+
         $db = new Database();
 
         $result = $db->readQuery($query);
@@ -119,6 +124,52 @@ class Booking {
         $db = new Database();
 
         return $db->readQuery($query);
+    }
+
+    public function getsearchAll($date, $vehicle_type, $vehicle, $driver, $customer, $package, $owner) {
+     
+        $w = array();
+        $where = '';
+        if (!empty($date)) {
+
+            $w[] = "`created_at` LIKE '%" . $date . "%'";
+        }
+        if (!empty($vehicle_type)) {
+
+            $w[] = "`vehicle` IN (SELECT `id` from  `vehicle`  WHERE `id` = " . $vehicle_type . " )  ";
+        }
+        if (!empty($vehicle)) {
+            $w[] = "`vehicle` IN( SELECT `id` from `vehicle` WHERE `id` = " . $vehicle . ") ";
+        }
+        if (!empty($driver)) {
+            $w[] = " `driver` IN( SELECT `id` from `driver` WHERE `id` = " . $driver . ") ";
+        }
+        if (!empty($customer)) {
+            $w[] = " `customer` IN( SELECT `id` from `customer` WHERE `id` = " . $customer . ") ";
+        }
+        if (!empty($package)) {
+            $w[] = " `package` IN( SELECT `id` from `packages` WHERE `id` = " . $package . ") ";
+        }
+        if (!empty($owner)) {
+             $w[] = "`vehicle` IN (SELECT `id` from  `vehicle`  WHERE `id` = " . $owner . " )  ";
+        }
+        
+
+        if (count($w)) {
+            $where = 'WHERE ' . implode(' AND ', $w);
+        }
+
+        $query = "SELECT * FROM `booking` " . $where . " ORDER BY `id` DESC";
+       
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+  
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
 
 }

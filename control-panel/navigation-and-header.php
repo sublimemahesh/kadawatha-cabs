@@ -439,21 +439,16 @@
                 <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
-                        <span>User</span>
+                        <span>Reports</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="create-user.php">
+                            <a href="view-report.php">
                                 <i class="material-icons">add</i>
-                                <span>Add New</span>
+                                <span>Sale Report</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="manage-user.php">
-                                <i class="material-icons">list</i>
-                                <span>Manage</span>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </li>
 

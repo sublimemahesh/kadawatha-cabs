@@ -8193,4 +8193,21 @@ html.ie11 .bs-searchbox .form-control {
     margin-right: 300px;
     margin-left: 300px;
 }
+.filterby{
+    margin-left: -38px;
+}
+.lblVtype{
+    margin-left: -22px;
+    margin-top: 9px;
+}
+.btnSearch{
+   padding: 11px;
+}
+.btnClear{
+   padding: 11px;
+}
+.lblSerachAtt{
+     margin-left:8px;
+     margin-top:9px
+}
 

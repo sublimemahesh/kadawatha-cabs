@@ -98,5 +98,20 @@ class Packages {
 
         return $db->readQuery($query);
     }
+     public function allNamesByKeyword($keyword) {
+
+        $query = "SELECT * FROM `packages` WHERE `name` LIKE '{$keyword}%'";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
 
 }
