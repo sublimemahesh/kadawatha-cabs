@@ -48,6 +48,26 @@ include_once(dirname(__FILE__) . '/auth.php');
                             </div>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Title</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                     <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="title" name="title" required="TRUE" >
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <option value="Mr">Mr. </option>
+                                                        <option value="Mrs">Mrs.</option>
+                                                        <option value="Miss">Miss.</option>
+                                                        <option value="Dr">Dr.</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Full Name</label>
@@ -56,7 +76,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="name" class="form-control"  autocomplete="off" name="fullname" required="true" placeholder="Full Name">
-<!--                                                    <label class="form-label">Full Name</label>-->
+                                                    <!--                                                    <label class="form-label">Full Name</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -70,13 +90,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="name" class="form-control"  autocomplete="off" name="address" required="true" placeholder="Address">
-<!--                                                    <label class="form-label">Address</label>-->
+                                                    <!--                                                    <label class="form-label">Address</label>-->
                                                 </div>
                                             </div>  
                                         </div>
                                     </div>
-                                    
-                                     <div class="row clearfix">
+
+                                    <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">City</label>
                                         </div>
@@ -84,12 +104,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" placeholder="City" >
-<!--                                                    <label class="form-label">City</label>-->
+                                                    <!--                                                    <label class="form-label">City</label>-->
                                                 </div>
                                             </div>
                                         </div>    
                                     </div>
-                                    
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">NIC</label>
@@ -98,7 +118,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" required="true" placeholder="NIC">
-<!--                                                    <label class="form-label">NIC</label>-->
+                                                    <!--                                                    <label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -111,12 +131,12 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" required="true" placeholder="Mobile Number">
-<!--                                                    <label class="form-label">Mobile Number</label>-->
+                                                    <!--                                                    <label class="form-label">Mobile Number</label>-->
                                                 </div>
                                             </div>
                                         </div> 
                                     </div>
-                                   
+
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
