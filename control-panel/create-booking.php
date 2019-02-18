@@ -35,13 +35,13 @@ $packages = $PACKAGES->all();
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <style>
             .modal {
-  overflow-y:scroll !important;
-}
-/*            .modal {
-  overflow-y:scroll !important;
-}*/
+                overflow-y:scroll !important;
+            }
+            /*            .modal {
+              overflow-y:scroll !important;
+            }*/
         </style>
-        
+
     </head>
     <body class="theme-red">
         <?php
@@ -292,9 +292,10 @@ $packages = $PACKAGES->all();
 
         <script type="text/javascript">
             $(".form_datetime").datetimepicker({
-                format: "yyyy-mm-dd - hh:ii:00 ",
+                minDate: new Date(),
+                format: "yyyy-mm-dd - hh:mm:ss ",
                 autoclose: true,
-                todayBtn: true
+                todayBtn: true,
             });
 
         </script>            

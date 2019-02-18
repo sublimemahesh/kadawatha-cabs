@@ -98,7 +98,7 @@ $own = new Vehicle($owner);
                                         <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="datetime" id="name" class="form-control input-append date form_datetime" value="<?php echo $date ?>" autocomplete="off" name="date"  placeholder="Date">                                            
+                                                    <input type="text" id="name" class="form-control input-append date form_datetime" value="<?php echo $date ?>" autocomplete="off" name="date"  placeholder="Date">                                            
                                                 </div>
                                             </div>
                                         </div>
@@ -122,7 +122,6 @@ $own = new Vehicle($owner);
                                         <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-
                                                     <input type="text" id="vehicle" class="form-control"  autocomplete="off"  value="<?php echo $vehi->vehicle_name ?>" attempt=""  placeholder="Vehicle">
                                                     <input type="hidden" name="vehicle" value="<?php echo $vehi->id ?>" id="vehicle-id"  /> 
                                                     <div id="suggesstion-box">
@@ -307,11 +306,11 @@ $own = new Vehicle($owner);
 
         </script>
         <script type="text/javascript">
-            $(".form_datetime").datetimepicker({
+            $("#name").datetimepicker({minDate: new Date(),
                 format: "yyyy-mm-dd",
                 autoclose: true,
                 todayBtn: true,
-                pickTime: false
+                pickDate: false
 //                data: "2010-01-24"
             });
 
