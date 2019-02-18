@@ -9,6 +9,7 @@
 class Customer {
 
     public $id;
+    public $title;
     public $fullname;
     public $address;
     public $nic;
@@ -18,13 +19,14 @@ class Customer {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `name`, `address`, `nic`, `mobile_number`, `city` FROM `customer` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`, `name`, `address`, `nic`, `mobile_number`, `city` FROM `customer` WHERE `id`=" . $id;
 
             $db = new Database();
 
             $result = mysql_fetch_array($db->readQuery($query));
 
             $this->id = $result['id'];
+            $this->title = $result['title'];
             $this->fullname = $result['name'];
             $this->address = $result['address'];
             $this->nic = $result['nic'];
@@ -37,7 +39,8 @@ class Customer {
 
     public function create() {
 
-        $query = "INSERT INTO `customer` (`name`, `address`, `nic`, `mobile_number`, `city`) VALUES  ('"
+        $query = "INSERT INTO `customer` (`title` ,`name`, `address`, `nic`, `mobile_number`, `city`) VALUES  ('"
+                . $this->title . "','"
                 . $this->fullname . "','"
                 . $this->address . "', '"
                 . $this->nic . "', '"
@@ -58,6 +61,7 @@ class Customer {
     public function update() {
 
         $query = "UPDATE  `customer` SET "
+                . "`title` ='" . $this->title . "', "
                 . "`name` ='" . $this->fullname . "', "
                 . "`address` ='" . $this->address . "', "
                 . "`nic` ='" . $this->nic . "', "

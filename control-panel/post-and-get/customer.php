@@ -6,7 +6,7 @@ if (isset($_POST['create'])) {
 
     $CUSTOMER = new Customer(NULL);
     $VALID = new Validator();
-
+    $CUSTOMER->title = $_POST['title'];
     $CUSTOMER->fullname = $_POST['fullname'];
     $CUSTOMER->address = $_POST['address'];
     $CUSTOMER->nic = $_POST['nic'];
@@ -14,10 +14,8 @@ if (isset($_POST['create'])) {
     $CUSTOMER->city = $_POST['city'];
 
 
-
-
-
     $VALID->check($CUSTOMER, [
+        'title' => ['required' => TRUE],
         'fullname' => ['required' => TRUE],
         'address' => ['required' => TRUE],
         'nic' => ['required' => TRUE],
@@ -53,7 +51,7 @@ if (isset($_POST['create'])) {
 if (isset($_POST['update'])) {
 
     $CUSTOMER = new Customer($_POST['id']);
-
+    $CUSTOMER->title = $_POST['title'];
     $CUSTOMER->fullname = $_POST['fullname'];
     $CUSTOMER->address = $_POST['address'];
     $CUSTOMER->nic = $_POST['nic'];
@@ -62,6 +60,7 @@ if (isset($_POST['update'])) {
 
     $VALID = new Validator();
     $VALID->check($CUSTOMER, [
+        'title' => ['required' => TRUE],
         'fullname' => ['required' => TRUE],
         'address' => ['required' => TRUE],
         'nic' => ['required' => TRUE],

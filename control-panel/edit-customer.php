@@ -57,6 +57,27 @@ $CUSTOMER = new Customer($id);
                             </div>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Title</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="title" name="title" required="TRUE">
+                                                        <option value=" <?php echo $CUSTOMER->title; ?> selected">   <?php echo $CUSTOMER->title; ?>    </option>
+                                                        <option value="Mrs">Mrs.</option>
+                                                        <option value="Miss">Miss.</option>
+                                                        <option value="Dr">Dr.</option>
+                                                        <?php
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Full Name</label>
