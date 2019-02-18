@@ -206,7 +206,7 @@ $Drivername = $DRIVER->all();
                                             <div class="form-group form-float">
                                                 <div class="form-line">
 
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" placeholder="No Of Passenger" value="<?php echo $VEHICLE->no_of_passenger ?>">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" min="0" placeholder="No Of Passenger" value="<?php echo $VEHICLE->no_of_passenger ?>">
                                                     <!--<label class="form-label">No Of Passenger</label>-->
                                                 </div>
                                             </div>
@@ -220,7 +220,7 @@ $Drivername = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" value="<?php echo $VEHICLE->no_of_baggage ?>" placeholder="No Of Baggage">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" min="0" required="true" value="<?php echo $VEHICLE->no_of_baggage ?>" placeholder="No Of Baggage">
                                                     <!--<label class="form-label">No Of Baggage</label>-->
                                                 </div>
                                             </div>
@@ -233,7 +233,7 @@ $Drivername = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" placeholder="No Of Door" value="<?php echo $VEHICLE->no_of_door ?>">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" min="0" required="true" placeholder="No Of Door" value="<?php echo $VEHICLE->no_of_door ?>">
                                                     <!--<label class="form-label">No Of Door</label>-->
                                                 </div>
                                             </div>

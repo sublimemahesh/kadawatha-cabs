@@ -305,7 +305,8 @@ $packages = $PACKAGES->all();
 
         <script type="text/javascript">
             $(".form_datetime").datetimepicker({
-                format: "yyyy-mm-dd - hh:ii:00 ",
+                minDate: new Date(),
+                format: "yyyy-mm-dd - hh:mm:ss ",
                 autoclose: true,
                 todayBtn: true
             });

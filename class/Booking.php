@@ -42,7 +42,7 @@ class Booking {
             $this->driver = $result['driver'];
             $this->total_cost = $result['total_cost'];
             $this->package = $result['package'];
-            $this->package = $result['created_at'];
+            $this->created_at = $result['created_at'];
             $this->comment = $result['comment'];
             $this->isActive = $result['isActive'];
             return $this;
