@@ -124,7 +124,7 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>" placeholder="NIC">
+                                                    <input type="text" id="" class="form-control"   autocomplete="off" readonly name="nic" value="<?php echo $CUSTOMER->nic; ?>" placeholder="NIC">
                                                     <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>

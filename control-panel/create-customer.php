@@ -47,7 +47,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal"  id="newCustomer" method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -56,7 +56,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                     <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="title" name="title" required="TRUE" >
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="title" name="title" required="TRUE" >
                                                         <option value=""> -- Please Select -- </option>
                                                         <option value="Mr">Mr. </option>
                                                         <option value="Mrs">Mrs.</option>
@@ -117,7 +117,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" required="true" placeholder="NIC">
+                                                    <input type="text" id="nic" class="form-control"  autocomplete="off" name="nic" required="true" placeholder="NIC">
                                                     <!--                                                    <label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
@@ -139,8 +139,10 @@ include_once(dirname(__FILE__) . '/auth.php');
 
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="submit" name="create" id ="createCustomer" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="hidden" name="create"/> 
                                     </div>
+
                                     <div class="row clearfix">  </div>
                                     <hr/>
                                 </form>
@@ -163,9 +165,9 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-
-
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="js/check-customer-nic.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",

@@ -257,7 +257,6 @@ $packages = $PACKAGES->all();
         <script src="js/demo.js"></script>
         <!--<script src="js/add-new-ad.js" type="text/javascript"></script>-->
         <script src="plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/customer-suggection.js"></script>
