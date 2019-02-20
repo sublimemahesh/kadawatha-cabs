@@ -371,6 +371,7 @@ class User {
 
         return $db->readQuery($query);
     }
+    
     public function updatePermission() {
 
         $query = "UPDATE  `user` SET "
