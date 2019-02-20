@@ -14,11 +14,12 @@ class Packages {
     public $price;
     public $time;
     public $distance;
+    public $description;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `name`, `code`, `price`, `time`, `distance` FROM `packages` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `name`, `code`, `price`, `time`, `distance`,`description` FROM `packages` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -30,6 +31,7 @@ class Packages {
             $this->price = $result['price'];
             $this->time = $result['time'];
             $this->distance = $result['distance'];
+            $this->description = $result['description'];
 
             return $result;
         }
@@ -37,12 +39,13 @@ class Packages {
 
     public function create() {
 
-        $query = "INSERT INTO `packages`(`name`, `code`, `price`, `time`, `distance`) VALUES  ('"
+        $query = "INSERT INTO `packages`(`name`, `code`, `price`, `time`, `distance`,`description`) VALUES  ('"
                 . $this->name . "', '"
                 . $this->code . "', '"
                 . $this->price . "', '"
                 . $this->time . "', '"
-                . $this->distance . "')";
+                . $this->distance . "', '"
+                . $this->description . "')";
 
         $db = new Database();
 
@@ -62,13 +65,13 @@ class Packages {
                 . "`code` ='" . $this->code . "', "
                 . "`price` ='" . $this->price . "', "
                 . "`time` ='" . $this->time . "', "
-                . "`distance` ='" . $this->distance . "' "
+                . "`distance` ='" . $this->distance . "', "
+                . "`description` ='" . $this->description . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
 
         $result = $db->readQuery($query);
-
         if ($result) {
             return $this->__construct($this->id);
         } else {
@@ -98,7 +101,8 @@ class Packages {
 
         return $db->readQuery($query);
     }
-     public function allNamesByKeyword($keyword) {
+
+    public function allNamesByKeyword($keyword) {
 
         $query = "SELECT * FROM `packages` WHERE `name` LIKE '{$keyword}%'";
 
@@ -112,6 +116,5 @@ class Packages {
 
         return $array_res;
     }
-
 
 }

@@ -12,13 +12,15 @@ if (isset($_POST['create'])) {
     $PACKAGES->price = $_POST['price'];
     $PACKAGES->time = $_POST['time'];
     $PACKAGES->distance = $_POST['distance'];
+    $PACKAGES->description = $_POST['description'];
 
     $VALID->check($PACKAGES, [
         'name' => ['required' => TRUE],
         'code' => ['required' => TRUE],
         'price' => ['required' => TRUE],
         'time' => ['required' => TRUE],
-        'distance' => ['required' => TRUE]
+        'distance' => ['required' => TRUE],
+        'description' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
@@ -54,6 +56,7 @@ if (isset($_POST['update'])) {
     $PACKAGES->price = $_POST['price'];
     $PACKAGES->time = $_POST['time'];
     $PACKAGES->distance = $_POST['distance'];
+    $PACKAGES->description = $_POST['description'];
 
     $VALID = new Validator();
     $VALID->check($PACKAGES, [

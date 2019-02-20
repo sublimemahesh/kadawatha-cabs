@@ -123,6 +123,21 @@ $PACKAGES = new Packages($id);
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Description </label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <label class="form-label"></label>
+                                                <div class="form-line">
+                                                    <textarea id="description" name="description" class="form-control" rows="5" ><?php echo $PACKAGES->description ?></textarea> 
+                                                    <!--<input type="hidden" value="1" name="active" />-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $PACKAGES->id; ?>" name="id"/>
