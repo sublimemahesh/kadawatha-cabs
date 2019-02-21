@@ -54,8 +54,7 @@ if (isset($_POST['create'])) {
         'condition' => ['required' => TRUE],
         'no_of_passenger' => ['required' => TRUE],
         'no_of_baggage' => ['required' => TRUE],
-        'no_of_door' => ['required' => TRUE],
-        'driver' => ['required' => TRUE]
+        'no_of_door' => ['required' => TRUE]
 //        ,
 //        'vehicle_image' => ['required' => TRUE]
     ]);
