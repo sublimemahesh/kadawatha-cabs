@@ -59,7 +59,7 @@ $driver = $DRIVER->all();
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/vehicle.php" enctype="multipart/form-data">
+                                <form class="form-horizontal"  method="post" id="newVehicle" action="post-and-get/vehicle.php" enctype="multipart/form-data">
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Vehicle Type</label>
@@ -108,7 +108,7 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="vehicle_number" required="true" placeholder="Vehicle Number">
+                                                    <input type="text" id="vehicle-no" class="form-control"  autocomplete="off" name="vehicle_number" required="true" placeholder="Vehicle Number">
                                                     <!--<label class="form-label">Vehicle Number</label>-->
                                                 </div>
                                             </div>
@@ -223,7 +223,7 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype" required="TRUE" >
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype">
                                                         <option value="">Please Select Driver</option>
                                                         <?php foreach ($driver as $name) {
                                                             ?>
@@ -239,7 +239,8 @@ $driver = $DRIVER->all();
 
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="submit" name="create" id="createVehicle" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                         <input type="hidden" name="create"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -263,9 +264,9 @@ $driver = $DRIVER->all();
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-
-
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="js/check-vehicle-no.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",

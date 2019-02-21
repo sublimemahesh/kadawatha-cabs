@@ -48,6 +48,7 @@ class Vehicle {
             $this->driver = $result['driver'];
 
             return $result;
+  
         }
     }
 
@@ -169,6 +170,20 @@ class Vehicle {
         }
 
         return $array_res;
+    }
+    public function checkVehicleNo($vehicle_number) {
+
+        $query = "SELECT `vehicle_number` FROM `vehicle` WHERE `vehicle_number`= '" . $vehicle_number . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
     
     
