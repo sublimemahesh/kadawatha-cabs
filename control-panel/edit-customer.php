@@ -56,7 +56,7 @@ $CUSTOMER = new Customer($id);
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal" method="post" action="post-and-get/customer.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal" method="post" id="updateCustomer" action="post-and-get/customer.php" enctype="multipart/form-data"> 
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -124,7 +124,7 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="" class="form-control"   autocomplete="off" readonly name="nic" value="<?php echo $CUSTOMER->nic; ?>" placeholder="NIC">
+                                                    <input type="text" id="nic" class="form-control"   autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>" placeholder="NIC">
                                                     <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
@@ -148,7 +148,8 @@ $CUSTOMER = new Customer($id);
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $CUSTOMER->id; ?>" name="id"/>
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" id="editCustomer" name="update" value="update">Save Changes</button>
+                                         <input type="hidden" name="update"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -169,9 +170,9 @@ $CUSTOMER = new Customer($id);
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-
-
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="js/check-edit-customer-no.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",
