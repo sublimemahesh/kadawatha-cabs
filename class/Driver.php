@@ -112,8 +112,8 @@ class Driver {
 
         return $db->readQuery($query);
     }
-    
-     public function allNamesByKeyword($keyword) {
+
+    public function allNamesByKeyword($keyword) {
 
         $query = "SELECT * FROM `driver` WHERE `name` LIKE '{$keyword}%'";
 
@@ -128,4 +128,19 @@ class Driver {
         return $array_res;
     }
 
+    public function checkLicence($licenceNum) {
+       
+        $query = "SELECT `licence_number` FROM `driver` WHERE `licence_number`= '" . $licenceNum . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+     
 }
