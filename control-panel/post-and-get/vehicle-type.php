@@ -20,9 +20,10 @@ if (isset($_POST['create'])) {
             session_start();
         }
         $VALID->addError("Your data was saved successfully", 'success');
-        $_SESSION['ERRORS'] = $VALID->errors();
+        $_SESSION['ERRORS'] = $VALID->errors();        
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
 
-              header("location: ../create-vehicle.php?id=" . $VEHICLETYPE->id);
+//              header("location: ../create-vehicle.php?id=" . $VEHICLETYPE->id);
     } else {
 
 
