@@ -12,8 +12,8 @@ if ($_POST['option'] == 'CHECKVEHICLENO') {
         } else {
             $CUSTOMER = new Customer(NULL);
             $result = $CUSTOMER->checkNic($_POST["nic"]);
-          }
-        
+        }
+       
         header('Content-type: application/json');
         echo json_encode($result);
         exit();

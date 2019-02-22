@@ -8,7 +8,7 @@ if ($_POST['option'] == 'CHECKNIC') {
             
         $CUSTOMER = new Customer(NULL);
 
-        $result = $CUSTOMER->checkNic($_POST["nic"]);
+        $result = $CUSTOMER::checkNic($_POST["nic"]);
         
         
             

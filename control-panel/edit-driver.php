@@ -103,7 +103,7 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" placeholder="NIC" required="true" value="<?php echo $DRIVER->nic ?>">
+                                                    <input type="text" id="nic" class="form-control"  autocomplete="off" name="nic" placeholder="NIC" required="true" value="<?php echo $DRIVER->nic ?>">
                                                     <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
@@ -168,7 +168,7 @@ $DRIVER = new Driver($id);
                                         <input type="hidden" id="id" value="<?php echo $DRIVER->id; ?>" name="id"/>
             <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" id="editDriver" name="update" value="update">Save Changes</button>
-                                          <input type="hidden" name="update"/> 
+                                        <input type="hidden" name="update"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -191,7 +191,9 @@ $DRIVER = new Driver($id);
         <script src="js/add-new-ad.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
-        <script src="js/check-edit-driver-licence.js" type="text/javascript"></script>
+        <script src="js/check-edit-driver-nic.js" type="text/javascript"></script>
+        <!--<script src="js/check-edit-driver-licence.js" type="text/javascript"></script>-->
+        
         <script>
             tinymce.init({
                 selector: "#description",

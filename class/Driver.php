@@ -142,5 +142,19 @@ class Driver {
             return TRUE;
         }
     }
+    public function checkNic($nic) {
+       
+        $query = "SELECT `nic` FROM `driver` WHERE `nic`= '" . $nic . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+       
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
      
 }

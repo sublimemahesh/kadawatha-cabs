@@ -94,7 +94,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="nic" required="true" placeholder="NIC" >
+                                                    <input type="text" id="nic" class="form-control"  autocomplete="off" name="nic" required="true" placeholder="NIC" >
                                                     <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
@@ -178,6 +178,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>     
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/check-create-driver-licence.js" type="text/javascript"></script>
+        <script src="js/check-driver-nic.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",
