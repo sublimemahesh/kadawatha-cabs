@@ -56,7 +56,7 @@ $DRIVER = new Driver($id);
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal" method="post" action="post-and-get/driver.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal" method="post" id="updateDriverDetails" action="post-and-get/driver.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Driver Name</label>
@@ -77,7 +77,7 @@ $DRIVER = new Driver($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="licence_num" placeholder="Licence Number" required="true" value="<?php echo $DRIVER->licence_number ?>">
+                                                    <input type="text" id="licenceNum" class="form-control"  autocomplete="off" name="licence_num" placeholder="Licence Number" required="true" value="<?php echo $DRIVER->licence_number ?>">
                                                     <!--<label class="form-label">Licence Number</label>-->
                                                 </div>    
                                             </div>
@@ -167,7 +167,8 @@ $DRIVER = new Driver($id);
                                         <input type="hidden" id="oldImageNameBack" value="<?php echo $DRIVER->licence_image_back; ?>" name="oldImageNameBack"/>
                                         <input type="hidden" id="id" value="<?php echo $DRIVER->id; ?>" name="id"/>
             <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" id="editDriver" name="update" value="update">Save Changes</button>
+                                          <input type="hidden" name="update"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -188,9 +189,9 @@ $DRIVER = new Driver($id);
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-
-
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="js/check-edit-driver-licence.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",

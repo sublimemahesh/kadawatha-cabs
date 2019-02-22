@@ -47,7 +47,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="post" action="post-and-get/driver.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal"  method="post" id="formCreateDriver" action="post-and-get/driver.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Driver Name</label>
@@ -55,7 +55,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="driver_name" required="true" placeholder="Driver Name">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="driver_name" required="TRUE" placeholder="Driver Name">
                                                     <!--<label class="form-label">Driver Name</label>-->
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="licence_num" required="true" placeholder="Licence Number">
+                                                    <input type="text" id="licenceNum" class="form-control"  autocomplete="off" name="licence_num" required="true" placeholder="Licence Number">
                                                     <!--<label class="form-label">Licence Number</label>-->
                                                 </div>
                                             </div>
@@ -150,7 +150,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </div>
                                     </div>
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>      
+                                        <input type="submit" name="create" id="createDriver" class="btn btn-primary m-t-15 waves-effect" value="create"/>  
+                                        <input type="hidden" name="create"/>    
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -174,9 +175,9 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-
-
-        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="tinymce/js/tinymce/tinymce.min.js"></script>     
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="js/check-create-driver-licence.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",
