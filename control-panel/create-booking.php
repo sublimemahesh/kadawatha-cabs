@@ -6,8 +6,8 @@ include_once(dirname(__FILE__) . '/auth.php');
 $CUSTOMER = new Customer(NULL);
 $customer = $CUSTOMER->all();
 
-$VEHICLETYPE = new VehicleType(NULL);
-$vehicle = $VEHICLETYPE->all();
+$VEHICLE = new Vehicle(NULL);
+$vehicle = $VEHICLE->all();
 
 $DRIVER = new Driver(NULL);
 $driver = $DRIVER->all();
@@ -136,11 +136,11 @@ $packages = $PACKAGES->all();
                                                         <?php foreach ($vehicle as $vehname) {
                                                             ?>
                                                             <option value="<?php echo $vehname['id']; ?>" <?php
-                                                            if ($VEHICLETYPE->id === $vehname['id']) {
+                                                            if ($VEHICLE->id === $vehname['id']) {
                                                                 echo 'selected';
                                                             }
                                                             ?>>
-                                                                        <?php echo $vehname['type']; ?>
+                                                                        <?php echo $vehname['vehicle_name']; ?>
                                                             </option>
                                                             <?php
                                                         }
