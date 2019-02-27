@@ -10,8 +10,8 @@ $BOOKING = new Booking($id);
 $CUSTOMER = new Customer($id);
 $CUSTOMERNAME = new Customer($BOOKING->customer);
 
-$VEHICLETYPE = new VehicleType(NULL);
-$vehicle = $VEHICLETYPE->all();
+$VEHICLE = new Vehicle(NULL);
+$vehicle = $VEHICLE->all();
 
 $DRIVER = new Driver($id);
 $driver = $DRIVER->all();
@@ -136,7 +136,7 @@ $packages = $PACKAGES->all();
                                                                 echo 'selected';
                                                             }
                                                             ?>>
-                                                                        <?php echo $vehname['type']; ?>
+                                                                        <?php echo $vehname['vehicle_name']; ?>
                                                             </option>
                                                             <?php
                                                         }
