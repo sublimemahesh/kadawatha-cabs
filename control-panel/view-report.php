@@ -54,13 +54,14 @@ $own = new Vehicle($owner);
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
         <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="plugins/node-waves/waves.css" rel="stylesheet" />
         <link href="plugins/animate-css/animate.css" rel="stylesheet" />
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet">
         <link href="css/themes/all-themes.css" rel="stylesheet" />
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-
+        <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     </head>
 
     <body class="theme-red">
@@ -80,123 +81,39 @@ $own = new Vehicle($owner);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Manage Reports</h2>
-                                <!--                                <ul class="header-dropdown">
-                                                                    <li class="">
-                                                                        <a href="manage-vehicle-type.php">
-                                                                            <i class="material-icons">list</i> 
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>-->
+                                <h2>Sales Report</h2>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal"  method="" action="view-report.php" enctype="multipart/form-data"> 
-                                    <div class="row clearfix">
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5">
-                                            <label for="name" class="lblSerachAtt" >Date</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="name" class="form-control input-append date form_datetime" value="<?php echo $date ?>" autocomplete="off" name="date"  placeholder="Date">                                            
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5 ">
-                                            <label for="name" class="lblVtype">Vehicle Type</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="vehicle_type" class="form-control"  autocomplete="off"  value="<?php echo $vtype->type; ?>" attempt=""  placeholder="Vehicle Type">
-                                                    <input type="hidden" name="vehicle_type" value="<?php echo $vtype->id; ?>" id="vehicle_type-id"  /> 
-                                                    <div id="suggesstion-box">
-                                                        <ul id="vehicle_type-list-append" class="name-list vty-list col-sm-offset-11"></ul>                                   
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5 ">
-                                            <label for="name" class="lblSerachAtt">Vehicle</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="vehicle" class="form-control"  autocomplete="off"  value="<?php echo $vehi->vehicle_name ?>" attempt=""  placeholder="Vehicle">
-                                                    <input type="hidden" name="vehicle" value="<?php echo $vehi->id ?>" id="vehicle-id"  /> 
-                                                    <div id="suggesstion-box">
-                                                        <ul id="vehicle-list-append" class="name-list col-sm-offset-2"></ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5 ">
-                                            <label for="name" class="lblSerachAtt">Driver</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="driver" class="form-control"  autocomplete="off"  value="<?php echo $driv->name ?>" attempt=""  placeholder="Driver"> 
-                                                    <input type="hidden" name="driver"  value="<?php echo $driv->id ?>" id="driver-id"  /> 
-                                                    <div id="suggesstion-box">
-                                                        <ul id="driver-list-append" class="name-list col-sm-offset-2"></ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5 ">
-                                            <label for="name" class="lblSerachAtt">Customer</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" id="customer" autocomplete="off"  value="<?php echo $cust->fullname ?>" attempt="" placeholder="Customer">
-                                                    <input type="hidden" name="customer" value="<?php echo $cust->id ?>" id="customer-id"  />
-                                                    <div id="suggesstion-box">
-                                                        <ul id="customer-list-append" class="name-list col-sm-offset-3"></ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5 ">
-                                            <label for="name" class="lblSerachAtt">Package</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" id="package" autocomplete="off"  value="<?php echo $pack->name ?>" attempt="" placeholder="Packages">
-                                                    <input type="hidden" name="package" value="<?php echo $pack->id ?>" id="package-id"  />
-                                                    <div id="suggesstion-box">
-                                                        <ul id="package-list-append" class="name-list col-sm-offset-3"></ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-5 ">
-                                            <label for="name" class="lblSerachAtt">Owner</label>
-                                        </div>
-                                        <div class="col-lg-1 col-md-10 col-sm-8 col-xs-7 filterby">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" id="owner" autocomplete="off"  value="<?php echo $own->owner ?>" attempt="" placeholder="Owner">
-                                                    <input type="hidden" name="owner" value="<?php echo $own->id ?>" id="owner-id"/>
-                                                    <div id="suggesstion-box">
-                                                        <ul id="owner-list-append" class="name-list col-sm-offset-3"></ul>
-                                                    </div>                                          
-                                                </div>
-                                            </div>
-                                        </div>   
-                                        <div class="col-lg-offset-10 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                            <button type="submit" class="btn btn-primary m-t-15 waves-effect btnSearch" name="search" value="search">Search</button>
-                                            <a href="view-report.php"><button type="button" class="btn btn-success m-t-15 waves-effect btnClear" name="cl" value="cl">Clear</button></a>
-                                        </div>
-                                    </div> 
-                                </form>
                                 <div class="row clearfix">  </div>
                                 <hr/>
-
+                                <div class="row clearfix date-section">
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">From</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="from" class="form-control"  autocomplete="off" name="from" placeholder="Enter Date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="to">To</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="to" class="form-control"  autocomplete="off" name="to" placeholder="Enter Date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable sales-report-table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -221,10 +138,11 @@ $own = new Vehicle($owner);
                                                 <th>Package</th>
                                                 <th>Owner</th>
 
+
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <?php
+<?php
                                             foreach ($allbookings as $key => $booking) {
 
                                                 $key++;
@@ -234,8 +152,8 @@ $own = new Vehicle($owner);
                                                 $VEHICLE = new Vehicle($booking['vehicle']);
                                                 $VEHICLETYPE = new VehicleType($VEHICLE->vehicle_type);
                                                 ?>
-                                                <tr id="row_<?php echo $booking['start_date']; ?>">
-                                                    <td><?php echo $key ?></td>
+                                                <tr id="row_<?php echo $booking['id']; ?>">
+                                                    <td><?php echo $booking['id'] ?></td>
                                                     <td><?php echo $booking['created_at']; ?></td>
                                                     <td><?php echo $VEHICLETYPE->type; ?></td>
                                                     <td><?php echo $VEHICLE->vehicle_name; ?></td>
@@ -247,7 +165,7 @@ $own = new Vehicle($owner);
                                                 </tr>
                                                 <?php
                                             }
-                                            ?>  
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -278,42 +196,24 @@ $own = new Vehicle($owner);
         <script src="js/package-suggection.js" type="text/javascript"></script>
         <script src="js/owner-suggection.js" type="text/javascript"></script>
         <script src="js/vehicle-type-suggection.js" type="text/javascript"></script>
+        <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+        <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+        <script src="js/pages/tables/jquery-datatable.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/sales-report.js" type="text/javascript"></script>
+        <script src="plugins/loader/js/jquery.loading.block.js" type="text/javascript"></script>
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
-
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
-
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-
-                relative_urls: false
-
+            $(function () {
+                $("#from").datepicker({dateFormat: 'yy-mm-dd'});
+                $("#to").datepicker({dateFormat: 'yy-mm-dd'});
             });
-
-
-        </script>
-        <script type="text/javascript">
-            $("#name").datetimepicker({minDate: new Date(),
-                format: "yyyy-mm-dd",
-                autoclose: true,
-                todayBtn: true,
-                pickDate: false
-//                data: "2010-01-24"
-            });
-
         </script>  
     </body>
 
