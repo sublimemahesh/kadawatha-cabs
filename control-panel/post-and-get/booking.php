@@ -9,6 +9,7 @@ if (isset($_POST['create'])) {
     $BOOKING->customer = $_POST['id'];
     $BOOKING->start_date = $_POST['start_date'];
     $BOOKING->end_date = $_POST['end_date'];
+    $BOOKING->vehicleType = $_POST['vehicle_type'];
     $BOOKING->vehicle = $_POST['vehicle'];
     $BOOKING->driver = $_POST['driver'];
     $BOOKING->total_cost = $_POST['total_cost'];
@@ -20,7 +21,7 @@ if (isset($_POST['create'])) {
         'customer' => ['required' => TRUE],
         'start_date' => ['required' => TRUE],
         'end_date' => ['required' => TRUE],
-        'vehicle' => ['required' => TRUE],
+        'vehicleType' => ['required' => TRUE],
         'driver' => ['required' => TRUE],
         'total_cost' => ['required' => TRUE],
         'package' => ['required' => TRUE],
@@ -60,6 +61,7 @@ if (isset($_POST['update'])) {
     $BOOKINGU->customer = $_POST['customer'];
     $BOOKINGU->start_date = $_POST['start_date'];
     $BOOKINGU->end_date = $_POST['end_date'];
+    $BOOKINGU->vehicleType = $_POST['vehicle_type'];
     $BOOKINGU->vehicle = $_POST['vehicle'];
     $BOOKINGU->driver = $_POST['driver'];
     $BOOKINGU->total_cost = $_POST['total_cost'];

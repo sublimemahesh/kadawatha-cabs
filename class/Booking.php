@@ -17,6 +17,7 @@ class Booking {
     public $customer;
     public $start_date;
     public $end_date;
+    public $vehicleType;
     public $vehicle;
     public $driver;
     public $total_cost;
@@ -28,7 +29,7 @@ class Booking {
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `customer`, `start_date`, `end_date`, `vehicle`, `driver`, `total_cost`, `package`,`created_at`, `comment`,`isActive` FROM `booking` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `customer`, `start_date`, `end_date`, `vehicle_type`, `vehicle`, `driver`, `total_cost`, `package`,`created_at`, `comment`,`isActive` FROM `booking` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -38,6 +39,7 @@ class Booking {
             $this->customer = $result['customer'];
             $this->start_date = $result['start_date'];
             $this->end_date = $result['end_date'];
+            $this->vehicleType = $result['vehicle_type'];
             $this->vehicle = $result['vehicle'];
             $this->driver = $result['driver'];
             $this->total_cost = $result['total_cost'];
@@ -53,10 +55,11 @@ class Booking {
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d');
 
-        $query = "INSERT INTO `booking`(`customer`, `start_date`, `end_date`, `vehicle`, `driver`, `total_cost`, `package`, `created_at`, `comment`,`isActive`) VALUES  ('"
+        $query = "INSERT INTO `booking`(`customer`, `start_date`, `end_date`, `vehicle_type`, `vehicle`, `driver`, `total_cost`, `package`, `created_at`, `comment`,`isActive`) VALUES  ('"
                 . $this->customer . "','"
                 . $this->start_date . "', '"
                 . $this->end_date . "', '"
+                . $this->vehicleType . "', '"
                 . $this->vehicle . "', '"
                 . $this->driver . "', '"
                 . $this->total_cost . "', '"
@@ -98,6 +101,7 @@ class Booking {
                 . "`customer` ='" . $this->customer . "', "
                 . "`start_date` ='" . $this->start_date . "', "
                 . "`end_date` ='" . $this->end_date . "', "
+                . "`vehicle_type` ='" . $this->vehicleType . "', "
                 . "`vehicle` ='" . $this->vehicle . "', "
                 . "`driver` ='" . $this->driver . "', "
                 . "`total_cost` ='" . $this->total_cost . "' ,"
@@ -127,7 +131,7 @@ class Booking {
     }
 
     public function getsearchAll($date, $vehicle_type, $vehicle, $driver, $customer, $package, $owner) {
-     
+
         $w = array();
         $where = '';
         if (!empty($date)) {
@@ -151,25 +155,49 @@ class Booking {
             $w[] = " `package` IN( SELECT `id` from `packages` WHERE `id` = " . $package . ") ";
         }
         if (!empty($owner)) {
-             $w[] = "`vehicle` IN (SELECT `id` from  `vehicle`  WHERE `id` = " . $owner . " )  ";
+            $w[] = "`vehicle` IN (SELECT `id` from  `vehicle`  WHERE `id` = " . $owner . " )  ";
         }
-        
+
 
         if (count($w)) {
             $where = 'WHERE ' . implode(' AND ', $w);
         }
 
         $query = "SELECT * FROM `booking` " . $where . " ORDER BY `id` DESC";
-       
+
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
-  
+
         while ($row = mysql_fetch_array($result)) {
             array_push($array_res, $row);
         }
 
         return $array_res;
+    }
+
+    public function getBookingsByDateRange($from, $to) {
+
+        $query = "SELECT * FROM `booking` WHERE `created_at` BETWEEN '" . $from . "' AND '" . $to . "' ORDER BY `id` ASC";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+
+    public function getFirstAndLastBookingDates() {
+
+        $query = "SELECT min(created_at) AS `min_date`, max(created_at) AS `max_date` FROM `booking`";
+
+        $db = new Database();
+        $result = mysql_fetch_array($db->readQuery($query));
+        return $result;
     }
 
 }

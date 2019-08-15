@@ -6,8 +6,8 @@ include_once(dirname(__FILE__) . '/auth.php');
 $CUSTOMER = new Customer(NULL);
 $customer = $CUSTOMER->all();
 
-$VEHICLE = new Vehicle(NULL);
-$vehicle = $VEHICLE->all();
+$TYPE = new VehicleType(NULL);
+$types = $TYPE->all();
 
 $DRIVER = new Driver(NULL);
 $driver = $DRIVER->all();
@@ -126,21 +126,21 @@ $packages = $PACKAGES->all();
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Vehicle</label>
+                                            <label for="vehicle_type">Vehicle Type</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
-                                                        <option value=""> -- Please Select Vehicle -- </option>
-                                                        <?php foreach ($vehicle as $vehname) {
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle_type" name="vehicle_type" required="TRUE">
+                                                        <option value=""> -- Please Select Vehicle Type -- </option>
+                                                        <?php foreach ($types as $type) {
                                                             ?>
-                                                            <option value="<?php echo $vehname['id']; ?>" <?php
-                                                            if ($VEHICLE->id === $vehname['id']) {
-                                                                echo 'selected';
-                                                            }
+                                                            <option value="<?php echo $type['id']; ?>" <?php
+//                                                            if ($VEHICLE->id === $type['id']) {
+//                                                                echo 'selected';
+//                                                            }
                                                             ?>>
-                                                                        <?php echo $vehname['vehicle_name']; ?>
+                                                                        <?php echo $type['type']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -149,6 +149,10 @@ $packages = $PACKAGES->all();
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!--City-->
+                                    <div class="row clearfix" id="vehicle-bar">
+
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -261,6 +265,7 @@ $packages = $PACKAGES->all();
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/customer-suggection.js"></script>
         <script src="js/create-customer.js"></script>
+        <script src="js/vehicle.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",
