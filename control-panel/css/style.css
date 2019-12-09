@@ -8193,6 +8193,11 @@ html.ie11 .bs-searchbox .form-control {
     margin-right: 300px;
     margin-left: 300px;
 }
+.tablebody1{
+    margin-right: 150px;
+    margin-left: 150px;
+    text-align: left;
+}
 .filterby{
     margin-left: -38px;
 }
@@ -8212,4 +8217,13 @@ html.ie11 .bs-searchbox .form-control {
 }
 .date-section {
     z-index: 999;
+}
+.unpaid-bookings-section [type="checkbox"]:not(:checked), .unpaid-bookings-section [type="checkbox"]:checked {
+    position: relative;
+    left: 0;
+    opacity: 1;
+    margin-right: 10px;
+}
+.unpaid-bookings-section [type="checkbox"]:not(:checked), .unpaid-bookings-section [type="checkbox"]:checked {
+    margin: 3px 0 0;
 }

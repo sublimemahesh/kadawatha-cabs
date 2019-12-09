@@ -12,4 +12,12 @@ if ($_POST['action'] == 'GETVEHICLESBYTYPE') {
     header('Content-type: application/json');
     exit();
 }
+if ($_POST['action'] == 'GETDRIVERBYVEHICLE') {
+
+    $VEHICLE = new Vehicle($_POST["vehicle"]);
+    $DRIVER = new Driver($VEHICLE->driver);
+    echo json_encode($DRIVER);
+    header('Content-type: application/json');
+    exit();
+}
 

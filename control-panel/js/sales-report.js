@@ -22,7 +22,7 @@ $(document).ready(function () {
                 },
                 success: function (bookings) {
                     var html;
-                    if (bookings) {
+                    if (bookings != '') {
                         $.each(bookings, function (key, booking) {
                             var vehicle = "";
                             if (booking.vehicle == null) {
@@ -53,7 +53,7 @@ $(document).ready(function () {
                             $(".sales-report-table tbody").append(html);
                         });
                     } else {
-                        html = 'No any bookings in database';
+                        html = '<tr><td colspan="7">No any bookings in database</td></tr>';
                         $(".sales-report-table tbody").empty();
                         $(".sales-report-table tbody").append(html);
                     }
@@ -79,7 +79,7 @@ $(document).ready(function () {
             },
             success: function (bookings) {
                 var html;
-                if (bookings) {
+                if (bookings != '') {
                     $.each(bookings, function (key, booking) {
                         var vehicle = "";
                         if (booking.vehicle == null) {
@@ -110,7 +110,7 @@ $(document).ready(function () {
                         $(".sales-report-table tbody").append(html);
                     });
                 } else {
-                    html = 'No any bookings in database';
+                    html = '<tr><td colspan="7">No any bookings in database</td></tr>';
                     $(".sales-report-table tbody").empty();
                     $(".sales-report-table tbody").append(html);
                 }
@@ -134,7 +134,7 @@ $(document).ready(function () {
             },
             success: function (bookings) {
                 var html;
-                if (bookings) {
+                if (bookings != '') {
                     $.each(bookings, function (key, booking) {
                         var vehicle = "";
                         if (booking.vehicle == null) {
@@ -165,19 +165,13 @@ $(document).ready(function () {
                         $(".sales-report-table tbody").append(html);
                     });
                 } else {
-                    html = 'No any bookings in database';
+                    html = '<tr><td colspan="7">No any bookings in database</td></tr>';
                     $(".sales-report-table tbody").empty();
                     $(".sales-report-table tbody").append(html);
                 }
             }
 
         });
-    });
-
-    $("#print-btn").click(function () {
-        var from = $("#from").val();
-        var to = $("#to").val();
-        window.location.replace("report-of-job-register.php?from=" + from + "&to=" + to);
     });
 
     function callLoader() {

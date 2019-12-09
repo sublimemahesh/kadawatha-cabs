@@ -13,10 +13,10 @@ $CUSTOMERNAME = new Customer($BOOKING->customer);
 $VEHICLE = new Vehicle(NULL);
 $vehicle = $VEHICLE->all();
 
-$DRIVER = new Driver($id);
+$DRIVER = new Driver(NULL);
 $driver = $DRIVER->all();
 
-$PACKAGES = new Packages($id);
+$PACKAGES = new Packages(NULL);
 $packages = $PACKAGES->all();
 ?>
 <!DOCTYPE html>
@@ -35,8 +35,10 @@ $packages = $PACKAGES->all();
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet">
         <link href="css/themes/all-themes.css" rel="stylesheet" />
-
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+        <link href="plugins/Timepicker/dist/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
+
     </head>
 
     <body class="theme-red">
@@ -80,7 +82,7 @@ $packages = $PACKAGES->all();
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="<?php echo $CUSTOMERNAME->fullname ?>" attempt="" placeholder="Enter Customer name">
-                                                    <input type="hidden" name="customer" value="" id="name-id"  />
+                                                    <input type="hidden" name="customer" value="<?php echo $CUSTOMERNAME->id ?>" id="name-id"  />
                                                     <!--<label class="form-label">Enter Customer name </label>-->
                                                     <div id="suggesstion-box">
                                                         <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
@@ -103,7 +105,7 @@ $packages = $PACKAGES->all();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time" value="<?php echo $BOOKING->start_date ?>">
+                                                    <input type="text" id="start_date" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time" value="<?php echo $BOOKING->start_date ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -113,30 +115,29 @@ $packages = $PACKAGES->all();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time" value="<?php echo $BOOKING->end_date ?>">
+                                                    <input type="text" id="end_date" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time" value="<?php echo $BOOKING->end_date ?>">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Vehicle</label>
+                                            <label for="vehicle_type">Vehicle Type</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
-                                                        <option value=""> -- Please Select Vehicle -- </option>
-                                                        <?php foreach ($vehicle as $vehname) {
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle_type" name="vehicle_type" required="TRUE">
+                                                        <option value=""> -- Please Select Vehicle Type -- </option>
+                                                        <?php foreach (VehicleType::all() as $type) {
                                                             ?>
-                                                            <option value="<?php echo $vehname['id']; ?>" <?php
-                                                            if ($BOOKING->vehicle === $vehname['id']) {
+                                                            <option value="<?php echo $type['id']; ?>" 
+                                                            <?php
+                                                            if ($BOOKING->vehicleType === $type['id']) {
                                                                 echo 'selected';
                                                             }
                                                             ?>>
-                                                                        <?php echo $vehname['vehicle_name']; ?>
+                                                                        <?php echo $type['type']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -146,7 +147,33 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
+                                    <div class="row clearfix" id="vehicle-bar">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
+                                                        <option value=""> -- Please Select Vehicle -- </option>
+                                                        <?php foreach (Vehicle::all() as $vehicle) {
+                                                            ?>
+                                                            <option value="<?php echo $vehicle['id']; ?>" <?php
+                                                            if ($BOOKING->vehicle === $vehicle['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $vehicle['vehicle_name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix" id="driver-bar">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Driver</label>
                                         </div>
@@ -174,6 +201,32 @@ $packages = $PACKAGES->all();
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Package</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package">
+                                                        <option value=""> -- Please Select Package -- </option>
+                                                        <?php foreach ($packages as $pack) {
+                                                            ?>
+                                                            <option value="<?php echo $pack['id']; ?>" <?php
+                                                            if ($BOOKING->package === $pack['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>  price="<?php echo $pack['price']; ?>">
+                                                                        <?php echo $pack['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Total Cost</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -185,32 +238,7 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Package</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package" required="TRUE">
-                                                        <option value=""> -- Please Select Package -- </option>
-                                                        <?php foreach ($packages as $pack) {
-                                                            ?>
-                                                            <option value="<?php echo $pack['id']; ?>" <?php
-                                                            if ($BOOKING->package === $pack['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $pack['name']; ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Comment </label>
@@ -273,7 +301,22 @@ $packages = $PACKAGES->all();
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/customer-suggection.js"></script>
         <script src="js/create-customer.js"></script>
-
+        <script src="js/booking.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="plugins/Timepicker/dist/jquery-ui-sliderAccess.js" type="text/javascript"></script>
+        <script src="plugins/Timepicker/dist/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+        <!-- Optional -->
+        <script src="plugins/Timepicker/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js" type="text/javascript"></script>
+        <script>
+            $('#start_date').datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: "HH:mm:ss",
+            });
+            $('#end_date').datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: "HH:mm:ss",
+            });
+        </script>
 
         <script>
             tinymce.init({
@@ -302,16 +345,6 @@ $packages = $PACKAGES->all();
 
 
         </script>
-
-        <script type="text/javascript">
-            $(".form_datetime").datetimepicker({
-                minDate: new Date(),
-                format: "yyyy-mm-dd - hh:mm:ss ",
-                autoclose: true,
-                todayBtn: true
-            });
-
-        </script>     
     </body>
 
 </html>

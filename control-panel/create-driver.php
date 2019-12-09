@@ -63,6 +63,30 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </div>    
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="type">Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE" >
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <?php
+                                                        $types = DefaultData::getDriverType();
+                                                        if (count($types) > 0) {
+                                                            foreach ($types as $key => $type) {
+                                                                ?>
+                                                                <option value="<?php echo $key; ?>"><?php echo $type; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Licence Number</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">

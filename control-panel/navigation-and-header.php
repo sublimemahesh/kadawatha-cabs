@@ -310,6 +310,18 @@
                                 <span>Manage</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="manage-commission-paid-bookings.php">
+                                <i class="material-icons">list</i>
+                                <span>Commission Paid Bookings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-commission-unpaid-bookings.php">
+                                <i class="material-icons">list</i>
+                                <span>Commission Unpaid Bookings</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
@@ -439,13 +451,40 @@
                 <li class="qqq">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">chevron_right</i>
+                        <span>Commission Payment</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="create-commission-payment.php">
+                                <i class="material-icons">add</i>
+                                <span>Add New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-commission-payments.php">
+                                <i class="material-icons">list</i>
+                                <span>Manage</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                <li class="qqq">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">chevron_right</i>
                         <span>Reports</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="view-report.php">
+                            <a href="sales-report.php">
                                 <i class="material-icons">add</i>
-                                <span>Sale Report</span>
+                                <span>Sales Report</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="commission-report.php">
+                                <i class="material-icons">add</i>
+                                <span>Commission Report</span>
                             </a>
                         </li>
                        
@@ -481,7 +520,7 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                &copy; <?php echo date('Y'); ?> <a href="javascript:void(0);">BY : SYNOTEC</a>.
+                &copy; <?php echo date('Y'); ?> <a href="javascript:void(0);">BY : SYNOTEC HOLDINGS (PVT) LTD.</a>.
             </div>
             <div class="version">
                 <b>Version: </b> 1.0.0

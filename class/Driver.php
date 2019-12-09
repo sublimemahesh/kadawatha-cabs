@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of User
+ * Description of Driver
  *
  * @author sublime holdings
  * @web www.sublime.lk
@@ -17,11 +17,12 @@ class Driver {
     public $phone_numbers;
     public $address;
     public $city;
+    public $type;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city` FROM `driver` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`, `type` FROM `driver` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -36,6 +37,7 @@ class Driver {
             $this->phone_numbers = $result['phone_numbers'];
             $this->address = $result['address'];
             $this->city = $result['city'];
+            $this->type = $result['type'];
 
             return $result;
         }
@@ -43,7 +45,7 @@ class Driver {
 
     public function create() {
 
-        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`) VALUES  ('"
+        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`, `type`) VALUES  ('"
                 . $this->id . "','"
                 . $this->name . "','"
                 . $this->licence_number . "', '"
@@ -52,7 +54,8 @@ class Driver {
                 . $this->nic . "', '"
                 . $this->phone_numbers . "', '"
                 . $this->address . "', '"
-                . $this->city . "' 
+                . $this->city . "', '"
+                . $this->type . "' 
                 )";
 
         $db = new Database();
@@ -76,7 +79,8 @@ class Driver {
                 . "`nic` ='" . $this->nic . "', "
                 . "`phone_numbers` ='" . $this->phone_numbers . "', "
                 . "`address` ='" . $this->address . "', "
-                . "`city` ='" . $this->city . "' "
+                . "`city` ='" . $this->city . "', "
+                . "`type` ='" . $this->type . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

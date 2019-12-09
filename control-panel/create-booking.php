@@ -31,8 +31,10 @@ $packages = $PACKAGES->all();
         <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet">
         <link href="css/themes/all-themes.css" rel="stylesheet" />
-
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+        <link href="plugins/Timepicker/dist/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
         <style>
             .modal {
                 overflow-y:scroll !important;
@@ -106,7 +108,7 @@ $packages = $PACKAGES->all();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="datetime" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time">
+                                                    <input type="datetime" id="start_date" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time">
                                                     <!--<span class="add-on"><i class="icon-th"></i></span>-->
                                                 </div>
                                             </div>
@@ -117,7 +119,7 @@ $packages = $PACKAGES->all();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time">
+                                                    <input type="text" id="end_date" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time">
                                                 </div>
                                             </div>
                                         </div>
@@ -135,11 +137,7 @@ $packages = $PACKAGES->all();
                                                         <option value=""> -- Please Select Vehicle Type -- </option>
                                                         <?php foreach ($types as $type) {
                                                             ?>
-                                                            <option value="<?php echo $type['id']; ?>" <?php
-//                                                            if ($VEHICLE->id === $type['id']) {
-//                                                                echo 'selected';
-//                                                            }
-                                                            ?>>
+                                                            <option value="<?php echo $type['id']; ?>">
                                                                         <?php echo $type['type']; ?>
                                                             </option>
                                                             <?php
@@ -150,48 +148,12 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-                                    <!--City-->
+                                    <!--Vehicle-->
                                     <div class="row clearfix" id="vehicle-bar">
 
                                     </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Driver</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver" required="TRUE">
-                                                        <option value=""> -- Please Select Driver -- </option>
-                                                        <?php foreach ($driver as $driname) {
-                                                            ?>
-                                                            <option value="<?php echo $driname['id']; ?>" <?php
-                                                            if ($DRIVER->id === $driname['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $driname['name']; ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Total Cost</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true" placeholder="Total Cost">
-                                                    <!--<label class="form-label">Total Cost </label>-->
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <!--Driver-->
+                                    <div class="row clearfix" id="driver-bar">
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -200,15 +162,11 @@ $packages = $PACKAGES->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package" required="TRUE">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package" name="package">
                                                         <option value=""> -- Please Select Package -- </option>
                                                         <?php foreach ($packages as $pack) {
                                                             ?>
-                                                            <option value="<?php echo $pack['id']; ?>" <?php
-                                                            if ($PACKAGES->id === $pack['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
+                                                            <option value="<?php echo $pack['id']; ?>" price="<?php echo $pack['price']; ?>">
                                                                         <?php echo $pack['name']; ?>
                                                             </option>
                                                             <?php
@@ -219,6 +177,20 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Total Cost (Rs)</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="total_cost" class="form-control"  autocomplete="off" name="total_cost" required="true" placeholder="Total Cost">
+                                                    <!--<label class="form-label">Total Cost </label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Comment</label>
@@ -265,7 +237,21 @@ $packages = $PACKAGES->all();
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/customer-suggection.js"></script>
         <script src="js/create-customer.js"></script>
-        <script src="js/vehicle.js" type="text/javascript"></script>
+        <script src="js/booking.js" type="text/javascript"></script><script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="plugins/Timepicker/dist/jquery-ui-sliderAccess.js" type="text/javascript"></script>
+        <script src="plugins/Timepicker/dist/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+        <!-- Optional -->
+        <script src="plugins/Timepicker/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js" type="text/javascript"></script>
+        <script>
+            $('#start_date').datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: "HH:mm:ss",
+            });
+            $('#end_date').datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: "HH:mm:ss",
+            });
+        </script>
         <script>
             tinymce.init({
                 selector: "#description",
@@ -292,17 +278,7 @@ $packages = $PACKAGES->all();
             });
 
 
-        </script>
-
-        <script type="text/javascript">
-            $(".form_datetime").datetimepicker({
-                minDate: new Date(),
-                format: "yyyy-mm-dd - hh:mm:ss ",
-                autoclose: true,
-                todayBtn: true,
-            });
-
-        </script>            
+        </script>        
     </body>
 
 </html>

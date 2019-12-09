@@ -46,6 +46,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 <h2>
                                     Manage Bookings
                                 </h2>
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="create-booking.php">
+                                            <i class="material-icons">add</i> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
@@ -87,7 +94,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td> 
                                                         <a href="edit-booking.php?id=<?php echo $booking['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Booking"></button></a>
                                                         |
-
                                                         <a href="#"  class="delete-booking" data-id="<?php echo $booking['id']; ?>">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-booking" title="Delete Booking" data-id="<?php echo $booking['id']; ?>"></button>
                                                         </a>

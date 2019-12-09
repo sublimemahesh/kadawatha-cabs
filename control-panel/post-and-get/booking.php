@@ -22,9 +22,7 @@ if (isset($_POST['create'])) {
         'start_date' => ['required' => TRUE],
         'end_date' => ['required' => TRUE],
         'vehicleType' => ['required' => TRUE],
-        'driver' => ['required' => TRUE],
         'total_cost' => ['required' => TRUE],
-        'package' => ['required' => TRUE],
         'comment' => ['required' => TRUE]
     ]);
   
@@ -75,10 +73,8 @@ if (isset($_POST['update'])) {
         'customer' => ['required' => TRUE],
         'start_date' => ['required' => TRUE],
         'end_date' => ['required' => TRUE],
-        'vehicle' => ['required' => TRUE],
-        'driver' => ['required' => TRUE],
+        'vehicleType' => ['required' => TRUE],
         'total_cost' => ['required' => TRUE],
-        'package' => ['required' => TRUE],
         'comment' => ['required' => TRUE]
     ]);
 
