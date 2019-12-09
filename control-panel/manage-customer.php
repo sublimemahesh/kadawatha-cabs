@@ -46,6 +46,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 <h2>
                                     Manage Customer
                                 </h2>
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="create-customer.php">
+                                            <i class="material-icons">add</i> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->

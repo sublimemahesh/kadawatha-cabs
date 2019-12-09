@@ -1,54 +1,13 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-$date = '';
-$vehicle_type = '';
-$vehicle = '';
-$driver = '';
-$customer = '';
-$package = '';
-$owner = '';
-if (isset($_GET['date'])) {
-    $date = $_GET['date'];
-}
-if (isset($_GET['vehicle_type'])) {
-    $vehicle_type = $_GET['vehicle_type'];
-}
-if (isset($_GET['vehicle'])) {
-    $vehicle = $_GET['vehicle'];
-}
-if (isset($_GET['driver'])) {
-    $driver = $_GET['driver'];
-}
-if (isset($_GET['customer'])) {
-    $customer = $_GET['customer'];
-}
-if (isset($_GET['package'])) {
-    $package = $_GET['package'];
-}
-if (isset($_GET['owner'])) {
-    $owner = $_GET['owner'];
-}
-
-
-if (isset($_GET['search'])) {
-    $allbookings = Booking::getsearchAll($date, $vehicle_type, $vehicle, $driver, $customer, $package, $owner);
-} else {
-    $allbookings = Booking::all();
-}
-$vtype = new VehicleType($vehicle_type);
-$vehi = new Vehicle($vehicle);
-$driv = new Driver($driver);
-$cust = new Customer($customer);
-$pack = new Packages($package);
-$own = new Vehicle($owner);
 ?>
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Manage Report|| WEB SITE CONTROL PANEL </title>
+        <title>Manage Commission Payment Report|| WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -81,91 +40,80 @@ $own = new Vehicle($owner);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Sales Report</h2>
+                                <h2>Commission Report</h2>
                             </div>
                             <div class="body">
-                                <div class="row clearfix">  </div>
+                                <div class="row clearfix"></div>
                                 <hr/>
                                 <div class="row clearfix date-section">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">From</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="from" class="form-control"  autocomplete="off" name="from" placeholder="Enter Date">
+                                                    <input type="text" id="from" class="form-control"  autocomplete="off" name="from" placeholder="Enter Date" value="<?php echo date('Y-m-d'); ?>">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="to">To</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="to" class="form-control"  autocomplete="off" name="to" placeholder="Enter Date">
+                                                    <input type="text" id="to" class="form-control"  autocomplete="off" name="to" placeholder="Enter Date" value="<?php echo date('Y-m-d'); ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="driver">Driver</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver" required="TRUE">
+                                                        <option value="all"> All </option>
+                                                        <?php
+                                                        $drivers = Driver::all();
+                                                        if (count($drivers) > 0) {
+                                                            foreach (Driver::all() as $driver) {
+                                                                ?>
+                                                                <option value="<?php echo $driver["id"]; ?>"><?php echo $driver["name"]; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable sales-report-table">
+                                    <table class="table table-bordered table-striped table-hover commission-report-table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Create date</th>
+                                                <th>Booking</th>
                                                 <th>Vehicle Type</th>
-                                                <th>Vehicle</th>
                                                 <th>Driver</th>
-                                                <th>Customer</th>
-                                                <th>Package</th>
-                                                <th>Owner</th>
+                                                <th>Total Amount (Rs)</th>
+                                                <th>Commission Rate</th>
+                                                <th>Commission (Rs)</th>
 
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Create date</th>
-                                                <th>Vehicle Type</th>
-                                                <th>Vehicle</th>
-                                                <th>Driver</th>
-                                                <th>Customer</th>
-                                                <th>Package</th>
-                                                <th>Owner</th>
 
-
-                                            </tr>
                                         </tfoot>
                                         <tbody>
-<?php
-                                            foreach ($allbookings as $key => $booking) {
 
-                                                $key++;
-                                                $CUSTOMERNAME = new Customer($booking['customer']);
-                                                $DRIVER = new Driver($booking['driver']);
-                                                $PACKAGEE = new Packages($booking['package']);
-                                                $VEHICLE = new Vehicle($booking['vehicle']);
-                                                $VEHICLETYPE = new VehicleType($VEHICLE->vehicle_type);
-                                                ?>
-                                                <tr id="row_<?php echo $booking['id']; ?>">
-                                                    <td><?php echo $booking['id'] ?></td>
-                                                    <td><?php echo $booking['created_at']; ?></td>
-                                                    <td><?php echo $VEHICLETYPE->type; ?></td>
-                                                    <td><?php echo $VEHICLE->vehicle_name; ?></td>
-                                                    <td><?php echo $DRIVER->name; ?></td>
-                                                    <td><?php echo $CUSTOMERNAME->fullname ?></td>
-                                                    <td><?php echo $PACKAGEE->name; ?></td>
-                                                    <td><?php echo $VEHICLE->owner; ?></td>
-
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -207,14 +155,30 @@ $own = new Vehicle($owner);
         <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
         <script src="js/pages/tables/jquery-datatable.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="js/sales-report.js" type="text/javascript"></script>
+        <script src="js/commission-report.js" type="text/javascript"></script>
         <script src="plugins/loader/js/jquery.loading.block.js" type="text/javascript"></script>
         <script>
             $(function () {
                 $("#from").datepicker({dateFormat: 'yy-mm-dd'});
-                $("#to").datepicker({dateFormat: 'yy-mm-dd'});
+                $("#to").datepicker({dateFormat: 'yy-mm-dd',minDate: 0});
+            });
+            $("#from").change(function () {
+                var new_date = new Date($('#from').val());
+                new_date.setDate(new_date.getDate());
+
+                var minDate = $(this).datepicker('getDate');
+                minDate.setDate(minDate.getDate()); //add two days
+                $("#to").datepicker("option", "minDate", minDate);
+
+                $('#to').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    defaultDate: new_date,
+
+                    onClose: function (dateText, inst) {
+                        $(this).datepicker();
+                    }
+                }).datepicker('setDate', new_date);
             });
         </script>  
     </body>
-
 </html>

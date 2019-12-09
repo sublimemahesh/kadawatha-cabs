@@ -7,7 +7,7 @@ include_once(dirname(__FILE__) . '/auth.php');
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-               <title> Manage Driver || WEB SITE CONTROL PANEL </title>
+        <title> Manage Driver || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -46,6 +46,13 @@ include_once(dirname(__FILE__) . '/auth.php');
                                 <h2>
                                     Manage Driver
                                 </h2>
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="create-driver.php">
+                                            <i class="material-icons">add</i> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
@@ -55,9 +62,10 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
+                                                <th>Type</th>
                                                 <th>licence_number </th>
                                                 <th>NIC </th>
-                                                <th>CITY </th>
+                                                <th>City </th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
@@ -65,9 +73,10 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
+                                                <th>Type</th>
                                                 <th>licence_number </th>
                                                 <th>NIC </th>
-                                                <th>CITY </th>
+                                                <th>City </th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
@@ -79,13 +88,23 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <tr id="row_<?php echo $driver['id']; ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $driver['name']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        $types = DefaultData::getDriverType();
+                                                        foreach ($types as $key => $type) {
+                                                            if ($driver['type'] == $key) {
+                                                                echo $type;
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td><?php echo $driver['licence_number']; ?></td>
                                                     <td><?php echo $driver['nic']; ?></td>
                                                     <td><?php echo $driver['city']; ?></td>
-                                                  
+
                                                     <td> 
                                                         <a href="edit-driver.php?id=<?php echo $driver['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Driver"></button></a>
-                                                                                                              
+
                                                         |
 
                                                         <a href="#"  class="delete-driver" data-id="<?php echo $driver['id']; ?>">

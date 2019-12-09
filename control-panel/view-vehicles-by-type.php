@@ -54,6 +54,13 @@ if (isset($_GET['id'])) {
                                 <h2>
                                     View Vehicles By Type
                                 </h2>
+                                <ul class="header-dropdown">
+                                    <li class="">
+                                        <a href="manage-vehicle-type.php">
+                                            <i class="material-icons">list</i> 
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
