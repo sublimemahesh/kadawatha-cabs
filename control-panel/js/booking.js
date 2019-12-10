@@ -68,11 +68,126 @@ $(document).ready(function () {
             }
         });
     });
-    
-    $('#package').change(function() {
+
+    $('#package').change(function () {
         var price = $('option:selected', this).attr('price');
         $('#total_cost').val(price);
     });
+
+    $('.mark-as-confirmed').click(function () {
+
+        var id = $(this).attr("data-id");
+
+        swal({
+            title: "Are you sure?",
+            text: "Are you want to mark this booking as confirmed?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, mark it!",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                url: "js/ajax/booking.php",
+                type: "POST",
+                data: {id: id, option: 'confirm'},
+                dataType: "JSON",
+                success: function (jsonStr) {
+                    if (jsonStr.status) {
+
+                        swal({
+                            title: "Confirmed!",
+                            text: "This booking has been marked as confirmed successfully.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+
+                        $('#row_' + id).remove();
+
+                    }
+                }
+            });
+        });
+    });
+
+    $('.mark-as-completed').click(function () {
+
+        var id = $(this).attr("data-id");
+
+        swal({
+            title: "Are you sure?",
+            text: "Are you want to mark this booking as completed?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, mark it!",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                url: "js/ajax/booking.php",
+                type: "POST",
+                data: {id: id, option: 'complete'},
+                dataType: "JSON",
+                success: function (jsonStr) {
+                    if (jsonStr.status) {
+
+                        swal({
+                            title: "Completed!",
+                            text: "This booking has been marked as completed successfully.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+
+                        $('#row_' + id).remove();
+
+                    }
+                }
+            });
+        });
+    });
+
+    $('.cancel-booking').click(function () {
+
+        var id = $(this).attr("data-id");
+
+        swal({
+            title: "Are you sure?",
+            text: "Are you want to cancel this booking?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, cancel it!",
+            closeOnConfirm: false
+        }, function () {
+
+            $.ajax({
+                url: "js/ajax/booking.php",
+                type: "POST",
+                data: {id: id, option: 'cancel'},
+                dataType: "JSON",
+                success: function (jsonStr) {
+                    if (jsonStr.status) {
+
+                        swal({
+                            title: "Confirmed!",
+                            text: "This booking has been canceled successfully.",
+                            type: 'success',
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+
+                        $('#row_' + id).remove();
+
+                    }
+                }
+            });
+        });
+    });
+
 
 });
 

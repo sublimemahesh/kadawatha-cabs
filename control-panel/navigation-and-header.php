@@ -304,10 +304,34 @@
                                 <span>Add New</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="manage-booking.php">
+<!--                        <li>
+                            <a href="manage-all-bookings.php">
                                 <i class="material-icons">list</i>
                                 <span>Manage</span>
+                            </a>
+                        </li>-->
+                        <li>
+                            <a href="manage-bookings.php?status=1">
+                                <i class="material-icons">list</i>
+                                <span>Manage Pending Bookings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-bookings.php?status=2">
+                                <i class="material-icons">list</i>
+                                <span>Manage Confirmed Bookings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-bookings.php?status=3">
+                                <i class="material-icons">list</i>
+                                <span>Manage Completed Bookings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage-bookings.php?status=4">
+                                <i class="material-icons">list</i>
+                                <span>Manage Canceled Bookings</span>
                             </a>
                         </li>
                         <li>
@@ -387,12 +411,6 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <!--                        <li>
-                                                    <a href="arrange-product-type.php">
-                                                        <i class="material-icons">compare_arrows</i>
-                                                        <span>Arrange</span>
-                                                    </a>
-                                                </li>-->
 
                     </ul>
                 </li>
@@ -417,12 +435,6 @@
                                 <span>Manage</span>
                             </a>
                         </li>
-                        <!--                        <li>
-                                                    <a href="arrange-room.php">
-                                                        <i class="material-icons">compare_arrows</i>
-                                                        <span>Arrange</span>
-                                                    </a>
-                                                </li>-->
                     </ul>
                 </li>
 
@@ -479,6 +491,12 @@
                             <a href="sales-report.php">
                                 <i class="material-icons">add</i>
                                 <span>Sales Report</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="daily-report.php">
+                                <i class="material-icons">add</i>
+                                <span>Daily Report</span>
                             </a>
                         </li>
                         <li>

@@ -15,6 +15,7 @@ if (isset($_POST['create'])) {
     $BOOKING->total_cost = $_POST['total_cost'];
     $BOOKING->package = $_POST['package'];
     $BOOKING->comment = $_POST['comment'];
+    $BOOKING->status = 'pending';
 
 
     $VALID->check($BOOKING, [
