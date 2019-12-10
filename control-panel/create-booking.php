@@ -32,7 +32,7 @@ $packages = $PACKAGES->all();
         <link href="css/style.css" rel="stylesheet">
         <link href="css/themes/all-themes.css" rel="stylesheet" />
         <link href="plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-        
+
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
         <link href="plugins/Timepicker/dist/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css"/>
         <style>
@@ -63,13 +63,13 @@ $packages = $PACKAGES->all();
                         <div class="card">
                             <div class="header">
                                 <h2>Create Booking </h2>
-                                <ul class="header-dropdown">
+<!--                                <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-booking.php">
+                                        <a href="manage-all-bookings.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </div>
                             <?php
                             include './new-customer-model.php';
@@ -77,27 +77,105 @@ $packages = $PACKAGES->all();
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/booking.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Customer</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
+                                        <div>
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">Customer Name</label>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
 
-                                                    <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="" attempt="" placeholder="Enter Customer name">
-                                                    <input type="hidden" name="id" value="" id="name-id"  />
+                                                        <input type="text" class="form-control" id="name" autocomplete="off" name="customer" value="" attempt="" placeholder="Customer name">
+                                                        <input type="hidden" name="id" value="" id="name-id"  />
 
-                                                    <div id="suggesstion-box">
-                                                        <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
+                                                        <div id="suggesstion-box">
+                                                            <ul id="name-list-append" class="name-list col-sm-offset-3"></ul>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="newcus">
-                                                    <button type="button" id="btnNewCustomer" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" title="create customer"></button>
-                                                </div>
+                                                    <div class="newcus">
+                                                        <button type="button" id="btnNewCustomer" class="glyphicon glyphicon-floppy-disk user-Details" data-toggle="modal" data-target="#exampleModal" title="create customer"></button>
+                                                    </div>
 
+                                                </div>
                                             </div>
                                         </div>
+                                        <div>
+                                            <div class="col-lg-1 col-md-1 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">NIC</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" id="txtNIC" autocomplete="off" name="txtNIC" value="" attempt="" placeholder="Search...">
+                                                    </div>
+                                                    <div class="newcus">
+                                                        <button type="button" id="btnSearchByNIC" class="glyphicon glyphicon-search user-Details" data-toggle="modal" title="Search customer by NIC"></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="col-lg-1 col-md-1 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">Phone Number</label>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+
+                                                        <input type="text" class="form-control" id="txtPhoneNo" autocomplete="off" name="txtPhoneNo" value="" attempt="" placeholder="Search...">
+                                                    </div>
+                                                    <div class="newcus">
+                                                        <button type="button" id="btnSearchByPhoneNo" class="glyphicon glyphicon-search user-Details" data-toggle="modal" title="Search customer by phone number"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix hidden" id="customer-details-section">
+                                        <div class="panel panel-info customer-details">
+                                            <div class="panel-body">
+                                                <div class="col-md-12">
+                                                    
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-3">
+                                                            <b>Email</b>:
+                                                        </div>
+                                                        <div class="col-md-9 customer-email">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-4">
+                                                            <b>NIC</b>:
+                                                        </div>
+                                                        <div class="col-md-8 customer-nic">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-3">
+                                                            <b>Address</b>:
+                                                        </div>
+                                                        <div class="col-md-9 customer-address">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-4">
+                                                            <b>Phone Number</b>:
+                                                        </div>
+                                                        <div class="col-md-8 customer-phone-number">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix" id="customer-not-found-section">
+                                        
                                     </div>
 
 
@@ -138,7 +216,7 @@ $packages = $PACKAGES->all();
                                                         <?php foreach ($types as $type) {
                                                             ?>
                                                             <option value="<?php echo $type['id']; ?>">
-                                                                        <?php echo $type['type']; ?>
+                                                                <?php echo $type['type']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -167,7 +245,7 @@ $packages = $PACKAGES->all();
                                                         <?php foreach ($packages as $pack) {
                                                             ?>
                                                             <option value="<?php echo $pack['id']; ?>" price="<?php echo $pack['price']; ?>">
-                                                                        <?php echo $pack['name']; ?>
+                                                                <?php echo $pack['name']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -242,6 +320,7 @@ $packages = $PACKAGES->all();
         <script src="plugins/Timepicker/dist/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
         <!-- Optional -->
         <script src="plugins/Timepicker/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js" type="text/javascript"></script>
+        <script src="js/search-customer.js" type="text/javascript"></script>
         <script>
             $('#start_date').datetimepicker({
                 dateFormat: 'yy-mm-dd',

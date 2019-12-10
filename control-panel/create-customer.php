@@ -70,13 +70,12 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Full Name</label>
+                                            <label for="fullname">Full Name</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="fullname" required="true" placeholder="Full Name">
-                                                    <!--                                                    <label class="form-label">Full Name</label>-->
+                                                    <input type="text" id="fullname" class="form-control"  autocomplete="off" name="fullname" required="true" placeholder="Full Name">
                                                 </div>
                                             </div>
                                         </div>
@@ -84,13 +83,12 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Address</label>
+                                            <label for="address">Address</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="address" required="true" placeholder="Address">
-                                                    <!--                                                    <label class="form-label">Address</label>-->
+                                                    <input type="text" id="address" class="form-control"  autocomplete="off" name="address" required="true" placeholder="Address">
                                                 </div>
                                             </div>  
                                         </div>
@@ -98,13 +96,12 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">City</label>
+                                            <label for="city">City</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" placeholder="City" >
-                                                    <!--                                                    <label class="form-label">City</label>-->
+                                                    <input type="text" id="city" class="form-control"  autocomplete="off" name="city" required="true" placeholder="City" >
                                                 </div>
                                             </div>
                                         </div>    
@@ -112,26 +109,36 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">NIC</label>
+                                            <label for="nic">NIC</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="nic" class="form-control"  autocomplete="off" name="nic" required="true" placeholder="NIC">
-                                                    <!--                                                    <label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Mobile Number</label>
+                                            <label for="mobile_number">Mobile Number</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" required="true" placeholder="Mobile Number">
-                                                    <!--                                                    <label class="form-label">Mobile Number</label>-->
+                                                    <input type="text" id="mobile_number" class="form-control"  autocomplete="off" name="mobile_number" required="true" placeholder="Mobile Number">
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="email">Email Address</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="email" class="form-control"  autocomplete="off" name="email" required="true" placeholder="Email Address">
                                                 </div>
                                             </div>
                                         </div> 
@@ -168,33 +175,6 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script src="js/check-customer-nic.js" type="text/javascript"></script>
-        <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
-
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
-
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-
-                relative_urls: false
-
-            });
-
-
-        </script>
     </body>
 
 </html>

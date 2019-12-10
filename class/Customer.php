@@ -14,12 +14,13 @@ class Customer {
     public $address;
     public $nic;
     public $mobile_number;
+    public $email;
     public $city;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`title`, `name`, `address`, `nic`, `mobile_number`, `city` FROM `customer` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`title`, `name`, `address`, `nic`, `mobile_number`, `email`, `city` FROM `customer` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -31,6 +32,7 @@ class Customer {
             $this->address = $result['address'];
             $this->nic = $result['nic'];
             $this->mobile_number = $result['mobile_number'];
+            $this->email = $result['email'];
             $this->city = $result['city'];
 
             return $result;
@@ -39,12 +41,13 @@ class Customer {
 
     public function create() {
 
-        $query = "INSERT INTO `customer` (`title` ,`name`, `address`, `nic`, `mobile_number`, `city`) VALUES  ('"
+        $query = "INSERT INTO `customer` (`title` ,`name`, `address`, `nic`, `mobile_number`, `email`, `city`) VALUES  ('"
                 . $this->title . "','"
                 . $this->fullname . "','"
                 . $this->address . "', '"
                 . $this->nic . "', '"
                 . $this->mobile_number . "', '"
+                . $this->email . "', '"
                 . $this->city . "')";
 
         $db = new Database();
@@ -66,6 +69,7 @@ class Customer {
                 . "`address` ='" . $this->address . "', "
                 . "`nic` ='" . $this->nic . "', "
                 . "`mobile_number` ='" . $this->mobile_number . "', "
+                . "`email` ='" . $this->email . "', "
                 . "`city` ='" . $this->city . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
@@ -145,6 +149,50 @@ class Customer {
             return FALSE;
         } else {
             return TRUE;
+        }
+    }
+    
+    public function checkMobileNumber($mobile_number) {
+
+        $query = "SELECT `nic` FROM `customer` WHERE `mobile_number`= '" . $mobile_number . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    public function getCustomerByNIC($nic) {
+
+        $query = "SELECT * FROM `customer` WHERE `nic`= '" . $nic . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
+        }
+    }
+    
+    public function getCustomerByPhoneNo($mobile_number) {
+
+        $query = "SELECT * FROM `customer` WHERE `mobile_number`= '" . $mobile_number . "'";
+
+        $db = new Database();
+
+        $result = mysql_fetch_array($db->readQuery($query));
+
+        if (!$result) {
+            return FALSE;
+        } else {
+            return $result;
         }
     }
 

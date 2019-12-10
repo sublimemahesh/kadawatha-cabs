@@ -66,10 +66,10 @@ $CUSTOMER = new Customer($id);
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="title" name="title" required="TRUE">
-                                                        <option value=" <?php echo $CUSTOMER->title; ?> selected">   <?php echo $CUSTOMER->title; ?>    </option>
-                                                        <option value="Mrs">Mrs.</option>
-                                                        <option value="Miss">Miss.</option>
-                                                        <option value="Dr">Dr.</option>
+                                                        <option value="Mr" <?php if($CUSTOMER->title == 'Mr') echo 'selected'; ?>>Mr. </option>
+                                                        <option value="Mrs" <?php if($CUSTOMER->title == 'Mrs') echo 'selected'; ?>>Mrs.</option>
+                                                        <option value="Miss" <?php if($CUSTOMER->title == 'Miss') echo 'selected'; ?>>Miss.</option>
+                                                        <option value="Dr" <?php if($CUSTOMER->title == 'Dr') echo 'selected'; ?>>Dr.</option>
                                                         <?php
                                                         ?>
                                                     </select>
@@ -80,39 +80,36 @@ $CUSTOMER = new Customer($id);
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Full Name</label>
+                                            <label for="fullname">Full Name</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>" placeholder="Full Name">
-                                                    <!--<label class="form-label"> Full Name</label>-->
+                                                    <input type="text" id="fullname" class="form-control" autocomplete="off" name="fullname" value="<?php echo $CUSTOMER->fullname ?>" placeholder="Full Name">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Address</label>
+                                            <label for="address">Address</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>" placeholder="Address">
-                                                    <!--<label class="form-label">Address</label>-->
+                                                    <input type="text" id="address" class="form-control"  autocomplete="off" name="address" value="<?php echo $CUSTOMER->address; ?>" placeholder="Address">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>  
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">City</label>
+                                            <label for="city">City</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>" placeholder="City">
-                                                    <!--<label class="form-label">City</label>-->
+                                                    <input type="text" id="city" class="form-control"  autocomplete="off" name="city" value="<?php echo $CUSTOMER->city; ?>" placeholder="City">
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +122,6 @@ $CUSTOMER = new Customer($id);
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="nic" class="form-control"   autocomplete="off" name="nic" value="<?php echo $CUSTOMER->nic; ?>" placeholder="NIC">
-                                                    <!--<label class="form-label">NIC</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -137,19 +133,27 @@ $CUSTOMER = new Customer($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>" placeholder="Mobile Number">
-                                                    <!--<label class="form-label">Mobile Number</label>-->
+                                                    <input type="text" id="mobile_number" class="form-control"  autocomplete="off" name="mobile_number" value="<?php echo $CUSTOMER->mobile_number; ?>" placeholder="Mobile Number">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
-
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="email">Email Address</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="email" class="form-control"  autocomplete="off" name="email" required="true" value="<?php echo $CUSTOMER->email; ?>" placeholder="Email Address">
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $CUSTOMER->id; ?>" name="id"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" id="editCustomer" name="update" value="update">Save Changes</button>
-                                         <input type="hidden" name="update"/> 
+                                        <input type="hidden" name="update"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -169,37 +173,9 @@ $CUSTOMER = new Customer($id);
         <script src="plugins/node-waves/waves.js"></script>
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
-        <script src="js/add-new-ad.js" type="text/javascript"></script>
-        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="js/add-new-ad.js" type="text/javascript"></script> 
         <script src="plugins/sweetalert/sweetalert.min.js"></script>
         <script src="js/check-edit-customer-no.js" type="text/javascript"></script>
-        <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
-
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
-
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
-
-                relative_urls: false
-
-            });
-
-
-        </script>
     </body>
 
 </html>

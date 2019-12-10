@@ -20,9 +20,9 @@ $('#name').keyup(function (e) {
                             if (key < 20) {
                                 if (key === 0) {
 //                                    html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
-                                    html += '<li id="c' + this.id + '" class="name selected">' + this.name + '</li>';
+                                    html += '<li id="c' + this.id + '" class="name selected" nic="' + this.nic + '" email="' + this.email + '" address="' + this.address + '" phone-number="' + this.mobile_number + '">' + this.name + '</li>';
                                 } else {
-                                    html += '<li id="c' + this.id + '" class="name">' + this.name + '</li>';
+                                    html += '<li id="c' + this.id + '" class="name" nic="' + this.nic + '" email="' + this.email + '" address="' + this.address + '" phone-number="' + this.mobile_number + '">' + this.name + '</li>';
                                 }
 
                             }
@@ -40,9 +40,21 @@ $('#name-list-append').on('click', '.name', function () {
 
     var consigneeId = this.id;
     var consignee = $(this).text();
+    var nic = $(this).attr('nic');
+    var email = $(this).attr('email');
+    var address = $(this).attr('address');
+    var phoneNo = $(this).attr('phone-number');
     $('#name-id').val(consigneeId.replace("c", ""));
     $('#name').val(consignee);
     $('#name-list-append').empty();
+
+    $('#customer-not-found-section').empty();
+    $('.customer-nic').text(nic);
+    $('.customer-email').text(email);
+    $('.customer-phone-number').text(phoneNo);
+    $('.customer-address').text(address);
+    $('#customer-details-section').removeClass('hidden');
+
     $('#name').change(function () {
         $('#name-id').val("");
     });
@@ -50,8 +62,20 @@ $('#name-list-append').on('click', '.name', function () {
 $('#name-list-append').on('mouseover', '.name', function () {
     var consigneeId = this.id;
     var consignee = $(this).text();
+    var nic = $(this).attr('nic');
+    var email = $(this).attr('email');
+    var address = $(this).attr('address');
+    var phoneNo = $(this).attr('phone-number');
     $('#name-id').val(consigneeId.replace("c", ""));
     $('#name').val(consignee);
+
+    $('#customer-not-found-section').empty();
+    $('.customer-nic').text(nic);
+    $('.customer-email').text(email);
+    $('.customer-phone-number').text(phoneNo);
+    $('.customer-address').text(address);
+    $('#customer-details-section').removeClass('hidden');
+
     $('#name').change(function () {
         $('#name-id').val("");
     });
@@ -70,8 +94,18 @@ $('#name').keydown(function (e) {
         if (res) {
 //                var consigneeId = $('li.selected').attr('id');
             var consignee = $('li.selected').text();
+            var nic = $('li.selected').attr('nic');
+            var email = $('li.selected').attr('email');
+            var address = $('li.selected').attr('address');
+            var phoneNo = $('li.selected').attr('phone-number');
 //                $('#name-id').val(consigneeId.replace("c", ""));
             $('#name').val(consignee);
+            $('#customer-not-found-section').empty();
+            $('.customer-nic').text(nic);
+            $('.customer-email').text(email);
+            $('.customer-phone-number').text(phoneNo);
+            $('.customer-address').text(address);
+            $('#customer-details-section').removeClass('hidden');
         }
 
     } else if (e.keyCode === 38) {
@@ -82,8 +116,18 @@ $('#name').keydown(function (e) {
         if (res) {
 //                var consigneeId = $('li.selected').attr('id');
             var consignee = $('li.selected').text();
+            var nic = $('li.selected').attr('nic');
+            var email = $('li.selected').attr('email');
+            var address = $('li.selected').attr('address');
+            var phoneNo = $('li.selected').attr('phone-number');
 //                $('#name-id').val(consigneeId.replace("c", ""));
             $('#name').val(consignee);
+            $('#customer-not-found-section').empty();
+            $('.customer-nic').text(nic);
+            $('.customer-email').text(email);
+            $('.customer-phone-number').text(phoneNo);
+            $('.customer-address').text(address);
+            $('#customer-details-section').removeClass('hidden');
         }
 
     } else if (e.which === 13) {
@@ -95,7 +139,19 @@ $('#name').keydown(function (e) {
         $('#name').attr('attempt', 1);
 
         var consigneename = $('li.selected').text();
+        var nic = $('li.selected').attr('nic');
+        var email = $('li.selected').attr('email');
+        var address = $('li.selected').attr('address');
+        var phoneNo = $('li.selected').attr('phone-number');
+
         $('#name').val(consigneename);
+
+        $('#customer-not-found-section').empty();
+        $('.customer-nic').text(nic);
+        $('.customer-email').text(email);
+        $('.customer-phone-number').text(phoneNo);
+        $('.customer-address').text(address);
+        $('#customer-details-section').removeClass('hidden');
 
         $('#name-list-append').empty();
 

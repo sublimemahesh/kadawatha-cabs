@@ -1,13 +1,27 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+
+$status1 = '';
+if (isset($_GET['status'])) {
+    $status1 = $_GET['status'];
+    if ($status1 == 1) {
+        $status = 'pending';
+    } elseif ($status1 == 2) {
+        $status = 'confirmed';
+    } elseif ($status1 == 3) {
+        $status = 'completed';
+    } elseif ($status1 == 4) {
+        $status = 'canceled';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" >
-        <title>Manage Bookings || WEB SITE CONTROL PANEL </title>
+        <title>Manage <?php echo ucfirst($status); ?> Bookings || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon" >
         <!-- Google Fonts -->
@@ -44,7 +58,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage Bookings
+                                    Manage <?php echo ucfirst($status); ?> Bookings
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -80,7 +94,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (Booking::all() as $key => $booking) {
+                                            foreach (Booking::getBookingsByStatus($status) as $key => $booking) {
                                                 $key++;
                                                 $CUSTOMERNAME = new Customer($booking['customer']);
                                                 ?>
@@ -93,10 +107,43 @@ include_once(dirname(__FILE__) . '/auth.php');
 
                                                     <td> 
                                                         <a href="edit-booking.php?id=<?php echo $booking['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Booking"></button></a>
-                                                        |
-                                                        <a href="#"  class="delete-booking" data-id="<?php echo $booking['id']; ?>">
-                                                            <button class="glyphicon glyphicon-trash delete-btn delete-booking" title="Delete Booking" data-id="<?php echo $booking['id']; ?>"></button>
-                                                        </a>
+
+                                                        <?php
+                                                        if ($booking['status'] == 'pending') {
+                                                            ?>
+                                                            |
+                                                            <a href="#"  class="mark-as-confirmed" data-id="<?php echo $booking['id']; ?>">
+                                                                <button class="glyphicon glyphicon-ok confirmed-btn" title="Mark as Confirmed"></button>
+                                                            </a>
+                                                            |
+                                                            <a href="#"  class="cancel-booking" data-id="<?php echo $booking['id']; ?>">
+                                                                <button class="glyphicon glyphicon-remove-circle arrange-btn" title="Mark as Canceled"></button>
+                                                            </a>
+                                                            <?php
+                                                        } elseif ($booking['status'] == 'confirmed') {
+                                                            ?>
+                                                            |
+                                                            <a href="#"  class="mark-as-completed" data-id="<?php echo $booking['id']; ?>">
+                                                                <button class="glyphicon glyphicon-ok confirmed-btn" title="Mark as Completed"></button>
+                                                            </a>
+                                                            |
+                                                            <a href="#"  class="cancel-booking" data-id="<?php echo $booking['id']; ?>">
+                                                                <button class="glyphicon glyphicon-remove-circle arrange-btn" title="Mark as Canceled"></button>
+                                                            </a>
+                                                            <?php
+                                                        } elseif ($booking['status'] == 'completed') {
+                                                            ?>
+
+                                                            <?php
+                                                        } elseif ($booking['status'] == 'canceled') {
+                                                            ?>
+                                                            <a href="#"  class="delete-booking" data-id="<?php echo $booking['id']; ?>">
+                                                                <button class="glyphicon glyphicon-trash delete-btn delete-booking" title="Delete Booking" data-id="<?php echo $booking['id']; ?>"></button>
+                                                            </a>
+                                                            <?php
+                                                        }
+                                                        ?>
+
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -139,6 +186,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <!-- Demo Js -->
         <script src="js/demo.js"></script>
         <script src="delete/js/booking.js" type="text/javascript"></script>
+        <script src="js/booking.js" type="text/javascript"></script>
     </body>
 </html>
 

@@ -12,6 +12,7 @@ if (isset($_POST['create'])) {
     $CUSTOMER->nic = $_POST['nic'];
     $CUSTOMER->mobile_number = $_POST['mobile_number'];
     $CUSTOMER->city = $_POST['city'];
+    $CUSTOMER->email = $_POST['email'];
 
 
     $VALID->check($CUSTOMER, [
@@ -20,7 +21,9 @@ if (isset($_POST['create'])) {
         'address' => ['required' => TRUE],
         'nic' => ['required' => TRUE],
         'mobile_number' => ['required' => TRUE],
-        'city' => ['required' => TRUE]
+        'city' => ['required' => TRUE],
+        'email' => ['required' => TRUE]
+        
     ]);
 
     if ($VALID->passed()) {
@@ -57,6 +60,7 @@ if (isset($_POST['update'])) {
     $CUSTOMER->nic = $_POST['nic'];
     $CUSTOMER->mobile_number = $_POST['mobile_number'];
     $CUSTOMER->city = $_POST['city'];
+    $CUSTOMER->email = $_POST['email'];
 
     $VALID = new Validator();
     $VALID->check($CUSTOMER, [
@@ -65,7 +69,8 @@ if (isset($_POST['update'])) {
         'address' => ['required' => TRUE],
         'nic' => ['required' => TRUE],
         'mobile_number' => ['required' => TRUE],
-        'city' => ['required' => TRUE]
+        'city' => ['required' => TRUE],
+        'email' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
@@ -89,14 +94,3 @@ if (isset($_POST['update'])) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
-
-//if (isset($_POST['save-data'])) {
-//
-//    foreach ($_POST['sort'] as $key => $img) {
-//        $key = $key + 1;
-//
-//        $USER = Comments::arrange($key, $img);
-//
-//        header('Location: ' . $_SERVER['HTTP_REFERER']);
-//    }
-//}
