@@ -168,7 +168,7 @@ class Customer {
     }
     public function getCustomerByNIC($nic) {
 
-        $query = "SELECT * FROM `customer` WHERE `nic`= '" . $nic . "'";
+        $query = "SELECT * FROM `customer` WHERE `nic` LIKE '" . $nic . "'";
 
         $db = new Database();
 

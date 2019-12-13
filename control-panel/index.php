@@ -2,13 +2,10 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 
-$COUNT_VEHICLES = count(Vehicle::ALL());
-$COUNT_DRIVERS = count(Driver::all());
-$COUNT_PACKAGES= count(Packages::all());
-$COUNT_BOOKINGS = count(Booking::all());
-//$SLIDER_IMAGES = count(Slider::all());
-//$COUNT_TOUR = count(TourPackage::all());
-//$COUNT_GALLERY = count(AlbumPhoto::getAlbumPhotosById(6));
+$PENDING_BOOKINGS = count(Booking::getBookingsByStatus('pending'));
+$CONFIRMED_BOOKINGS = count(Booking::getTodayBookingsByStatus('confirmed'));
+$COMPLETED_BOOKINGS = count(Booking::getTodayBookingsByStatus('completed'));
+$CANCELED_BOOKINGS = count(Booking::getTodayBookingsByStatus('canceled'));
 ?> 
 <!DOCTYPE html>
 <html> 
@@ -64,55 +61,54 @@ $COUNT_BOOKINGS = count(Booking::all());
 
                 <!-- Widgets -->
                 <div class="row clearfix">
-        
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box bg-pink hover-expand-effect">
-                                <div class="icon">
-                                    <i class="material-icons">commute</i>
-                                </div>
-                                <div class="content">
-                                    <div class="text">VEHICLES</div>
-                                    <div class="number count-to" data-from="0" data-to="<?php echo $COUNT_VEHICLES; ?>" data-speed="1000" data-fresh-interval="20"></div>
-                                </div>
-                            </div>
-                        </div>
-                  
-          
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box bg-cyan hover-expand-effect">
-                                <div class="icon">
-                                    <i class="material-icons">recent_actors</i>
-                                </div>
-                                <div class="content">
-                                    <div class="text">DRIVERS</div>
-                                    <div class="number count-to" data-from="0" data-to="<?php echo $COUNT_DRIVERS; ?>" data-speed="1000" data-fresh-interval="20"></div>
-                                </div>
-                            </div>
-                        </div>
-                
-                 
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box bg-light-green hover-expand-effect">
-                                <div class="icon">
-                                    <i class="material-icons">chrome_reader_mode</i>
-                                </div>
-                                <div class="content">
-                                    <div class="text">PACKAGES</div>
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_PACKAGES; ?>" data-speed="1500" data-fresh-interval="1"></div>
 
-                                </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">library_books</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">PENDING BOOKINGS <span>(All)</span></div>
+                                <div class="number count-to" data-from="0" data-to="<?php echo $PENDING_BOOKINGS; ?>" data-speed="1000" data-fresh-interval="20"></div>
                             </div>
                         </div>
-               
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-cyan hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">library_books</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">CONFIRMED BOOKINGS <span>(Today)</span></div>
+                                <div class="number count-to" data-from="0" data-to="<?php echo $CONFIRMED_BOOKINGS; ?>" data-speed="1000" data-fresh-interval="20"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-light-green hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">library_books</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">COMPLETED BOOKINGS <span>(Today)</span></div>
+                                <div class="number count-to" data-from="0" data-to=" <?php echo $COMPLETED_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box bg-orange hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">library_books</i>
                             </div>
                             <div class="content">
-                                <div class="text">BOOKINGS</div>
-                                <!--<div class="number count-to" data-from="0" data-to="0" data-speed="1000" data-fresh-interval="20"></div>-->
-                                     <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                <div class="text">CANCELED BOOKINGS <span>(Today)</span></div>
+                                <div class="number count-to" data-from="0" data-to=" <?php echo $CANCELED_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>
                             </div>
                         </div>
                     </div>
@@ -121,18 +117,16 @@ $COUNT_BOOKINGS = count(Booking::all());
                         <div class="card">
                             <div class="header bg-blue-grey">
                                 <h2>
-                                    VEHICLES <small>   
-
-                                    </small>
+                                    BOOKINGS
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_VEHICLES; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <!--<div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_VEHICLES; ?>" data-speed="1500" data-fresh-interval="1"></div>-->
                                 </ul>
                             </div>
                             <div class="body">
                                 <div class="list-group">
-                                    <a href="create-vehicle.php"><button type="button" class="list-group-item">Add new vehicles</button></a>
-                                    <a href="manage-vehicle.php"><button type="button" class="list-group-item">Manage vehicles</button></a>
+                                    <a href="create-booking.php"><button type="button" class="list-group-item">Add new</button></a>
+                                    <a href="manage-all-bookings.php"><button type="button" class="list-group-item">Manage All</button></a>
                                 </div>
                             </div>
                         </div>
@@ -141,17 +135,35 @@ $COUNT_BOOKINGS = count(Booking::all());
                         <div class="card">
                             <div class="header bg-blue-grey">
                                 <h2>
-                                    DRIVERS
-    <!--                                    <small>  </small>-->
+                                    REPORTS
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_DRIVERS; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <!--<div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_DRIVERS; ?>" data-speed="1500" data-fresh-interval="1"></div>-->
                                 </ul>
                             </div>
                             <div class="body">
                                 <div class="list-group">
-                                    <a href="create-driver.php"><button type="button" class="list-group-item">Add new drivers</button></a>
-                                    <a href="manage-driver.php"><button type="button" class="list-group-item">Manage drivers</button></a>
+                                    <a href="sales-report.php"><button type="button" class="list-group-item">Sales Report</button></a>
+                                    <a href="commission-report.php"><button type="button" class="list-group-item">Commission Report</button></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="card">
+                            <div class="header bg-blue-grey">
+                                <h2>
+                                    VEHICLES
+                                </h2>
+                                <ul class="header-dropdown m-r--5">
+                                    <!--<div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_PACKAGES; ?>" data-speed="1500" data-fresh-interval="1"></div>-->
+                                </ul>
+                            </div>
+                            <div class="body">
+                                <div class="list-group">
+                                    <a href="create-vehicle.php"><button type="button" class="list-group-item">Add new</button></a>
+                                    <a href="manage-vehicle.php"><button type="button" class="list-group-item">Manage All</button></a>
 
                                 </div>
                             </div>
@@ -162,36 +174,16 @@ $COUNT_BOOKINGS = count(Booking::all());
                             <div class="header bg-blue-grey">
                                 <h2>
                                     PACKAGES
-    <!--                                    <small></small>-->
                                 </h2>
                                 <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_PACKAGES; ?>" data-speed="1500" data-fresh-interval="1"></div>
-                                </ul>
-                            </div>
-                            <div class="body">
-                                <div class="list-group">
-                                    <a href="create-packages.php"><button type="button" class="list-group-item">Add new packages</button></a>
-                                    <a href="manage-packages.php"><button type="button" class="list-group-item">Manage packages</button></a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="card">
-                            <div class="header bg-blue-grey">
-                                <h2>
-                                    BOOKINGS
-                                </h2>
-                                <ul class="header-dropdown m-r--5">
-                                    <div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>
+                                    <!--<div class="number count-to" data-from="0" data-to=" <?php echo $COUNT_BOOKINGS; ?>" data-speed="1500" data-fresh-interval="1"></div>-->
                                 </ul>
                             </div>
                             <div class="body">
 
                                 <div class="list-group">
-                                    <a href="create-booking.php"><button type="button" class="list-group-item">Add new bookings</button></a>
-                                    <a href="manage-booking.php"><button type="button" class="list-group-item">Manage bookings</button></a>
+                                    <a href="create-packages.php"><button type="button" class="list-group-item">Add new</button></a>
+                                    <a href="manage-packages.php"><button type="button" class="list-group-item">Manage All</button></a>
                                 </div>
                             </div>
                         </div>

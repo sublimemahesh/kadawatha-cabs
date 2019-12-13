@@ -114,9 +114,29 @@ class Booking {
 
         return $array_res;
     }
+
     public function getBookingsByStatus($status) {
 
         $query = "SELECT * FROM `booking` WHERE `status` LIKE '$status'";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
+    }
+    
+    public function getTodayBookingsByStatus($status) {
+
+        date_default_timezone_set('Asia/Colombo');
+        $today = date('Y-m-d');
+        
+        $query = "SELECT * FROM `booking` WHERE `status` LIKE '$status' AND `" . $status ."_at` = '$today'";
+
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -338,9 +358,11 @@ class Booking {
     }
 
     public function markAsConfirmed() {
-
+        date_default_timezone_set('Asia/Colombo');
+        $confirmedAt = date('Y-m-d');
         $query = "UPDATE  `booking` SET "
-                . "`status` = 'confirmed'"
+                . "`status` = 'confirmed', "
+                . "`confirmed_at` = '$confirmedAt' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -351,10 +373,15 @@ class Booking {
             return FALSE;
         }
     }
+
     public function markAsCompleted() {
 
+        date_default_timezone_set('Asia/Colombo');
+        $completedAt = date('Y-m-d');
+
         $query = "UPDATE  `booking` SET "
-                . "`status` = 'completed'"
+                . "`status` = 'completed', "
+                . "`completed_at` = '$completedAt' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -365,10 +392,15 @@ class Booking {
             return FALSE;
         }
     }
+
     public function cancelBooking() {
 
+        date_default_timezone_set('Asia/Colombo');
+        $canceledAt = date('Y-m-d');
+
         $query = "UPDATE  `booking` SET "
-                . "`status` = 'canceled'"
+                . "`status` = 'canceled', "
+                . "`canceled_at` = '$canceledAt' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

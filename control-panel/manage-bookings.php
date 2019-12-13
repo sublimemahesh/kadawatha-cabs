@@ -1,7 +1,7 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
+ini_set('display_errors', 1);
 $status1 = '';
 if (isset($_GET['status'])) {
     $status1 = $_GET['status'];
