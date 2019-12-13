@@ -75,7 +75,7 @@ $(document).ready(function () {
                     html += '<div class="panel panel-info customer-not-found">';
                     html += '<div class="panel-body">';
                     html += '<div class="col-md-12">';
-                    html += '<h6>This NIC is not exist in the system</h6>';
+                    html += '<h6>This phone number is not exist in the system</h6>';
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';
