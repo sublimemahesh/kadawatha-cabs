@@ -63,13 +63,13 @@ $packages = $PACKAGES->all();
                         <div class="card">
                             <div class="header">
                                 <h2>Create Booking </h2>
-<!--                                <ul class="header-dropdown">
+                                <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-all-bookings.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
-                                </ul>-->
+                                </ul>
                             </div>
                             <?php
                             include './new-customer-model.php';

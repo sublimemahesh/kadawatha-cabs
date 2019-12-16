@@ -61,7 +61,7 @@ $packages = $PACKAGES->all();
                                 <h2>Edit Booking </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-booking.php">
+                                        <a href="manage-all-bookings.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
@@ -158,7 +158,7 @@ $packages = $PACKAGES->all();
                                                         <option value=""> -- Please Select Vehicle -- </option>
                                                         <?php foreach (Vehicle::all() as $vehicle) {
                                                             ?>
-                                                            <option value="<?php echo $vehicle['id']; ?>" <?php
+                                                            <option value="<?php echo $vehicle['id']; ?>" driver="<?php echo $vehicle['driver']; ?>" <?php
                                                             if ($BOOKING->vehicle === $vehicle['id']) {
                                                                 echo 'selected';
                                                             }
