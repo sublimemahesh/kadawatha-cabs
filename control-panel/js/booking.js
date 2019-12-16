@@ -21,7 +21,7 @@ $(document).ready(function () {
                 html += '<select class="form-control" autocomplete="off" type="text" autocomplete="off" name="vehicle" id="vehicle" required="TRUE">';
                 html += '<option value=""> -- Please Select Vehicle -- </option>';
                 $.each(jsonStr, function (i, data) {
-                    html += '<option value="' + data.id + '">';
+                    html += '<option value="' + data.id + '" driver="' + data.driver + '">';
                     html += data.vehicle_name;
                     html += '</option>';
                 });
@@ -40,12 +40,13 @@ $(document).ready(function () {
     });
     $('#vehicle-bar').on('change', '#vehicle', function () {
         var vehicle = $(this).val();
+        var driver = $(this).find(':selected').attr('driver');
         $.ajax({
             url: "post-and-get/ajax/booking.php",
             type: "POST",
             data: {
                 vehicle: vehicle,
-                action: 'GETDRIVERBYVEHICLE'
+                action: 'GETALLDRIVERS'
             },
             dataType: "JSON",
             success: function (jsonStr) {
@@ -56,8 +57,18 @@ $(document).ready(function () {
                 html += '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">';
                 html += '<div class="form-group form-float">';
                 html += '<div class="form-line">';
-                html += '<input type="text"  class="form-control input-append"  placeholder="Driver Name" value="' + jsonStr.name + '" readonly>';
-                html += '<input type="hidden" id="driver"  name="driver"  value="' + jsonStr.id + '" readonly>';
+                html += '<select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="driver" name="driver">';
+                html += '<option value=""> -- Please Select Driver -- </option>';
+                $.each(jsonStr, function (i, data) {
+                    var selected = '';
+                    if (data.id == driver) {
+                        selected = 'selected';
+                    }
+                    html += '<option value="' + data.id + '" ' + selected + '>';
+                    html += data.name;
+                    html += '</option>';
+                });
+                html += '</select>';
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
