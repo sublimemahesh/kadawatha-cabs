@@ -18,11 +18,12 @@ class Driver {
     public $address;
     public $city;
     public $type;
+    public $vehicleType;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`, `type` FROM `driver` WHERE `id`=" . $id;
+            $query = "SELECT `id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`, `type`, `vehicle_type`  FROM `driver` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -38,6 +39,7 @@ class Driver {
             $this->address = $result['address'];
             $this->city = $result['city'];
             $this->type = $result['type'];
+            $this->vehicleType = $result['vehicle_type'];
 
             return $result;
         }
@@ -45,7 +47,7 @@ class Driver {
 
     public function create() {
 
-        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`, `type`) VALUES  ('"
+        $query = "INSERT INTO `driver` (`id`, `name`, `licence_number`, `licence_image_front`,`licence_image_back`, `nic`, `phone_numbers`, `address`, `city`, `type`, `vehicle_type`) VALUES  ('"
                 . $this->id . "','"
                 . $this->name . "','"
                 . $this->licence_number . "', '"
@@ -55,7 +57,8 @@ class Driver {
                 . $this->phone_numbers . "', '"
                 . $this->address . "', '"
                 . $this->city . "', '"
-                . $this->type . "' 
+                . $this->type . "', '"
+                . $this->vehicleType . "' 
                 )";
 
         $db = new Database();
@@ -80,7 +83,8 @@ class Driver {
                 . "`phone_numbers` ='" . $this->phone_numbers . "', "
                 . "`address` ='" . $this->address . "', "
                 . "`city` ='" . $this->city . "', "
-                . "`type` ='" . $this->type . "' "
+                . "`type` ='" . $this->type . "', "
+                . "`vehicle_type` ='" . $this->vehicleType . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();
@@ -159,6 +163,20 @@ class Driver {
         } else {
             return TRUE;
         }
+    }
+    public function getDriversByVehicleType($vtype) {
+       
+        $query = "SELECT * FROM `driver` WHERE `vehicle_type`= '" . $vtype . "'";
+
+        $db = new Database();
+        $result = $db->readQuery($query);
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            array_push($array_res, $row);
+        }
+
+        return $array_res;
     }
      
 }

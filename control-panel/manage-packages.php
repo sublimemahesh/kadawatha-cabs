@@ -63,9 +63,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Package Name</th>
                                                 <th>Package Code</th>
-                                                <th>Price (Rs)</th>
-                                                <th>Time (h)</th>
-                                                <th>Distance (km)</th>
+                                                <th>Vehicle Type</th>
+                                                <th>Category</th>
+                                                <th>Type</th>
                                                 <th>Option</th>
 
                                             </tr>
@@ -75,24 +75,27 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Package Name</th>
                                                 <th>Package Code</th>
-                                                <th>Price (Rs)</th>
-                                                <th>Time (h)</th>
-                                                <th>Distance (km)</th>
+                                                <th>Vehicle Type</th>
+                                                <th>Category</th>
+                                                <th>Type</th>
                                                 <th>Option</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php
                                             foreach (Packages::all() as $key => $packages) {
+                                                $VTYPE = new VehicleType($packages['vehicle_type']);
+                                                $CATEGORY = new VehicleCategory($packages['category']);
+                                                $TYPE = new PackageType($packages['package_type']);
                                                 $key++;
                                                 ?>
                                                 <tr id="row_<?php echo $packages['id']; ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $packages['name']; ?></td>
                                                     <td><?php echo $packages['code']; ?></td>
-                                                    <td><?php echo $packages['price']; ?></td>
-                                                    <td><?php echo $packages['time']; ?></td>
-                                                    <td><?php echo $packages['distance']; ?></td>
+                                                    <td><?php echo $VTYPE->type; ?></td>
+                                                    <td><?php echo $CATEGORY->name; ?></td>
+                                                    <td><?php echo $TYPE->name; ?></td>
 
                                                     <td> 
                                                         <a href="edit-packages.php?id=<?php echo $packages['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Package"></button></a>

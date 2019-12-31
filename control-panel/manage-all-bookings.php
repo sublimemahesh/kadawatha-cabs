@@ -1,6 +1,12 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+$date = '';
+if (isset($_GET['date'])) {
+    $bookings = Booking::getBookingsByStartDate($_GET['date']);
+} else {
+    $bookings = Booking::all();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,7 +67,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Reference No</th>
                                                 <th>Customer</th>
+                                                <th>NIC</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Total Cost (Rs)</th>
@@ -72,7 +80,9 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Reference No</th>
                                                 <th>Customer</th>
+                                                <th>NIC</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Total Cost (Rs)</th>
@@ -82,13 +92,15 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (Booking::all() as $key => $booking) {
+                                            foreach ($bookings as $key => $booking) {
                                                 $key++;
-                                                $CUSTOMERNAME = new Customer($booking['customer']);
+                                                $CUSTOMER = new Customer($booking['customer']);
                                                 ?>
                                                 <tr id="row_<?php echo $booking['id']; ?>">
-                                                    <td><?php echo $key ?></td>
-                                                    <td><?php echo $CUSTOMERNAME->fullname ?></td>
+                                                    <td><?php echo $key; ?></td>
+                                                    <td><?php echo $booking['reference_no']; ?></td>
+                                                    <td><?php echo $CUSTOMER->fullname; ?></td>
+                                                    <td><?php echo $CUSTOMER->nic; ?></td>
                                                     <td><?php echo $booking['start_date']; ?></td>
                                                     <td><?php echo $booking['end_date']; ?></td>
                                                     <td><?php echo $booking['total_cost']; ?></td>

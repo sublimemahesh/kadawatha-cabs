@@ -63,7 +63,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Type</th>
-                                                <th>licence_number </th>
+                                                <th>Vehicle Type</th>
+                                                <th>license Number </th>
                                                 <th>NIC </th>
                                                 <th>City </th>
                                                 <th>Options</th>
@@ -74,7 +75,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Type</th>
-                                                <th>licence_number </th>
+                                                <th>Vehicle Type</th>
+                                                <th>License Number </th>
                                                 <th>NIC </th>
                                                 <th>City </th>
                                                 <th>Options</th>
@@ -83,6 +85,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         <tbody>
                                             <?php
                                             foreach (Driver::all() as $key => $driver) {
+                                                $VTYPE = new VehicleType($driver['vehicle_type']);
                                                 $key++;
                                                 ?>
                                                 <tr id="row_<?php echo $driver['id']; ?>">
@@ -98,6 +101,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         }
                                                         ?>
                                                     </td>
+                                                    <td><?php echo $VTYPE->type; ?></td>
                                                     <td><?php echo $driver['licence_number']; ?></td>
                                                     <td><?php echo $driver['nic']; ?></td>
                                                     <td><?php echo $driver['city']; ?></td>

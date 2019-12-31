@@ -44,8 +44,8 @@ $(document).ready(function () {
 
                     } else {
                         html = 'No any bookings in database';
-                        $("#balance tbody").empty();
-                        $("#balance tbody").append(html);
+                        $("#daily-report tbody").empty();
+                        $("#daily-report tbody").append(html);
                     }
                 }
 
@@ -93,8 +93,8 @@ $(document).ready(function () {
 
                 } else {
                     html = 'No any bookings in database';
-                    $("#balance tbody").empty();
-                    $("#balance tbody").append(html);
+                    $("#daily-report tbody").empty();
+                    $("#daily-report tbody").append(html);
                 }
             }
 
@@ -140,8 +140,8 @@ $(document).ready(function () {
 
                 } else {
                     html = 'No any bookings in database';
-                    $("#balance tbody").empty();
-                    $("#balance tbody").append(html);
+                    $("#daily-report tbody").empty();
+                    $("#daily-report tbody").append(html);
                 }
             }
 

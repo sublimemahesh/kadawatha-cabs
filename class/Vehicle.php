@@ -128,21 +128,6 @@ class Vehicle {
 
         return $db->readQuery($query);
     }
-
-    public function getVehicleTypeById($vehicle_type) {
-
-        $query = "SELECT * FROM `vehicle` WHERE `vehicle_type`= $vehicle_type ";
-
-        $db = new Database();
-
-        $result = $db->readQuery($query);
-        $array_res = array();
-
-        while ($row = mysql_fetch_array($result)) {
-            array_push($array_res, $row);
-        }
-        return $array_res;
-    }
     public function allNamesByKeyword($keyword) {
 
         $query = "SELECT * FROM `vehicle` WHERE `vehicle_name` LIKE '{$keyword}%'";

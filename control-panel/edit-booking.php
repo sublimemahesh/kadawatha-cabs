@@ -58,7 +58,7 @@ $packages = $PACKAGES->all();
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Edit Booking </h2>
+                                <h2>Edit Booking - <?php echo $BOOKING->referenceNo; ?></h2>
                                 <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-all-bookings.php">
@@ -97,6 +97,78 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="created_at">Created At</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control input-append"  autocomplete="off" value="<?php echo $BOOKING->created_at; ?>" disabled="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    if ($BOOKING->status === 'confirmed') {
+                                        ?>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="confirmed_at">Confirmed At</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control input-append"  autocomplete="off" value="<?php echo $BOOKING->confirmedAt; ?>" disabled="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } elseif ($BOOKING->status === 'completed') {
+                                        ?>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="confirmed_at">Confirmed At</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control input-append"  autocomplete="off" value="<?php echo $BOOKING->confirmedAt; ?>" disabled="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="completed_at">Completed At</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control input-append"  autocomplete="off" value="<?php echo $BOOKING->completedAt; ?>" disabled="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } elseif ($BOOKING->status === 'canceled') {
+                                        ?>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="canceled_at">Canceled At</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control input-append"  autocomplete="off" value="<?php echo $BOOKING->canceledAt; ?>" disabled="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -105,17 +177,71 @@ $packages = $PACKAGES->all();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="start_date" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date & Time" value="<?php echo $BOOKING->start_date ?>">
+                                                    <input type="text" id="start_date" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date" value="<?php echo $BOOKING->start_date; ?>">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">End Date</label>
+                                            <label for="start_time">Start Time</label>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="end_date" class="form-control input-append date form_datetime"  autocomplete="off" name="end_date" required="true" placeholder="End Date & Time" value="<?php echo $BOOKING->end_date ?>">
+                                                    <input type="text" id="start_time" class="form-control input-append"  autocomplete="off" name="start_time" required="true" placeholder="Strat Time" value="<?php echo $BOOKING->start_time; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="end_date">End Date</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="end_date" class="form-control input-append date"  autocomplete="off" name="end_date" required="true" placeholder="End Date" value="<?php echo $BOOKING->end_date; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="end_time">End Time</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="end_time" class="form-control input-append date form_datetime"  autocomplete="off" name="end_time" required="true" placeholder="End Time" value="<?php echo $BOOKING->end_time; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_days">No of Days</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_days" class="form-control input-append"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days" value="<?php echo $BOOKING->no_of_days; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="start_from">Start From</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="start_from" class="form-control input-append"  autocomplete="off" name="start_from" required="true" placeholder="Start From"  value="<?php echo $BOOKING->start_from; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="end_from">End From</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="end_from" class="form-control input-append"  autocomplete="off" name="end_from" required="true" placeholder="End From" value="<?php echo $BOOKING->end_from; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -156,7 +282,7 @@ $packages = $PACKAGES->all();
                                                 <div class="form-line">
                                                     <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle" name="vehicle" required="TRUE">
                                                         <option value=""> -- Please Select Vehicle -- </option>
-                                                        <?php foreach (Vehicle::all() as $vehicle) {
+                                                        <?php foreach (Vehicle::GetVehiclesByType($BOOKING->vehicleType) as $vehicle) {
                                                             ?>
                                                             <option value="<?php echo $vehicle['id']; ?>" driver="<?php echo $vehicle['driver']; ?>" <?php
                                                             if ($BOOKING->vehicle === $vehicle['id']) {
@@ -199,7 +325,105 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row clearfix">
+
+
+                                    <?php
+                                    if ($BOOKING->package != 0) {
+                                        $PACKAGE = new Packages($BOOKING->package);
+                                        $CATEGORY = new VehicleCategory($PACKAGE->category);
+                                        $SUBCATEGORY = new VehicleSubCategory($PACKAGE->subCategory);
+                                        $TYPE = new PackageType($PACKAGE->packageType);
+                                        ?>
+                                        <div class="row clearfix" id="category-bar">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="category">Vehicle Category</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <select class="form-control place-select1 show-tick" id="category" name="category" required="TRUE">
+                                                            <option value=""> -- Please Select Category -- </option>
+                                                            <?php foreach (VehicleCategory::GetCategoryByType($BOOKING->vehicleType) as $category) {
+                                                                ?>
+                                                                <option value="<?php echo $category['id']; ?>" <?php
+                                                                if ($PACKAGE->category === $category['id']) {
+                                                                    echo 'selected';
+                                                                }
+                                                                ?>>
+                                                                            <?php echo $category['name']; ?>
+                                                                </option>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Vehicle Sub Category-->
+                                        <?php
+                                        if ($PACKAGE->subCategory != 0) {
+                                            ?>
+                                            <div class="row clearfix" id="subcategory-bar">
+                                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                    <label for="subcategory">Sub Category</label>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                    <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                            <select class="form-control place-select1 show-tick" id="subcategory" name="subcategory">
+                                                                <option value=""> -- Please Select Sub Category -- </option>
+                                                                <?php
+                                                                foreach (VehicleSubCategory::GetSubCategoryByCategory($PACKAGE->category) as $subcategory) {
+                                                                    ?>
+                                                                    <option value="<?php echo $subcategory['id']; ?>" <?php
+                                                                    if ($PACKAGE->subCategory === $subcategory['id']) {
+                                                                        echo 'selected';
+                                                                    }
+                                                                    ?>>
+                                                                                <?php echo $subcategory['name']; ?>
+                                                                    </option>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+                                        <div class="row clearfix" >
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="package_type">Type</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <select class="form-control place-select1 show-tick" id="package_type" name="package_type">
+                                                            <option value=""> -- Please Select Package Type -- </option>
+                                                            <?php foreach (PackageType::all() as $pack) {
+                                                                ?>
+                                                                <option value="<?php echo $pack['id']; ?>" <?php
+                                                                if ($PACKAGE->packageType === $pack['id']) {
+                                                                    echo 'selected';
+                                                                }
+                                                                ?>>
+                                                                            <?php echo $pack['name']; ?>
+                                                                </option>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <div class="row clearfix" id="package-bar">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Package</label>
                                         </div>
@@ -227,7 +451,7 @@ $packages = $PACKAGES->all();
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Total Cost</label>
+                                            <label for="total_cost">Total Amount (Rs)</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
@@ -238,7 +462,60 @@ $packages = $PACKAGES->all();
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_adults">No of Adults</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_adults" class="form-control input-append"  autocomplete="off" name="no_of_adults" required="true" placeholder="No of Adults" min="0" value="<?php echo $BOOKING->no_of_adults; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_children">No of Children</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_children" class="form-control input-append"  autocomplete="off" name="no_of_children" required="true" placeholder="No of Children" min="0" value="<?php echo $BOOKING->no_of_children; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix" id="seating-capacity-bar">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="seating_capacity">Seating Capacity</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="seating_capacity" class="form-control input-append"  autocomplete="off" name="seating_capacity" required="true" placeholder="Seating Capacity" min="0" value="<?php echo $BOOKING->seating_capacity; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_hard_baggage">No of Hard Baggage</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_hard_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hard_baggage" required="true" placeholder="No of Hard Baggage" min="0" value="<?php echo $BOOKING->no_of_hard_baggage; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_hand_baggage">No of Hand Baggage</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_hand_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hand_baggage" required="true" placeholder="No of Hand Baggage" min="0" value="<?php echo $BOOKING->no_of_hand_baggage; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Comment </label>
@@ -259,18 +536,57 @@ $packages = $PACKAGES->all();
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
-                                                <input class="filled-in chk-col-pink" type="checkbox" <?php
-                                                if ($BOOKING->isActive == 1) {
-                                                    echo 'checked';
+                                                <?php
+                                                if ($BOOKING->status === 'pending') {
+                                                    ?>
+                                                    <input class="filled-in chk-col-pink" type="checkbox" name="confirmed" value="1" id="rememberme" />
+                                                    <label for="rememberme">Confirmed</label>
+                                                    <?php
+                                                } elseif ($BOOKING->status === 'confirmed') {
+                                                    ?>
+                                                    <input class="filled-in chk-col-pink" type="checkbox" name="completed" value="1" id="rememberme" />
+                                                    <label for="rememberme">Completed</label>
+                                                    <?php
                                                 }
-                                                ?> name="active" value="1" id="rememberme" />
-                                                <label for="rememberme">Activate</label>
+                                                ?>
+
                                             </div>
                                         </div>
                                     </div>
-
+                                    <?php
+                                    if ($BOOKING->status === 'completed') {
+                                        ?>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">Feedback Comment</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <label class="form-label"></label>
+                                                    <div class="form-line">
+                                                        <textarea id="feedback" name="feedback" class="form-control" rows="5" ><?php echo $BOOKING->feedbackComment; ?></textarea> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="name">Final Cost</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="final_cost" class="form-control"  autocomplete="off" name="final_cost" required="true" placeholder="Final Cost" value="<?php echo $BOOKING->finalCost; ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $BOOKING->id; ?>" name="id"/>
+                                        <input type="hidden" id="status" value="<?php echo $BOOKING->status; ?>" name="status"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
                                     </div>
                                     <div class="row clearfix">  </div>
@@ -307,20 +623,46 @@ $packages = $PACKAGES->all();
         <script src="plugins/Timepicker/dist/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
         <!-- Optional -->
         <script src="plugins/Timepicker/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js" type="text/javascript"></script>
+        <script src="js/booking-package-details.js" type="text/javascript"></script>
         <script>
-            $('#start_date').datetimepicker({
-                dateFormat: 'yy-mm-dd',
-                timeFormat: "HH:mm:ss",
+            $('#start_date').datepicker({
+                dateFormat: 'yy-mm-dd'
             });
-            $('#end_date').datetimepicker({
-                dateFormat: 'yy-mm-dd',
-                timeFormat: "HH:mm:ss",
+            $('#end_date').datepicker({
+                dateFormat: 'yy-mm-dd'
             });
         </script>
 
         <script>
             tinymce.init({
                 selector: "#description",
+                // ===========================================
+                // INCLUDE THE PLUGIN
+                // ===========================================
+
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                // ===========================================
+                // PUT PLUGIN'S BUTTON on the toolbar
+                // ===========================================
+
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                // ===========================================
+                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                // ===========================================
+
+                relative_urls: false
+
+            });
+
+
+        </script>
+        <script>
+            tinymce.init({
+                selector: "#feedback",
                 // ===========================================
                 // INCLUDE THE PLUGIN
                 // ===========================================

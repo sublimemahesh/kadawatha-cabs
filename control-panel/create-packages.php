@@ -76,6 +76,70 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="vehicle_type">Vehicle Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle_type" name="vehicle_type" required="TRUE">
+                                                        <option value=""> -- Please Select Vehicle Type -- </option>
+                                                        <?php
+                                                        $types = VehicleType::all();
+                                                        foreach ($types as $type) {
+                                                            ?>
+                                                            <option value="<?php echo $type['id']; ?>">
+                                                                <?php echo $type['type']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Vehicle Category-->
+                                    <div class="row clearfix" id="category-bar"></div>
+                                    <!--Vehicle SubCategory-->
+                                    <div class="row clearfix" id="subcategory-bar"></div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="package_type">Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package_type" name="package_type" required="TRUE">
+                                                        <option value=""> -- Please Select Package Type -- </option>
+                                                        <?php
+                                                        $types = PackageType::all();
+                                                        foreach ($types as $type) {
+                                                            ?>
+                                                            <option value="<?php echo $type['id']; ?>">
+                                                                <?php echo $type['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_days">No of Days</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="no_of_days" class="form-control"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Price (Rs)</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -109,6 +173,30 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <div class="form-line">
                                                     <input type="number" id="distance" class="form-control"  autocomplete="off" name="distance" required="true" min="0" placeholder="Distance (km)">
                                                     <!--<label class="form-label">Distance (km)</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="extra_price_1km">Extra price for 1km (Rs)</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="extra_price_1km" class="form-control"  autocomplete="off" name="extra_price_1km"  placeholder="Extra price for 1km (Rs)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="extra_price_1h">Extra price for 1h (Rs)</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="extra_price_1h" class="form-control"  autocomplete="off" name="extra_price_1h" placeholder="Extra price for 1h (Rs)">
                                                 </div>
                                             </div>
                                         </div>
@@ -153,8 +241,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-
-
+        <script src="js/package-details.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
             tinymce.init({

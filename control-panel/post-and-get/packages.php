@@ -9,18 +9,27 @@ if (isset($_POST['create'])) {
 
     $PACKAGES->name = $_POST['name'];
     $PACKAGES->code = $_POST['code'];
+    $PACKAGES->vehicleType = $_POST['vehicle_type'];
+    $PACKAGES->category = $_POST['category'];
+    if (isset($_POST['subcategory'])) {
+        $PACKAGES->subCategory = $_POST['subcategory'];
+    } else {
+        $PACKAGES->subCategory = 0;
+    }
+    $PACKAGES->packageType = $_POST['package_type'];
+    $PACKAGES->noOfDays = $_POST['no_of_days'];
     $PACKAGES->price = $_POST['price'];
     $PACKAGES->time = $_POST['time'];
     $PACKAGES->distance = $_POST['distance'];
+    $PACKAGES->extraPrice1km = $_POST['extra_price_1km'];
+    $PACKAGES->extraPrice1h = $_POST['extra_price_1h'];
     $PACKAGES->description = $_POST['description'];
 
     $VALID->check($PACKAGES, [
         'name' => ['required' => TRUE],
         'code' => ['required' => TRUE],
         'price' => ['required' => TRUE],
-        'time' => ['required' => TRUE],
-        'distance' => ['required' => TRUE],
-        'description' => ['required' => TRUE]
+        'distance' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
@@ -50,12 +59,22 @@ if (isset($_POST['create'])) {
 if (isset($_POST['update'])) {
 
     $PACKAGES = new Packages($_POST['id']);
-
     $PACKAGES->name = $_POST['name'];
     $PACKAGES->code = $_POST['code'];
+    $PACKAGES->vehicleType = $_POST['vehicle_type'];
+    if (isset($_POST['subcategory'])) {
+        $PACKAGES->subCategory = $_POST['subcategory'];
+    } else {
+        $PACKAGES->subCategory = 0;
+    }
+    $PACKAGES->category = $_POST['category'];
+    $PACKAGES->packageType = $_POST['package_type'];
+    $PACKAGES->noOfDays = $_POST['no_of_days'];
     $PACKAGES->price = $_POST['price'];
     $PACKAGES->time = $_POST['time'];
     $PACKAGES->distance = $_POST['distance'];
+    $PACKAGES->extraPrice1km = $_POST['extra_price_1km'];
+    $PACKAGES->extraPrice1h = $_POST['extra_price_1h'];
     $PACKAGES->description = $_POST['description'];
 
     $VALID = new Validator();
@@ -63,7 +82,6 @@ if (isset($_POST['update'])) {
         'name' => ['required' => TRUE],
         'code' => ['required' => TRUE],
         'price' => ['required' => TRUE],
-        'time' => ['required' => TRUE],
         'distance' => ['required' => TRUE]
     ]);
 

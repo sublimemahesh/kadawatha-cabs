@@ -20,6 +20,10 @@ include_once(dirname(__FILE__) . '/Booking.php');
 include_once(dirname(__FILE__) . '/Permission.php');
 include_once(dirname(__FILE__) . '/DefaultData.php');
 include_once(dirname(__FILE__) . '/CommissionPayment.php');
+include_once(dirname(__FILE__) . '/VehicleCategory.php');
+include_once(dirname(__FILE__) . '/VehicleSubCategory.php');
+include_once(dirname(__FILE__) . '/PackageType.php');
+include_once(dirname(__FILE__) . '/BookingPayment.php');
 
 
 function dd($data) {

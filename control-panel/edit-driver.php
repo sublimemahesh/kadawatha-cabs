@@ -102,6 +102,36 @@ $DRIVER = new Driver($id);
                                     </div>    
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="vehicle_type">Vehicle Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE" >
+                                                        <option value=""> -- Please Select -- </option>
+                                                        <?php
+                                                        $types = VehicleType::all();
+                                                        if (count($types) > 0) {
+                                                            foreach ($types as $key => $type) {
+                                                                if ($DRIVER->vehicleType == $type['id']) {
+                                                                    ?>
+                                                                    <option value="<?php echo $type['id']; ?>" selected><?php echo $type['type']; ?></option>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <option value="<?php echo $type['id']; ?>"><?php echo $type['type']; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Licence Number</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">

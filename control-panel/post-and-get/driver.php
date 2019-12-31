@@ -14,6 +14,7 @@ if (isset($_POST['create'])) {
     $DRIVER->address = $_POST['address'];
     $DRIVER->city = $_POST['city'];
     $DRIVER->type = $_POST['type'];
+    $DRIVER->vehicleType = $_POST['vehicle_type'];
 
     $dir_dest_front = '../../upload/Driver/front_side';
     $dir_dest_back = '../../upload/Driver/back_side';
@@ -64,7 +65,8 @@ if (isset($_POST['create'])) {
         'city' => ['required' => TRUE],
         'licence_image_front' => ['required' => TRUE],
         'licence_image_back' => ['required' => TRUE],
-        'type' => ['required' => TRUE]
+        'type' => ['required' => TRUE],
+        'vehicleType' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
@@ -161,6 +163,7 @@ if (isset($_POST['update'])) {
     $DRIVER->address = $_POST['address'];
     $DRIVER->city = $_POST['city'];
     $DRIVER->type = $_POST['type'];
+    $DRIVER->vehicleType = $_POST['vehicle_type'];
 //
 //   dd($_POST['city']);
     $VALID = new Validator();
@@ -171,7 +174,8 @@ if (isset($_POST['update'])) {
         'phone_numbers' => ['required' => TRUE],
         'address' => ['required' => TRUE],
         'city' => ['required' => TRUE],
-        'type' => ['required' => TRUE]
+        'type' => ['required' => TRUE],
+        'vehicleType' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
