@@ -28,4 +28,21 @@ class Helper {
         return $path;
     }
 
+    public function bookingReferenceNo() {
+
+        $last_reference_no = Booking::getLastReferenceNo();
+        $last_no = (int) substr($last_reference_no, 6, 11);
+        $current_no = $last_no + 1;
+
+        $year = date('y');
+        $month = date('m');
+        $len = strlen($current_no);
+
+        for ($i = $len; $i < 5; $i++) {
+            $current_no = '0' . $current_no;
+        }
+        $ref_no = 'KC' . $year . $month . $current_no;
+        return $ref_no;
+    }
+
 }

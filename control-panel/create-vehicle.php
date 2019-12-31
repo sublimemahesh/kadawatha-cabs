@@ -12,7 +12,6 @@ $VEHICLETYPE = new VehicleType(NULL);
 $types = $VEHICLETYPE->all();
 
 $DRIVER = new Driver(NULL);
-$driver = $DRIVER->all();
 ?>
 <!DOCTYPE html>
 <html> 
@@ -67,7 +66,7 @@ $driver = $DRIVER->all();
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" id="type" name="type" required="TRUE">
                                                         <option value=""> -- Please Select -- </option>
                                                         <?php foreach ($types as $type) {
                                                             ?>
@@ -216,25 +215,8 @@ $driver = $DRIVER->all();
                                         </div>
                                     </div>
 
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Driver </label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="drivertype">
-                                                        <option value="">Please Select Driver</option>
-                                                        <?php foreach ($driver as $name) {
-                                                            ?>
-                                                            <option value="<?php echo $name['id']; ?>"><?php echo $name['name']; ?></option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="row clearfix" id="driver-bar">
+                                        
                                     </div>
 
 

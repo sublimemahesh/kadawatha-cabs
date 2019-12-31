@@ -116,8 +116,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="paid-at" class="form-control"  autocomplete="off" name="paid-at" required="true" placeholder="Enter paid date and time" >
-                                                    <!--                                                    <label class="form-label">City</label>-->
+                                                    <input type="text" id="paid-at" class="form-control"  autocomplete="off" name="paid-at" required="true" placeholder="Enter paid date" >
                                                 </div>
                                             </div>
                                         </div>    
@@ -163,9 +162,8 @@ if (isset($_GET['id'])) {
         <!-- Optional -->
         <script src="plugins/Timepicker/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js" type="text/javascript"></script>
         <script>
-            $('#paid-at').datetimepicker({
-                dateFormat: 'yy-mm-dd',
-                timeFormat: "HH:mm:ss",
+            $('#paid-at').datepicker({
+                dateFormat: 'yy-mm-dd'
             });
         </script>
     </body>

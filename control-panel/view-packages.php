@@ -1,20 +1,18 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
-
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$PACKAGES = new Packages($id);
+$VTYPE = new VehicleType($id);
 ?> 
-
 <!DOCTYPE html>
 <html> 
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Edit Package</title>
+        <title>Packages || WEB SITE CONTROL PANEL </title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -33,10 +31,9 @@ $PACKAGES = new Packages($id);
         ?>
 
         <section class="content">
-            <div class="container-fluid">  
+            <div class="container-fluid">
                 <?php
                 $vali = new Validator();
-
                 $vali->show_message();
                 ?>
                 <!-- Vertical Layout -->
@@ -44,19 +41,17 @@ $PACKAGES = new Packages($id);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>
-                                    Edit Package
-                                </h2>
+                                <h2>Create Package</h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-packages.php">
+                                        <a href="manage-vehicle-type.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="body">
-                                <form class="form-horizontal" method="post" action="post-and-get/packages.php" enctype="multipart/form-data"> 
+                                <form class="form-horizontal"  method="post" action="post-and-get/packages.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Package Name</label>
@@ -64,7 +59,7 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="name" class="form-control" autocomplete="off" name="name" placeholder="Package Name" value="<?php echo $PACKAGES->name; ?>">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" placeholder="Package Name" name="name" required="true">
                                                     <!--<label class="form-label">Package Name</label>-->
                                                 </div>
                                             </div>
@@ -77,13 +72,12 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="code" class="form-control" autocomplete="off" name="code" placeholder="Package Code" value="<?php echo $PACKAGES->code; ?>">
+                                                    <input type="text" id="code" class="form-control"  autocomplete="off" name="code" placeholder="Package Code" required="true">
                                                     <!--<label class="form-label">Package Code</label>-->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="vehicle_type">Vehicle Type</label>
@@ -91,71 +85,28 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="vehicle_type" name="vehicle_type" required="TRUE">
-                                                        <option value=""> -- Please Select Vehicle Type -- </option>
-                                                        <?php foreach (VehicleType::all() as $type) {
-                                                            ?>
-                                                            <option value="<?php echo $type['id']; ?>" 
-                                                            <?php
-                                                            if ($PACKAGES->vehicleType === $type['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $type['type']; ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" value="<?php echo $VTYPE->type; ?>" readonly="">
+                                                    <input type="hidden" name="vehicle_type" id="vehicle_type" value="<?php echo $VTYPE->id; ?>">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <!--Vehicle Category-->
                                     <div class="row clearfix" id="category-bar">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="category">Vehicle Category</label>
+                                            <label for="category">Category</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" id="category" name="category" required="TRUE">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="category" name="category" required="TRUE">
                                                         <option value=""> -- Please Select Category -- </option>
-                                                        <?php foreach (VehicleCategory::GetCategoryByType($PACKAGES->vehicleType) as $category) {
-                                                            ?>
-                                                            <option value="<?php echo $category['id']; ?>" <?php
-                                                            if ($PACKAGES->category === $category['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $category['name']; ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix" id="subcategory-bar">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="subcategory">Sub Category</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" id="subcategory" name="subcategory">
-                                                        <option value=""> -- Please Select Sub Category -- </option>
                                                         <?php
-                                                        foreach (VehicleSubCategory::GetSubCategoryByCategory($PACKAGES->category) as $subcategory) {
+                                                        $categories = VehicleCategory::GetCategoryByType($id);
+                                                        foreach ($categories as $category) {
                                                             ?>
-                                                            <option value="<?php echo $subcategory['id']; ?>" <?php
-                                                            if ($PACKAGES->subCategory === $subcategory['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $subcategory['name']; ?>
+                                                            <option value="<?php echo $category['id']; ?>">
+                                                                <?php echo $category['name']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -165,23 +116,23 @@ $PACKAGES = new Packages($id);
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Vehicle SubCategory-->
+                                    <div class="row clearfix" id="subcategory-bar"></div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="package_type">Package Type</label>
+                                            <label for="package_type">Type</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" id="package_type" name="package_type">
+                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="package_type" name="package_type" required="TRUE">
                                                         <option value=""> -- Please Select Package Type -- </option>
-                                                        <?php foreach (PackageType::all() as $pack) {
+                                                        <?php
+                                                        $types = PackageType::all();
+                                                        foreach ($types as $type) {
                                                             ?>
-                                                            <option value="<?php echo $pack['id']; ?>" <?php
-                                                            if ($PACKAGES->packageType === $pack['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $pack['name']; ?>
+                                                            <option value="<?php echo $type['id']; ?>">
+                                                                <?php echo $type['name']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -198,7 +149,7 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="no_of_days" class="form-control"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days" value="<?php echo $PACKAGES->noOfDays; ?>">
+                                                    <input type="text" id="no_of_days" class="form-control"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days">
                                                 </div>
                                             </div>
                                         </div>
@@ -210,8 +161,8 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="price" class="form-control" autocomplete="off" name="price" placeholder="Price (Rs)" value="<?php echo $PACKAGES->price; ?>">
-                                                    <!--                                                    <label class="form-label">Price (Rs)</label>-->
+                                                    <input type="text" id="price" class="form-control"  autocomplete="off" name="price" required="true" placeholder="Price (Rs)">
+                                                    <!--<label class="form-label">Price (Rs)</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -223,13 +174,12 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="time" class="form-control" autocomplete="off" name="time" value="<?php echo $PACKAGES->time; ?>" placeholder="Time (h)">
-                                                    <!--                                                    <label class="form-label">Time (h)</label>-->
+                                                    <input type="text" id="time" class="form-control"  autocomplete="off" name="time" required="true" placeholder="Time (h)">
+                                                    <!--<label class="form-label">Time (h)</label>-->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Distance (km)</label>
@@ -237,7 +187,7 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="distance" class="form-control" autocomplete="off" name="distance" placeholder="Distance (km)" value="<?php echo $PACKAGES->distance; ?>">
+                                                    <input type="number" id="distance" class="form-control"  autocomplete="off" name="distance" required="true" min="0" placeholder="Distance (km)">
                                                     <!--<label class="form-label">Distance (km)</label>-->
                                                 </div>
                                             </div>
@@ -250,7 +200,7 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="extra_price_1km" class="form-control"  autocomplete="off" name="extra_price_1km" value="<?php echo $PACKAGES->extraPrice1km; ?>"  placeholder="Extra price for 1km (Rs)">
+                                                    <input type="text" id="extra_price_1km" class="form-control"  autocomplete="off" name="extra_price_1km"  placeholder="Extra price for 1km (Rs)">
                                                 </div>
                                             </div>
                                         </div>
@@ -262,7 +212,7 @@ $PACKAGES = new Packages($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="extra_price_1h" class="form-control"  autocomplete="off" name="extra_price_1h" value="<?php echo $PACKAGES->extraPrice1h; ?>" placeholder="Extra price for 1h (Rs)">
+                                                    <input type="text" id="extra_price_1h" class="form-control"  autocomplete="off" name="extra_price_1h" placeholder="Extra price for 1h (Rs)">
                                                 </div>
                                             </div>
                                         </div>
@@ -276,20 +226,84 @@ $PACKAGES = new Packages($id);
                                             <div class="form-group form-float">
                                                 <label class="form-label"></label>
                                                 <div class="form-line">
-                                                    <textarea id="description" name="description" class="form-control" rows="5" ><?php echo $PACKAGES->description ?></textarea> 
-                                                    <!--<input type="hidden" value="1" name="active" />-->
+                                                    <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <input type="hidden" id="id" value="<?php echo $PACKAGES->id; ?>" name="id"/>
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    Manage Packages
+                                </h2>
+                            </div>
+                            <div class="body">
+                                <!-- <div class="table-responsive">-->
+                                <div>
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Package Name</th>
+                                                <th>Package Code</th>
+                                                <th>Category</th>
+                                                <th>Type</th>
+                                                <th>Option</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Package Name</th>
+                                                <th>Package Code</th>
+                                                <th>Category</th>
+                                                <th>Type</th>
+                                                <th>Option</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php
+                                            foreach (Packages::GetPackagesByVehicleType($id) as $key => $packages) {
+                                                $CATEGORY = new VehicleCategory($packages['category']);
+                                                $TYPE = new PackageType($packages['package_type']);
+                                                $key++;
+                                                ?>
+                                                <tr id="row_<?php echo $packages['id']; ?>">
+                                                    <td><?php echo $key ?></td>
+                                                    <td><?php echo $packages['name']; ?></td>
+                                                    <td><?php echo $packages['code']; ?></td>
+                                                    <td><?php echo $CATEGORY->name; ?></td>
+                                                    <td><?php echo $TYPE->name; ?></td>
+
+                                                    <td> 
+                                                        <a href="edit-packages.php?id=<?php echo $packages['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Package"></button></a>
+                                                        |
+
+                                                        <a href="#"  class="delete-Packages" data-id="<?php echo $packages['id']; ?>">
+                                                            <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete Package" data-id="<?php echo $packages['id']; ?>"></button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>  
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -306,8 +320,14 @@ $PACKAGES = new Packages($id);
         <script src="js/admin.js"></script>
         <script src="js/demo.js"></script>
         <script src="js/add-new-ad.js" type="text/javascript"></script>
-        <script src="js/package-details.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>
+        <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
+        <script src="js/pages/ui/dialogs.js"></script>
+        <script src="js/demo.js"></script>
+        <script src="delete/js/vehicle-photo.js" type="text/javascript"></script>
+        <script src="js/package-details.js" type="text/javascript"></script>
         <script>
             tinymce.init({
                 selector: "#description",

@@ -1,6 +1,11 @@
 <?php
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
+$id = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $TYPE = new VehicleType($id);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +31,10 @@ include_once(dirname(__FILE__) . '/auth.php');
         <link href="css/style.css" rel="stylesheet" >
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
+        <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        
+        
+        
     </head>
     <body class="theme-red">
         <?php
@@ -43,16 +52,200 @@ include_once(dirname(__FILE__) . '/auth.php');
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
+                                <h2>Create Vehicle</h2>
+                            </div>
+                            <div class="body">
+                                <form class="form-horizontal"  method="post" id="newVehicle" action="post-and-get/vehicle.php" enctype="multipart/form-data">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" value="<?php echo $TYPE->type; ?>" readonly="">
+                                                    <input type="hidden" id="type" name="type" value="<?php echo $TYPE->id; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Owner Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="name" class="form-control"  autocomplete="off" name="owner" required="true" placeholder="Owner Name">
+                                                    <!--<label class="form-label">Owner Name</label>-->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="vehicle-no" class="form-control"  autocomplete="off" name="vehicle_number" required="true" placeholder="Vehicle Number">
+                                                    <!--<label class="form-label">Vehicle Number</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Name</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="vehicle_name" required="true" placeholder="Vehicle Name">
+                                                    <!--<label class="form-label">Vehicle Name</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Contact Number</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true" placeholder="Contact Number">
+                                                    <!--<label class="form-label">Contact Number</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">City</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="city" required="true" placeholder="City">
+                                                    <!--<label class="form-label">City</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label ">
+                                            <label for="name">Condition Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <input class="filled-in chk-col-pink" type="radio"  name="condition" value="AC" id="AC" />
+                                                    <label for="AC">AC</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <input class="filled-in chk-col-pink" type="radio"  name="condition" value="NonAC" id="nonAC" />
+                                                    <label for="nonAC">Non AC</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">No Of Passenger</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" min="0" placeholder="No Of Passenger">
+                                                    <!--<label class="form-label">No Of Passenger</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">No Of Baggage</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" min="0" placeholder="No Of Baggage">
+                                                    <!--<label class="form-label">No Of Baggage</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">No Of Door</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" min="0" placeholder="No Of Door">
+                                                    <!--<label class="form-label">No Of Door</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Driver</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <select class="form-control place-select1 show-tick" name="drivertype">
+                                                        <option value=""> -- Please Select Driver -- </option>
+                                                        <?php foreach (Driver::getDriversByVehicleType($id) as $name) {
+                                                            ?>
+                                                            <option value="<?php echo $name['id']; ?>" <?php
+                                                            if ($VEHICLE->driver === $name['id']) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>>
+                                                                        <?php echo $name['name']; ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                        <input type="submit" name="create" id="createVehicle" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <input type="hidden" name="create"/> 
+                                    </div>
+                                    <div class="row clearfix">  </div>
+                                    <hr/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="header">
                                 <h2>
-                                    Manage Vehicle
+                                    Manage Vehicles - <?php echo $TYPE->type; ?>
                                 </h2>
-                                <ul class="header-dropdown">
-                                    <li class="">
-                                        <a href="create-vehicle.php">
-                                            <i class="material-icons">add</i> 
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
@@ -62,7 +255,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Vehicle Owner Name</th>
-                                                <th>Vehicle Type</th>
                                                 <th>Vehicle No</th>
                                                 <th>Vehicle Name</th>
                                                 <th>Contact No</th>
@@ -75,7 +267,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Vehicle Owner Name</th>
-                                                <th>Vehicle Type</th>
                                                 <th>Vehicle No</th>
                                                 <th>Vehicle Name</th>
                                                 <th>Contact No</th>
@@ -86,7 +277,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (vehicle::all() as $key => $vehicle) {
+                                            foreach (vehicle::getVehiclesByType($id) as $key => $vehicle) {
                                                 $key++;
 
                                                 $VEHICLENAME = new VehicleType($vehicle['vehicle_type']);
@@ -95,7 +286,6 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <tr id="row_<?php echo $vehicle['id']; ?>">
                                                     <td><?php echo $key ?></td>
                                                     <td><?php echo $vehicle['owner']; ?></td>
-                                                    <td><?php echo $VEHICLENAME->type ?></td>
                                                     <td><?php echo $vehicle['vehicle_number']; ?></td>
                                                     <td><?php echo $vehicle['vehicle_name']; ?></td>
                                                     <td><?php echo $vehicle['contact_number']; ?></td>
@@ -110,6 +300,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                         <a href="#"  class="delete-vehicle" data-id="<?php echo $vehicle['id']; ?>">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-user" title ="Delete Vehicle " data-id="<?php echo $user['id']; ?>"></button>
                                                         </a>
+                                                        |
+                                                        <a href="view-vehicle.php?id=<?php echo $vehicle['id']; ?>"> <button class="fa fa-bars user-Details " title="View Vehicle"></button></a>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -130,7 +322,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         <!-- Bootstrap Core Js -->
         <script src="plugins/bootstrap/js/bootstrap.js"></script>
         <!-- Select Plugin Js -->
-        <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+        <!--<script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>-->
         <!-- Slimscroll Plugin Js -->
         <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
         <!-- Waves Effect Plugin Js -->

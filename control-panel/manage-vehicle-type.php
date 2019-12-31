@@ -87,7 +87,10 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td> 
                                                         <a href="edit-vehicle-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Vehicle"></button></a>
                                                         |
-                                                        <a href="view-vehicles-by-type.php?id=<?php echo $vehicleType['id']; ?>"> <button class=" fa fa-car user-Details" title="View Vehicles By Type"></button></a>
+                                                        <a href="manage-vehicle.php?id=<?php echo $vehicleType['id']; ?>"> <button class=" fa fa-car user-Details" title="Manage Vehicles By Type"></button></a>
+
+                                                        |
+                                                        <a href="view-packages.php?id=<?php echo $vehicleType['id']; ?>"> <button class=" fa fa-list arrange-btn" title="View Packages"></button></a>
 
                                                         |
 
