@@ -34,11 +34,7 @@ $PACKAGES = new Packages($id);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -55,6 +51,11 @@ $PACKAGES = new Packages($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/packages.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -138,33 +139,41 @@ $PACKAGES = new Packages($id);
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row clearfix" id="subcategory-bar">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="subcategory">Sub Category</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <select class="form-control place-select1 show-tick" id="subcategory" name="subcategory">
-                                                        <option value=""> -- Please Select Sub Category -- </option>
-                                                        <?php
-                                                        foreach (VehicleSubCategory::GetSubCategoryByCategory($PACKAGES->category) as $subcategory) {
-                                                            ?>
-                                                            <option value="<?php echo $subcategory['id']; ?>" <?php
-                                                            if ($PACKAGES->subCategory === $subcategory['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $subcategory['name']; ?>
-                                                            </option>
+                                        <?php
+                                        if ($PACKAGES->category == 1) {
+                                            ?>
+                                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                                <label for="subcategory">Condition</label>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <select class="form-control place-select1 show-tick" id="subcategory" name="subcategory">
+                                                            <option value=""> -- Please Select Sub Category -- </option>
                                                             <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                            foreach (VehicleSubCategory::GetSubCategoryByCategory($PACKAGES->category) as $subcategory) {
+                                                                ?>
+                                                                <option value="<?php echo $subcategory['id']; ?>" <?php
+                                                                if ($PACKAGES->subCategory === $subcategory['id']) {
+                                                                    echo 'selected';
+                                                                }
+                                                                ?>>
+                                                                            <?php echo $subcategory['name']; ?>
+                                                                </option>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
+
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="package_type">Package Type</label>
@@ -285,7 +294,8 @@ $PACKAGES = new Packages($id);
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $PACKAGES->id; ?>" name="id"/>
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update" <?php echo $disabled; ?>>Save Changes</button>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -309,29 +319,29 @@ $PACKAGES = new Packages($id);
         <script src="js/package-details.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+                                            tinymce.init({
+                                                selector: "#description",
+                                                // ===========================================
+                                                // INCLUDE THE PLUGIN
+                                                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                                                plugins: [
+                                                    "advlist autolink lists link image charmap print preview anchor",
+                                                    "searchreplace visualblocks code fullscreen",
+                                                    "insertdatetime media table contextmenu paste"
+                                                ],
+                                                // ===========================================
+                                                // PUT PLUGIN'S BUTTON on the toolbar
+                                                // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
+                                                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                // ===========================================
+                                                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                // ===========================================
 
-                relative_urls: false
+                                                relative_urls: false
 
-            });
+                                            });
 
 
         </script>

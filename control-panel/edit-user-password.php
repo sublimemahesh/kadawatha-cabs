@@ -31,17 +31,7 @@ $USER = new User($id);
 
         <section class="content">
             <div class="container-fluid"> 
-                <?php
-                if (isset($_GET['message'])) {
 
-                    $MESSAGE = New Message($_GET['message']);
-                    ?>
-                    <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                        <?php echo $MESSAGE->description; ?>
-                    </div>
-                    <?php
-                }
-                ?>
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
@@ -50,17 +40,27 @@ $USER = new User($id);
                                     Change Password
                                 </h2>
 
-                                 <ul class="header-dropdown">
+                                <ul class="header-dropdown">
                                     <li class="">
                                         <a href="manage-user.php">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
-                                
-                                
+
+
                             </div>
-                            
+                            <?php
+                            if (isset($_GET['message'])) {
+
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="body row">
                                 <form class="form-horizontal col-sm-9 col-md-9" method="post" action="post-and-get/change-user-password.php" enctype="multipart/form-data"> 
 

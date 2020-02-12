@@ -24,6 +24,7 @@ include_once(dirname(__FILE__) . '/VehicleCategory.php');
 include_once(dirname(__FILE__) . '/VehicleSubCategory.php');
 include_once(dirname(__FILE__) . '/PackageType.php');
 include_once(dirname(__FILE__) . '/BookingPayment.php');
+include_once(dirname(__FILE__) . '/VehicleSubType.php');
 
 
 function dd($data) {

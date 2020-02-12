@@ -34,11 +34,7 @@ $DRIVER = new Driver($id);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -55,6 +51,11 @@ $DRIVER = new Driver($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal" method="post" id="updateDriverDetails" action="post-and-get/driver.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -229,6 +230,7 @@ $DRIVER = new Driver($id);
             <!--                                            <input type="hidden" id="authToken" value="<?php echo $_SESSION["authToken"]; ?>" name="authToken"/>-->
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" id="editDriver" name="update" value="update">Save Changes</button>
                                         <input type="hidden" name="update"/> 
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -255,29 +257,29 @@ $DRIVER = new Driver($id);
         <!--<script src="js/check-edit-driver-licence.js" type="text/javascript"></script>-->
 
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+                                            tinymce.init({
+                                                selector: "#description",
+                                                // ===========================================
+                                                // INCLUDE THE PLUGIN
+                                                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                                                plugins: [
+                                                    "advlist autolink lists link image charmap print preview anchor",
+                                                    "searchreplace visualblocks code fullscreen",
+                                                    "insertdatetime media table contextmenu paste"
+                                                ],
+                                                // ===========================================
+                                                // PUT PLUGIN'S BUTTON on the toolbar
+                                                // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
+                                                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                // ===========================================
+                                                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                // ===========================================
 
-                relative_urls: false
+                                                relative_urls: false
 
-            });
+                                            });
 
 
         </script>

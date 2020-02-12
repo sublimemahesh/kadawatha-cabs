@@ -34,11 +34,7 @@ $CUSTOMER = new Customer($id);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -55,6 +51,11 @@ $CUSTOMER = new Customer($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal" method="post" id="updateCustomer" action="post-and-get/customer.php" enctype="multipart/form-data"> 
 
@@ -66,10 +67,10 @@ $CUSTOMER = new Customer($id);
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="title" name="title" required="TRUE">
-                                                        <option value="Mr" <?php if($CUSTOMER->title == 'Mr') echo 'selected'; ?>>Mr. </option>
-                                                        <option value="Mrs" <?php if($CUSTOMER->title == 'Mrs') echo 'selected'; ?>>Mrs.</option>
-                                                        <option value="Miss" <?php if($CUSTOMER->title == 'Miss') echo 'selected'; ?>>Miss.</option>
-                                                        <option value="Dr" <?php if($CUSTOMER->title == 'Dr') echo 'selected'; ?>>Dr.</option>
+                                                        <option value="Mr" <?php if ($CUSTOMER->title == 'Mr') echo 'selected'; ?>>Mr. </option>
+                                                        <option value="Mrs" <?php if ($CUSTOMER->title == 'Mrs') echo 'selected'; ?>>Mrs.</option>
+                                                        <option value="Miss" <?php if ($CUSTOMER->title == 'Miss') echo 'selected'; ?>>Miss.</option>
+                                                        <option value="Dr" <?php if ($CUSTOMER->title == 'Dr') echo 'selected'; ?>>Dr.</option>
                                                         <?php
                                                         ?>
                                                     </select>
@@ -153,6 +154,7 @@ $CUSTOMER = new Customer($id);
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $CUSTOMER->id; ?>" name="id"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" id="editCustomer" name="update" value="update">Save Changes</button>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                         <input type="hidden" name="update"/> 
                                     </div>
                                     <div class="row clearfix">  </div>

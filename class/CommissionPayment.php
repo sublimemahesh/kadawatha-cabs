@@ -34,7 +34,6 @@ class CommissionPayment {
     }
 
     public function create() {
-        $enPass = md5($this->password);
         date_default_timezone_set('Asia/Colombo');
         $createdAt = date('Y-m-d H:i:s');
         

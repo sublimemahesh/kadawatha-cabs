@@ -325,7 +325,7 @@
                         <li>
                             <a href="manage-bookings.php?status=3">
                                 <i class="material-icons">list</i>
-                                <span>Manage Completed Bookings</span>
+                                <span>Manage Completed Hires</span>
                             </a>
                         </li>
                         <li>

@@ -32,10 +32,7 @@ $VTYPE = new VehicleType($id);
 
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
-                $vali->show_message();
-                ?>
+
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -50,6 +47,10 @@ $VTYPE = new VehicleType($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/packages.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -149,7 +150,7 @@ $VTYPE = new VehicleType($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="no_of_days" class="form-control"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days">
+                                                    <input type="text" id="no_of_days" class="form-control"  autocomplete="off" name="no_of_days" placeholder="No of Days">
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +162,7 @@ $VTYPE = new VehicleType($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="price" class="form-control"  autocomplete="off" name="price" required="true" placeholder="Price (Rs)">
+                                                    <input type="text" id="price" class="form-control"  autocomplete="off" name="price" placeholder="Price (Rs)">
                                                     <!--<label class="form-label">Price (Rs)</label>-->
                                                 </div>
                                             </div>
@@ -174,7 +175,7 @@ $VTYPE = new VehicleType($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="time" class="form-control"  autocomplete="off" name="time" required="true" placeholder="Time (h)">
+                                                    <input type="text" id="time" class="form-control"  autocomplete="off" name="time" placeholder="Time (h)">
                                                     <!--<label class="form-label">Time (h)</label>-->
                                                 </div>
                                             </div>
@@ -187,7 +188,7 @@ $VTYPE = new VehicleType($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="distance" class="form-control"  autocomplete="off" name="distance" required="true" min="0" placeholder="Distance (km)">
+                                                    <input type="number" id="distance" class="form-control"  autocomplete="off" name="distance" min="0" placeholder="Distance (km)">
                                                     <!--<label class="form-label">Distance (km)</label>-->
                                                 </div>
                                             </div>

@@ -38,11 +38,7 @@ $DRIVER = new Driver(NULL);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -57,6 +53,11 @@ $DRIVER = new Driver(NULL);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" id="newVehicle" action="post-and-get/vehicle.php" enctype="multipart/form-data">
                                     <div class="row clearfix">
@@ -216,13 +217,13 @@ $DRIVER = new Driver(NULL);
                                     </div>
 
                                     <div class="row clearfix" id="driver-bar">
-                                        
+
                                     </div>
 
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="submit" name="create" id="createVehicle" class="btn btn-primary m-t-15 waves-effect" value="create"/>
-                                         <input type="hidden" name="create"/> 
+                                        <input type="hidden" name="create"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>

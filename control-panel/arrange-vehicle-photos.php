@@ -54,7 +54,6 @@ $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
                                                     <?php
                                                     if (count($VEHICLE_PHOTO) > 0) {
                                                         foreach ($VEHICLE_PHOTO as $key => $img) {
-                                                        
                                                             ?>
                                                             <div class="col-md-3" style="list-style: none;">
                                                                 <li class="ui-state-default">
@@ -76,6 +75,7 @@ $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
                                                 <div class="row">
                                                     <div class="col-sm-12 text-center" style="margin-top: 19px;">
                                                         <input type="submit" class="btn btn-info" id="btn-submit" value="Save Images" name="save-data">
+                                                        <button  class="btn btn-info waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,29 +111,29 @@ $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
         <script src="plugins/jquery-ui/jquery-ui.js" type="text/javascript"></script>
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+                                                            tinymce.init({
+                                                                selector: "#description",
+                                                                // ===========================================
+                                                                // INCLUDE THE PLUGIN
+                                                                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                                                                plugins: [
+                                                                    "advlist autolink lists link image charmap print preview anchor",
+                                                                    "searchreplace visualblocks code fullscreen",
+                                                                    "insertdatetime media table contextmenu paste"
+                                                                ],
+                                                                // ===========================================
+                                                                // PUT PLUGIN'S BUTTON on the toolbar
+                                                                // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
+                                                                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                                // ===========================================
+                                                                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                                // ===========================================
 
-                relative_urls: false
+                                                                relative_urls: false
 
-            });
+                                                            });
 
 
         </script>

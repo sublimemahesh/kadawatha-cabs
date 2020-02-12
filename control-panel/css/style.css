@@ -8090,7 +8090,7 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .delete-btn{
-    padding: 5px 8px;
+    padding: 5px 6px;
     color: #fff;
     background-color: #E13300;
     border-radius: 3px;
@@ -8098,7 +8098,7 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .edit-btn{
-    padding: 5px 8px;
+    padding: 5px 6px;
     color: #fff;
     background-color: #1087dd;
     border-radius: 3px;
@@ -8106,7 +8106,7 @@ html.ie11 .bs-searchbox .form-control {
 }
 
 .arrange-btn{
-    padding: 5px 8px;
+    padding: 5px 6px;
     color: #fff;
     background-color: #449d44;
     border-radius: 3px;
@@ -8260,9 +8260,35 @@ html.ie11 .bs-searchbox .form-control {
     padding-left: 0px;
 }
 .confirmed-btn {
-    padding: 5px 8px;
+    padding: 5px 6px;
     color: #fff;
     background-color: #FFC107;
     border-radius: 3px;
     border: 0;
+}
+.card .header {
+    position: fixed;
+    margin-bottom: 50px;
+    width: 74.8%;
+    background-color:#fff;
+    z-index: 9;
+    margin-top: -36px;
+}
+.index-card.card .header {
+    position: relative;
+    margin-bottom: 0px;
+    width: auto;
+    background-color:#fff;
+    z-index: 9;
+    margin-top: 0;
+}
+.card .body {
+    padding-top: 50px;
+}
+.index-card.card .body {
+    padding-top: 40px;
+}
+.card .alert {
+    top: 25px;
+    position: relative;
 }

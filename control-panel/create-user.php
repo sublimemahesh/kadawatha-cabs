@@ -27,11 +27,7 @@ include_once(dirname(__FILE__) . '/auth.php');
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -46,6 +42,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/user.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">

@@ -24,6 +24,7 @@ class Booking {
     public $start_from;
     public $end_from;
     public $vehicleType;
+    public $vehicleSubType;
     public $vehicle;
     public $driver;
     public $total_cost;
@@ -59,6 +60,7 @@ class Booking {
                     . "`start_from`, "
                     . "`end_from`, "
                     . "`vehicle_type`, "
+                    . "`vehicle_sub_type`, "
                     . "`vehicle`, "
                     . "`driver`, "
                     . "`total_cost`, "
@@ -95,6 +97,7 @@ class Booking {
             $this->start_from = $result['start_from'];
             $this->end_from = $result['end_from'];
             $this->vehicleType = $result['vehicle_type'];
+            $this->vehicleSubType = $result['vehicle_sub_type'];
             $this->vehicle = $result['vehicle'];
             $this->driver = $result['driver'];
             $this->total_cost = $result['total_cost'];
@@ -133,6 +136,7 @@ class Booking {
                 . "`start_from`, "
                 . "`end_from`, "
                 . "`vehicle_type`, "
+                . "`vehicle_sub_type`, "
                 . "`vehicle`, "
                 . "`driver`, "
                 . "`total_cost`, "
@@ -158,6 +162,7 @@ class Booking {
                 . $this->start_from . "', '"
                 . $this->end_from . "', '"
                 . $this->vehicleType . "', '"
+                . $this->vehicleSubType . "', '"
                 . $this->vehicle . "', '"
                 . $this->driver . "', '"
                 . $this->total_cost . "', '"
@@ -216,7 +221,7 @@ class Booking {
 
     public function getBookingsByStartDate($date) {
 
-        $query = "SELECT * FROM `booking` WHERE `start_date` = '" . $date . "' AND (`status` LIKE 'confirmed' OR `status` LIKE 'completed')";
+        $query = "SELECT * FROM `booking` WHERE `start_date` = '".$date."'  AND (`status` LIKE 'confirmed' OR `status` LIKE 'completed') ORDER BY CASE WHEN `status` LIKE 'confirmed' THEN 1 ELSE 2 END, `start_time` ASC";
         $db = new Database();
         $result = $db->readQuery($query);
         $array_res = array();
@@ -273,6 +278,7 @@ class Booking {
                 . "`start_from` ='" . $this->start_from . "', "
                 . "`end_from` ='" . $this->end_from . "', "
                 . "`vehicle_type` ='" . $this->vehicleType . "', "
+                . "`vehicle_sub_type` ='" . $this->vehicleSubType . "', "
                 . "`vehicle` ='" . $this->vehicle . "', "
                 . "`driver` ='" . $this->driver . "', "
                 . "`total_cost` ='" . $this->total_cost . "' ,"

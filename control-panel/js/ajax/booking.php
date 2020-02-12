@@ -80,6 +80,7 @@ if ($_POST['option'] == 'GETBOOKINGSBYSTARTENDDATESANDSTATUS') {
         $arr['nic'] = $CUSTOMER->nic;
         $arr['start_date'] = $booking['start_date'];
         $arr['end_date'] = $booking['end_date'];
+        $arr['total_cost'] = $booking['total_cost'];
         $arr['total_amount'] = number_format($booking['total_cost'], 2);
         $arr['paid_amount'] = number_format($tot, 2);
         $arr['due_amount'] = number_format($booking['total_cost'] - $tot, 2);

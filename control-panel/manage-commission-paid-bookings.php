@@ -33,11 +33,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -47,6 +43,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     Manage Commission Paid Bookings
                                 </h2>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>

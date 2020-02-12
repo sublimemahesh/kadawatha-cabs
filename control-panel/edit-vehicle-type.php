@@ -34,11 +34,7 @@ $VEHICLETYPE = new VehicleType($id);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -55,6 +51,11 @@ $VEHICLETYPE = new VehicleType($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/vehicle-type.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -74,6 +75,7 @@ $VEHICLETYPE = new VehicleType($id);
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $VEHICLETYPE->id; ?>" name="id"/>
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -98,29 +100,29 @@ $VEHICLETYPE = new VehicleType($id);
 
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+                                            tinymce.init({
+                                                selector: "#description",
+                                                // ===========================================
+                                                // INCLUDE THE PLUGIN
+                                                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                                                plugins: [
+                                                    "advlist autolink lists link image charmap print preview anchor",
+                                                    "searchreplace visualblocks code fullscreen",
+                                                    "insertdatetime media table contextmenu paste"
+                                                ],
+                                                // ===========================================
+                                                // PUT PLUGIN'S BUTTON on the toolbar
+                                                // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
+                                                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                // ===========================================
+                                                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                // ===========================================
 
-                relative_urls: false
+                                                relative_urls: false
 
-            });
+                                            });
 
 
         </script>

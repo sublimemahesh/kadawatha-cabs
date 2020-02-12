@@ -37,11 +37,7 @@ if (isset($_GET['id'])) {
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -56,6 +52,11 @@ if (isset($_GET['id'])) {
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  id="payCommission" method="post" action="post-and-get/commission-payment.php" enctype="multipart/form-data"> 
 
@@ -127,6 +128,7 @@ if (isset($_GET['id'])) {
                                         <input type="hidden" name="booking" id ="booking" class="" value="<?php echo $id; ?>"/>
                                         <input type="hidden" name="driver_id" id ="driver_id" class="" value="<?php echo $driver_id; ?>"/>
                                         <input type="submit" name="pay-commission" id ="pay-commission" class="btn btn-primary m-t-15 waves-effect" value="Pay Commission"/>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                     </div>
 
                                     <div class="row clearfix">  </div>
@@ -162,9 +164,9 @@ if (isset($_GET['id'])) {
         <!-- Optional -->
         <script src="plugins/Timepicker/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js" type="text/javascript"></script>
         <script>
-            $('#paid-at').datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
+                                            $('#paid-at').datepicker({
+                                                dateFormat: 'yy-mm-dd'
+                                            });
         </script>
     </body>
 

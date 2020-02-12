@@ -17,6 +17,11 @@ $packages = $PACKAGES->all();
 
 
 $reference_no = Helper::bookingReferenceNo();
+
+$date = '';
+if (isset($_GET['id'])) {
+    $date = $_GET['id'];
+}
 ?>
 <!DOCTYPE html>
 <html> 
@@ -55,11 +60,7 @@ $reference_no = Helper::bookingReferenceNo();
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -76,6 +77,11 @@ $reference_no = Helper::bookingReferenceNo();
                             </div>
                             <?php
                             include './new-customer-model.php';
+                            ?>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
                             ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/booking.php" enctype="multipart/form-data"> 
@@ -187,7 +193,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="start_date" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date">
+                                                    <input type="text" id="start_date" class="form-control input-append date form_datetime"  autocomplete="off" name="start_date" required="true" placeholder="Start Date" value="<?php echo $date; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +203,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="start_time" class="form-control input-append"  autocomplete="off" name="start_time" required="true" placeholder="Strat Time">
+                                                    <input type="text" id="start_time" class="form-control input-append"  autocomplete="off" name="start_time" placeholder="Strat Time">
                                                 </div>
                                             </div>
                                         </div>
@@ -219,7 +225,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="end_time" class="form-control input-append date form_datetime"  autocomplete="off" name="end_time" required="true" placeholder="End Time">
+                                                    <input type="text" id="end_time" class="form-control input-append date form_datetime"  autocomplete="off" name="end_time" placeholder="End Time">
                                                 </div>
                                             </div>
                                         </div>
@@ -231,7 +237,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-2">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="no_of_days" class="form-control input-append"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days">
+                                                    <input type="number" id="no_of_days" class="form-control input-append"  autocomplete="off" name="no_of_days" required="true" placeholder="No of Days" min="1">
                                                 </div>
                                             </div>
                                         </div>
@@ -241,7 +247,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-2">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="start_from" class="form-control input-append"  autocomplete="off" name="start_from" required="true" placeholder="Start From">
+                                                    <input type="text" id="start_from" class="form-control input-append"  autocomplete="off" name="start_from" placeholder="Start From">
                                                 </div>
                                             </div>
                                         </div>
@@ -251,7 +257,29 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-2">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="end_from" class="form-control input-append"  autocomplete="off" name="end_from" required="true" placeholder="End From">
+                                                    <input type="text" id="end_from" class="form-control input-append"  autocomplete="off" name="end_from" placeholder="End From">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_adults">No of Adults</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_adults" class="form-control input-append"  autocomplete="off" name="no_of_adults" placeholder="No of Adults" min="0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="no_of_children">No of Children</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="number" id="no_of_children" class="form-control input-append"  autocomplete="off" name="no_of_children" placeholder="No of Children" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -277,6 +305,10 @@ $reference_no = Helper::bookingReferenceNo();
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!--Vehicle Sub Type-->
+                                    <div class="row clearfix" id="vehicle-sub-type-bar">
+
                                     </div>
                                     <!--Vehicle-->
                                     <div class="row clearfix" id="vehicle-bar">
@@ -313,28 +345,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         </div>
                                     </div>
                                     <div class="row clearfix" id="package-bar"></div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="no_of_adults">No of Adults</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="number" id="no_of_adults" class="form-control input-append"  autocomplete="off" name="no_of_adults" required="true" placeholder="No of Adults" min="0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="no_of_children">No of Children</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="number" id="no_of_children" class="form-control input-append"  autocomplete="off" name="no_of_children" required="true" placeholder="No of Children" min="0">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="row clearfix" id="seating-capacity-bar">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="seating_capacity">Seating Capacity</label>
@@ -342,7 +353,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-2">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="seating_capacity" class="form-control input-append"  autocomplete="off" name="seating_capacity" required="true" placeholder="Seating Capacity" min="0">
+                                                    <input type="number" id="seating_capacity" class="form-control input-append"  autocomplete="off" name="seating_capacity" placeholder="Seating Capacity" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -352,7 +363,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-2">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="no_of_hard_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hard_baggage" required="true" placeholder="No of Hard Baggage" min="0">
+                                                    <input type="number" id="no_of_hard_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hard_baggage" placeholder="No of Hard Baggage" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -362,7 +373,7 @@ $reference_no = Helper::bookingReferenceNo();
                                         <div class="col-md-2">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="no_of_hand_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hand_baggage" required="true" placeholder="No of Hand Baggage" min="0">
+                                                    <input type="number" id="no_of_hand_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hand_baggage" placeholder="No of Hand Baggage" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -398,6 +409,7 @@ $reference_no = Helper::bookingReferenceNo();
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" name="reference_no" id="reference_no" value="<?php echo $reference_no; ?>">
                                         <input type="submit" name="create" id="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                     </div>
                                     <div class="row clearfix">  </div>
                                     <hr/>
@@ -436,12 +448,12 @@ $reference_no = Helper::bookingReferenceNo();
         <script src="js/search-customer.js" type="text/javascript"></script>
         <script src="js/booking-package-details.js" type="text/javascript"></script>
         <script>
-            $('#start_date').datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
-            $('#end_date').datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
+                                            $('#start_date').datepicker({
+                                                dateFormat: 'yy-mm-dd'
+                                            });
+                                            $('#end_date').datepicker({
+                                                dateFormat: 'yy-mm-dd'
+                                            });
         </script>
         <script>
             tinymce.init({

@@ -3,19 +3,28 @@
 include_once(dirname(__FILE__) . '/../../class/include.php');
 
 if (isset($_POST['create'])) {
-
+  
     $BOOKING = new Booking(NULL);
     $VALID = new Validator();
     $BOOKING->referenceNo = $_POST['reference_no'];
     $BOOKING->customer = $_POST['id'];
     $BOOKING->start_date = $_POST['start_date'];
-    $BOOKING->start_time = $_POST['start_time'];
+    if($_POST['start_time'] == '') {
+        $BOOKING->start_time = '00:00:00';
+    } else {
+        $BOOKING->start_time = date("H:i", strtotime($_POST['start_time']));
+    }
     $BOOKING->end_date = $_POST['end_date'];
-    $BOOKING->end_time = $_POST['end_time'];
+    if($_POST['end_time'] == '') {
+        $BOOKING->end_time = '00:00:00';
+    } else {
+        $BOOKING->end_time = date("H:i", strtotime($_POST['end_time']));
+    }
     $BOOKING->no_of_days = $_POST['no_of_days'];
     $BOOKING->start_from = $_POST['start_from'];
     $BOOKING->end_from = $_POST['end_from'];
     $BOOKING->vehicleType = $_POST['vehicle_type'];
+    $BOOKING->vehicleSubType = $_POST['vehicle-sub-type'];
     $BOOKING->vehicle = $_POST['vehicle'];
     $BOOKING->driver = $_POST['driver'];
     $BOOKING->total_cost = $_POST['total_cost'];
@@ -27,23 +36,18 @@ if (isset($_POST['create'])) {
     $BOOKING->no_of_hand_baggage = $_POST['no_of_hand_baggage'];
     $BOOKING->comment = $_POST['comment'];
     $BOOKING->status = 'pending';
-
+  
 
     $VALID->check($BOOKING, [
         'customer' => ['required' => TRUE],
         'start_date' => ['required' => TRUE],
         'start_time' => ['required' => TRUE],
         'end_date' => ['required' => TRUE],
-        'end_time' => ['required' => TRUE],
         'no_of_days' => ['required' => TRUE],
-        'start_from' => ['required' => TRUE],
-        'end_from' => ['required' => TRUE],
         'vehicleType' => ['required' => TRUE],
         'total_cost' => ['required' => TRUE],
         'no_of_adults' => ['required' => TRUE],
-        'no_of_children' => ['required' => TRUE],
-        'total_cost' => ['required' => TRUE],
-        'comment' => ['required' => TRUE]
+        'total_cost' => ['required' => TRUE]
     ]);
 
 
@@ -81,13 +85,22 @@ if (isset($_POST['update'])) {
 
     $BOOKING->customer = $_POST['customer'];
     $BOOKING->start_date = $_POST['start_date'];
-    $BOOKING->start_time = $_POST['start_time'];
+    if($_POST['start_time'] == '') {
+        $BOOKING->start_time = '00:00:00';
+    } else {
+        $BOOKING->start_time = date("H:i", strtotime($_POST['start_time']));
+    }
     $BOOKING->end_date = $_POST['end_date'];
-    $BOOKING->end_time = $_POST['end_time'];
+    if($_POST['end_time'] == '') {
+        $BOOKING->end_time = '00:00:00';
+    } else {
+        $BOOKING->end_time = date("H:i", strtotime($_POST['end_time']));
+    }
     $BOOKING->no_of_days = $_POST['no_of_days'];
     $BOOKING->start_from = $_POST['start_from'];
     $BOOKING->end_from = $_POST['end_from'];
     $BOOKING->vehicleType = $_POST['vehicle_type'];
+    $BOOKING->vehicleSubType = $_POST['vehicle-sub-type'];
     $BOOKING->vehicle = $_POST['vehicle'];
     $BOOKING->driver = $_POST['driver'];
     $BOOKING->total_cost = $_POST['total_cost'];
@@ -117,16 +130,11 @@ if (isset($_POST['update'])) {
         'start_date' => ['required' => TRUE],
         'start_time' => ['required' => TRUE],
         'end_date' => ['required' => TRUE],
-        'end_time' => ['required' => TRUE],
         'no_of_days' => ['required' => TRUE],
-        'start_from' => ['required' => TRUE],
-        'end_from' => ['required' => TRUE],
         'vehicleType' => ['required' => TRUE],
         'total_cost' => ['required' => TRUE],
         'no_of_adults' => ['required' => TRUE],
-        'no_of_children' => ['required' => TRUE],
-        'total_cost' => ['required' => TRUE],
-        'comment' => ['required' => TRUE]
+        'total_cost' => ['required' => TRUE]
     ]);
 
     if ($VALID->passed()) {
