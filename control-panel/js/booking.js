@@ -1,13 +1,14 @@
 $(document).ready(function () {
 
-    $('#vehicle_type').change(function () {
-        var type = $(this).val();
+
+    $('#vehicle-sub-type-bar').on('change', '#vehicle-sub-type', function () {
+        var subtype = $(this).val();
         $.ajax({
             url: "post-and-get/ajax/booking.php",
             type: "POST",
             data: {
-                type: type,
-                action: 'GETVEHICLESBYTYPE'
+                subtype: subtype,
+                action: 'GETVEHICLESBYSUBTYPE'
             },
             dataType: "JSON",
             success: function (jsonStr) {
@@ -18,7 +19,7 @@ $(document).ready(function () {
                 html += '<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">';
                 html += '<div class="form-group place-select">';
                 html += '<div class="form-line">';
-                html += '<select class="form-control" autocomplete="off" type="text" autocomplete="off" name="vehicle" id="vehicle" required="TRUE">';
+                html += '<select class="form-control" autocomplete="off" type="text" autocomplete="off" name="vehicle" id="vehicle">';
                 html += '<option value=""> -- Please Select Vehicle -- </option>';
                 $.each(jsonStr, function (i, data) {
                     html += '<option value="' + data.id + '" driver="' + data.driver + '" no_of_passengers="' + data.no_of_passenger + '" no_of_baggage="' + data.no_of_baggage + '">';
@@ -37,7 +38,6 @@ $(document).ready(function () {
     });
     $('#vehicle-bar').on('change', '#vehicle', function () {
         var driver = $(this).find(':selected').attr('driver');
-        var passengers = $(this).find(':selected').attr('no_of_passengers');
         var baggages = $(this).find(':selected').attr('no_of_baggage');
         var vtype = $("#vehicle_type :selected").val();
         $.ajax({
@@ -51,6 +51,7 @@ $(document).ready(function () {
             success: function (jsonStr) {
                 var html = '';
                 var html1 = '';
+                var j;
                 html += '<div class="col-lg-2 col-md-2 hidden-sm hidden-xs form-control-label">';
                 html += '<label for="driver">Driver</label>';
                 html += '</div>';
@@ -74,52 +75,21 @@ $(document).ready(function () {
                 html += '</div>';
                 $('#driver-bar').empty();
                 $('#driver-bar').append(html);
-                var i;
-                var j;
-                html1 += '<div class="col-lg-2 col-md-2 hidden-sm hidden-xs form-control-label">';
-                html1 += '<label for="seating_capacity">Seating Capacity</label>';
-                html1 += '</div>';
-                html1 += '<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">';
-                html1 += '<div class="form-group form-float">';
-                html1 += '<div class="form-line">';
-                html1 += '<select class="form-control place-select1 show-tick" id="seating_capacity" name="seating_capacity">';
-                html1 += '<option value=""> -- Please Select -- </option>';
-                for (i = 1; i <= passengers; i++) {
-                    html1 += '<option value="' + i + '">';
-                    html1 += i;
-                    html1 += '</option>';
-                }
-                html1 += '</select>';
-                html1 += '</div>';
-                html1 += '</div>';
-                html1 += '</div>';
-                html1 += '<div class="col-lg-2 col-md-2 hidden-sm hidden-xs form-control-label">';
-                html1 += '<label for="no_of_hard_baggage">No of Hard Baggage</label>';
-                html1 += '</div>';
-                html1 += '<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">';
-                html1 += '<div class="form-group form-float">';
-                html1 += '<div class="form-line">';
-                html1 += '<select class="form-control place-select1 show-tick" id="no_of_hard_baggage" name="no_of_hard_baggage">';
-                html1 += '<option value=""> -- Please Select -- </option>';
-                for (j = 1; j <= baggages; j++) {
-                    html1 += '<option value="' + j + '">';
-                    html1 += j;
-                    html1 += '</option>';
-                }
-                html1 += '</select>';
-                html1 += '</div>';
-                html1 += '</div>';
-                html1 += '</div>';
-                html1 += '<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">';
-                html1 += '<label for="no_of_hand_baggage">No of Hand Baggage</label>';
-                html1 += '</div>';
-                html1 += '<div class="col-md-2">';
-                html1 += '<div class="form-group form-float">';
-                html1 += '<div class="form-line">';
-                html1 += '<input type="number" id="no_of_hand_baggage" class="form-control input-append"  autocomplete="off" name="no_of_hand_baggage" required="true" placeholder="No of Hand Baggage" min="0">';
-                html1 += '</div>';
-                html1 += '</div>';
-                html1 += '</div>';
+
+//                html1 += '<div class="col-lg-2 col-md-2 hidden-sm hidden-xs form-control-label">';
+//                html1 += '<label for="no_of_hard_baggage">No of Hard Baggage</label>';
+//                html1 += '</div>';
+//                html1 += '<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">';
+//                html1 += '<div class="form-group form-float">';
+//                html1 += '<div class="form-line">';
+//                html1 += '<select class="form-control place-select1 show-tick" id="no_of_hard_baggage" name="no_of_hard_baggage">';
+//                html1 += '<option value=""> -- Please Select -- </option>';
+//                for (j = 1; j <= baggages; j++) {
+//                    html1 += '<option value="' + j + '">';
+//                    html1 += j;
+//                    html1 += '</option>';
+//                }
+
                 $('#seating-capacity-bar').empty();
                 $('#seating-capacity-bar').append(html1);
             }
@@ -264,13 +234,17 @@ $(document).ready(function () {
 
                                 var html1 = '';
                                 if (status == 'confirmed') {
-                                    html1 += '|';
-                                    html1 += '<a href="#"  class="mark-as-completed" data-id="' + booking.id + '">';
-                                    html1 += '<button class="glyphicon glyphicon-ok confirmed-btn" title="Mark as Completed"></button>';
+                                    html1 += ' | ';
+                                    html1 += '<a href="#"  class="do-payment" data-id="' + booking.id + '"  total-cost="' + booking.total_cost + '">';
+                                    html1 += '<button class="glyphicon glyphicon-usd confirmed-btn btn-m-b-5"  data-toggle="modal" data-target="#payment-modal"  title="Advanced Payment"></button>';
                                     html1 += '</a>';
-                                    html1 += '|';
+                                    html1 += ' | ';
+                                    html1 += '<a href="#"  class="mark-as-completed" data-id="' + booking.id + '">';
+                                    html1 += '<button class="glyphicon glyphicon-ok confirmed-btn btn-m-b-5" title="Mark as Completed"></button>';
+                                    html1 += '</a>';
+                                    html1 += ' | ';
                                     html1 += '<a href="#"  class="cancel-booking" data-id="' + booking.id + '">';
-                                    html1 += '<button class="glyphicon glyphicon-remove-circle arrange-btn" title="Mark as Canceled"></button>';
+                                    html1 += '<button class="glyphicon glyphicon-remove-circle arrange-btn btn-m-b-5" title="Mark as Canceled"></button>';
                                     html1 += '</a>';
                                 }
 
@@ -281,7 +255,6 @@ $(document).ready(function () {
                                                     <td>' + booking.nic + '</td>\n\
                                                     <td>' + booking.date + '</td>\n\
                                                     <td>' + booking.start_date + '</td>\n\
-                                                    <td>' + booking.end_date + '</td>\n\
                                                     <td class="text-right">' + booking.total_amount + '</td>\n\
                                                     <td class="text-right">' + booking.paid_amount + '</td>\n\
                                                     <td class="text-right">' + booking.due_amount + '</td>\n\
@@ -326,13 +299,17 @@ $(document).ready(function () {
 
                         var html1 = '';
                         if (status == 'confirmed') {
-                            html1 += '|';
-                            html1 += '<a href="#"  class="mark-as-completed" data-id="' + booking.id + '">';
-                            html1 += '<button class="glyphicon glyphicon-ok confirmed-btn" title="Mark as Completed"></button>';
+                            html1 += ' | ';
+                            html1 += '<a href="#"  class="do-payment" data-id="' + booking.id + '"  total-cost="' + booking.total_cost + '">';
+                            html1 += '<button class="glyphicon glyphicon-usd confirmed-btn btn-m-b-5"  data-toggle="modal" data-target="#payment-modal"  title="Advanced Payment"></button>';
                             html1 += '</a>';
-                            html1 += '|';
+                            html1 += ' | ';
+                            html1 += '<a href="#"  class="mark-as-completed" data-id="' + booking.id + '">';
+                            html1 += '<button class="glyphicon glyphicon-ok confirmed-btn btn-m-b-5" title="Mark as Completed"></button>';
+                            html1 += '</a>';
+                            html1 += ' | ';
                             html1 += '<a href="#"  class="cancel-booking" data-id="' + booking.id + '">';
-                            html1 += '<button class="glyphicon glyphicon-remove-circle arrange-btn" title="Mark as Canceled"></button>';
+                            html1 += '<button class="glyphicon glyphicon-remove-circle arrange-btn btn-m-b-5" title="Mark as Canceled"></button>';
                             html1 += '</a>';
                         }
 
@@ -343,7 +320,6 @@ $(document).ready(function () {
                                                     <td>' + booking.nic + '</td>\n\
                                                     <td>' + booking.date + '</td>\n\
                                                     <td>' + booking.start_date + '</td>\n\
-                                                    <td>' + booking.end_date + '</td>\n\
                                                     <td class="text-right">' + booking.total_amount + '</td>\n\
                                                     <td class="text-right">' + booking.paid_amount + '</td>\n\
                                                     <td class="text-right">' + booking.due_amount + '</td>\n\
@@ -386,13 +362,17 @@ $(document).ready(function () {
 
                         var html1 = '';
                         if (status == 'confirmed') {
-                            html1 += '|';
-                            html1 += '<a href="#"  class="mark-as-completed" data-id="' + booking.id + '">';
-                            html1 += '<button class="glyphicon glyphicon-ok confirmed-btn" title="Mark as Completed"></button>';
+                            html1 += ' | ';
+                            html1 += '<a href="#"  class="do-payment" data-id="' + booking.id + '"  total-cost="' + booking.total_cost + '">';
+                            html1 += '<button class="glyphicon glyphicon-usd confirmed-btn btn-m-b-5"  data-toggle="modal" data-target="#payment-modal"  title="Advanced Payment"></button>';
                             html1 += '</a>';
-                            html1 += '|';
+                            html1 += ' | ';
+                            html1 += '<a href="#"  class="mark-as-completed" data-id="' + booking.id + '">';
+                            html1 += '<button class="glyphicon glyphicon-ok confirmed-btn btn-m-b-5" title="Mark as Completed"></button>';
+                            html1 += '</a>';
+                            html1 += ' | ';
                             html1 += '<a href="#"  class="cancel-booking" data-id="' + booking.id + '">';
-                            html1 += '<button class="glyphicon glyphicon-remove-circle arrange-btn" title="Mark as Canceled"></button>';
+                            html1 += '<button class="glyphicon glyphicon-remove-circle arrange-btn btn-m-b-5" title="Mark as Canceled"></button>';
                             html1 += '</a>';
                         }
 
@@ -403,7 +383,6 @@ $(document).ready(function () {
                                                     <td>' + booking.nic + '</td>\n\
                                                     <td>' + booking.date + '</td>\n\
                                                     <td>' + booking.start_date + '</td>\n\
-                                                    <td>' + booking.end_date + '</td>\n\
                                                     <td class="text-right">' + booking.total_amount + '</td>\n\
                                                     <td class="text-right">' + booking.paid_amount + '</td>\n\
                                                     <td class="text-right">' + booking.due_amount + '</td>\n\

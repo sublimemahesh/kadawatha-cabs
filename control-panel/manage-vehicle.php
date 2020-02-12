@@ -4,7 +4,8 @@ include_once(dirname(__FILE__) . '/auth.php');
 $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $TYPE = new VehicleType($id);
+    $SUBTYPE = new VehicleSubType($id);
+    $TYPE = new VehicleType($SUBTYPE->type);
 }
 ?>
 <!DOCTYPE html>
@@ -32,9 +33,9 @@ if (isset($_GET['id'])) {
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
         <link href="plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-        
-        
-        
+
+
+
     </head>
     <body class="theme-red">
         <?php
@@ -42,18 +43,19 @@ if (isset($_GET['id'])) {
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2>Create Vehicle</h2>
+                                <h2>Create Vehicle - (<?php echo $TYPE->type . ' -> ' . $SUBTYPE->name; ?>)</h2>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" id="newVehicle" action="post-and-get/vehicle.php" enctype="multipart/form-data">
                                     <div class="row clearfix">
@@ -65,6 +67,19 @@ if (isset($_GET['id'])) {
                                                 <div class="form-line">
                                                     <input type="text" class="form-control" value="<?php echo $TYPE->type; ?>" readonly="">
                                                     <input type="hidden" id="type" name="type" value="<?php echo $TYPE->id; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Sub Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" value="<?php echo $SUBTYPE->name; ?>" readonly="">
+                                                    <input type="hidden" id="sub_type" name="sub_type" value="<?php echo $SUBTYPE->id; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -84,6 +99,32 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div>
 
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="owner_contact_no_01">Owner Contact Number 01</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="owner_contact_no_01" class="form-control"  autocomplete="off" name="owner_contact_no_01" required="true" placeholder="Owner Contact Number 01">
+                                                    <!--<label class="form-label">Contact Number</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="owner_contact_no_02">Owner Contact Number 02</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="owner_contact_no_02" class="form-control"  autocomplete="off" name="owner_contact_no_02" placeholder="Owner Contact Number 02">
+                                                    <!--<label class="form-label">Contact Number</label>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Vehicle Number</label>
@@ -112,19 +153,6 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Contact Number</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true" placeholder="Contact Number">
-                                                    <!--<label class="form-label">Contact Number</label>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">City</label>
                                         </div>
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -136,9 +164,6 @@ if (isset($_GET['id'])) {
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                     <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label ">
                                             <label for="name">Condition Type</label>
@@ -166,7 +191,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" required="true" min="0" placeholder="No Of Passenger">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofpassenger" min="0" placeholder="No Of Passenger">
                                                     <!--<label class="form-label">No Of Passenger</label>-->
                                                 </div>
                                             </div>
@@ -179,7 +204,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" required="true" min="0" placeholder="No Of Baggage">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofbaggage" min="0" placeholder="No Of Baggage">
                                                     <!--<label class="form-label">No Of Baggage</label>-->
                                                 </div>
                                             </div>
@@ -192,14 +217,14 @@ if (isset($_GET['id'])) {
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" required="true" min="0" placeholder="No Of Door">
+                                                    <input type="number" id="title" class="form-control"  autocomplete="off" name="noofdoor" min="0" placeholder="No Of Door">
                                                     <!--<label class="form-label">No Of Door</label>-->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                     <div class="row clearfix">
+                                    <div class="row clearfix">
                                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                             <label for="name">Driver</label>
                                         </div>
@@ -208,14 +233,11 @@ if (isset($_GET['id'])) {
                                                 <div class="form-line">
                                                     <select class="form-control place-select1 show-tick" name="drivertype">
                                                         <option value=""> -- Please Select Driver -- </option>
-                                                        <?php foreach (Driver::getDriversByVehicleType($id) as $name) {
+                                                        <?php
+                                                        foreach (Driver::getDriversByVehicleType($SUBTYPE->type) as $name) {
                                                             ?>
-                                                            <option value="<?php echo $name['id']; ?>" <?php
-                                                            if ($VEHICLE->driver === $name['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $name['name']; ?>
+                                                            <option value="<?php echo $name['id']; ?>">
+                                                                <?php echo $name['name']; ?>
                                                             </option>
                                                             <?php
                                                         }
@@ -226,10 +248,34 @@ if (isset($_GET['id'])) {
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="driver_contact_no_01">Driver Contact Number 01</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="driver_contact_no_01" class="form-control"  autocomplete="off" name="driver_contact_no_01" required="true" placeholder="Driver Contact Number 01">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="driver_contact_no_02">Driver Contact Number 02</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="driver_contact_no_02" class="form-control"  autocomplete="off" name="driver_contact_no_02" placeholder="Driver Contact Number 02">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="submit" name="create" id="createVehicle" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                         <input type="hidden" name="create"/> 
                                     </div>
                                     <div class="row clearfix">  </div>
@@ -254,11 +300,11 @@ if (isset($_GET['id'])) {
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Vehicle Owner Name</th>
+                                                <th>Owner Name</th>
                                                 <th>Vehicle No</th>
                                                 <th>Vehicle Name</th>
-                                                <th>Contact No</th>
-                                                <th>City</th>
+                                                <th>Condition</th>
+                                                <th>No of Passengers</th>
                                                 <th>Driver</th>
                                                 <th>Options</th>
                                             </tr>
@@ -266,18 +312,18 @@ if (isset($_GET['id'])) {
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Vehicle Owner Name</th>
+                                                <th>Owner Name</th>
                                                 <th>Vehicle No</th>
                                                 <th>Vehicle Name</th>
-                                                <th>Contact No</th>
-                                                <th>City</th>
+                                                <th>Condition</th>
+                                                <th>No of Passengers</th>
                                                 <th>Driver</th>
                                                 <th>Options</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            foreach (vehicle::getVehiclesByType($id) as $key => $vehicle) {
+                                            foreach (vehicle::getVehiclesBySubType($id) as $key => $vehicle) {
                                                 $key++;
 
                                                 $VEHICLENAME = new VehicleType($vehicle['vehicle_type']);
@@ -288,8 +334,8 @@ if (isset($_GET['id'])) {
                                                     <td><?php echo $vehicle['owner']; ?></td>
                                                     <td><?php echo $vehicle['vehicle_number']; ?></td>
                                                     <td><?php echo $vehicle['vehicle_name']; ?></td>
-                                                    <td><?php echo $vehicle['contact_number']; ?></td>
-                                                    <td><?php echo $vehicle['city']; ?></td>
+                                                    <td><?php echo $vehicle['condition']; ?></td>
+                                                    <td><?php echo $vehicle['no_of_passenger']; ?></td>
                                                     <td><?php echo $DRIVERENAME->name; ?></td>
 
                                                     <td> 

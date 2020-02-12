@@ -36,11 +36,7 @@ $PAGES = new Page($id);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -55,6 +51,11 @@ $PAGES = new Page($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/pages.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -85,7 +86,7 @@ $PAGES = new Page($id);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                  <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
+                                                    <textarea id="description" name="description" class="form-control" rows="5"></textarea> 
                                                 </div>
                                             </div>
                                         </div>
@@ -93,6 +94,7 @@ $PAGES = new Page($id);
                                     <div class="row clearfix">
                                         <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
                                             <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                            <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                         </div>
                                     </div>
                                     <hr/>
@@ -120,29 +122,29 @@ $PAGES = new Page($id);
 
         <script src="tinymce/js/tinymce/tinymce.min.js"></script>
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+                                                tinymce.init({
+                                                    selector: "#description",
+                                                    // ===========================================
+                                                    // INCLUDE THE PLUGIN
+                                                    // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                                                    plugins: [
+                                                        "advlist autolink lists link image charmap print preview anchor",
+                                                        "searchreplace visualblocks code fullscreen",
+                                                        "insertdatetime media table contextmenu paste"
+                                                    ],
+                                                    // ===========================================
+                                                    // PUT PLUGIN'S BUTTON on the toolbar
+                                                    // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
+                                                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                    // ===========================================
+                                                    // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                    // ===========================================
 
-                relative_urls: false
+                                                    relative_urls: false
 
-            });
+                                                });
 
 
         </script>

@@ -33,11 +33,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -54,6 +50,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
@@ -100,7 +101,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td> 
                                                         <a href="edit-packages.php?id=<?php echo $packages['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Package"></button></a>
                                                         |
-                                       
+
                                                         <a href="#"  class="delete-Packages" data-id="<?php echo $packages['id']; ?>">
                                                             <button class="glyphicon glyphicon-trash delete-btn delete-user" title="Delete Package" data-id="<?php echo $packages['id']; ?>"></button>
                                                         </a>

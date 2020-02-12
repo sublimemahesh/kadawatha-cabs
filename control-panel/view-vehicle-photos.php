@@ -32,10 +32,7 @@ $VEHICLE = new Vehicle($id);
 
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
-                $vali->show_message();
-                ?>
+
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -50,6 +47,10 @@ $VEHICLE = new Vehicle($id);
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal"  method="post" action="post-and-get/vehicle-photo.php" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -72,7 +73,7 @@ $VEHICLE = new Vehicle($id);
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="text" id="caption" class="form-control" autocomplete="off" name="caption" placeholder="Caption"  required="true">
-                                                 
+
                                                 </div>
                                             </div>
                                         </div>
@@ -81,6 +82,7 @@ $VEHICLE = new Vehicle($id);
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5"> 
                                         <input type="hidden" id="id" value="<?php echo $VEHICLE->id; ?>" name="id"/>
                                         <input type="submit" name="create" class="btn btn-primary m-t-15 waves-effect" value="create"/>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                     </div>
 
                                 </form>
@@ -88,31 +90,31 @@ $VEHICLE = new Vehicle($id);
                                 </div>
                                 <hr/>
                                 <div class="row clearfix">
-<!--                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">-->
-                                        <?php
-                                        $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
-                                        if (count($VEHICLE_PHOTO) > 0) {
-                                            foreach ($VEHICLE_PHOTO as $key => $vehicle_photo) {
-                                                ?>
-                                                <div class="col-md-3"  id="div<?php echo $vehicle_photo['id']; ?>">
-                                                    <div class="photo-img-container">
-                                                        <img src="../upload/vehicle/gallery/thumb/<?php echo $vehicle_photo['image']; ?>" class="img-responsive ">
-                                                    </div>
-                                                    <div class="img-caption">
-                                                        <p class="maxlinetitle"><?php echo $vehicle_photo['caption']; ?></p>
-                                                        <div class="d">
-                                                            <a href="#" class="delete-vehicle-photo" data-id="<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
-                                                            <a href="edit-vehicle-photo.php?id=<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
-                                                            <a href="arrange-vehicle-photos.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
-                                                        </div>
+                                    <!--                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">-->
+                                    <?php
+                                    $VEHICLE_PHOTO = VehiclePhoto::getVehiclePhotosById($id);
+                                    if (count($VEHICLE_PHOTO) > 0) {
+                                        foreach ($VEHICLE_PHOTO as $key => $vehicle_photo) {
+                                            ?>
+                                            <div class="col-md-3"  id="div<?php echo $vehicle_photo['id']; ?>">
+                                                <div class="photo-img-container">
+                                                    <img src="../upload/vehicle/gallery/thumb/<?php echo $vehicle_photo['image']; ?>" class="img-responsive ">
+                                                </div>
+                                                <div class="img-caption">
+                                                    <p class="maxlinetitle"><?php echo $vehicle_photo['caption']; ?></p>
+                                                    <div class="d">
+                                                        <a href="#" class="delete-vehicle-photo" data-id="<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-trash delete-btn"></button></a>
+                                                        <a href="edit-vehicle-photo.php?id=<?php echo $vehicle_photo['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn"></button></a>
+                                                        <a href="arrange-vehicle-photos.php?id=<?php echo $id; ?>">  <button class="glyphicon glyphicon-random arrange-btn"></button></a>
                                                     </div>
                                                 </div>
-                                                <?php
-                                            }
-                                        } else {
-                                            ?> 
-                                            <b style="padding-left: 15px;">No Vehicle photos in the database.</b> 
-                                        <?php } ?> 
+                                            </div>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?> 
+                                        <b style="padding-left: 15px;">No Vehicle photos in the database.</b> 
+                                    <?php } ?> 
 
                                     <!--</div>-->
                                 </div>
@@ -141,29 +143,29 @@ $VEHICLE = new Vehicle($id);
         <script src="delete/js/vehicle-photo.js" type="text/javascript"></script>
 
         <script>
-            tinymce.init({
-                selector: "#description",
-                // ===========================================
-                // INCLUDE THE PLUGIN
-                // ===========================================
+                                            tinymce.init({
+                                                selector: "#description",
+                                                // ===========================================
+                                                // INCLUDE THE PLUGIN
+                                                // ===========================================
 
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                // ===========================================
-                // PUT PLUGIN'S BUTTON on the toolbar
-                // ===========================================
+                                                plugins: [
+                                                    "advlist autolink lists link image charmap print preview anchor",
+                                                    "searchreplace visualblocks code fullscreen",
+                                                    "insertdatetime media table contextmenu paste"
+                                                ],
+                                                // ===========================================
+                                                // PUT PLUGIN'S BUTTON on the toolbar
+                                                // ===========================================
 
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-                // ===========================================
-                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
-                // ===========================================
+                                                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+                                                // ===========================================
+                                                // SET RELATIVE_URLS to FALSE (This is required for images to display properly)
+                                                // ===========================================
 
-                relative_urls: false
+                                                relative_urls: false
 
-            });
+                                            });
 
 
         </script>

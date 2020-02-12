@@ -33,11 +33,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -47,6 +43,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     Manage Commission Unpaid Bookings
                                 </h2>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
@@ -83,11 +84,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 $DRIVER = new Driver($booking['driver']);
                                                 $rate = 0;
                                                 foreach (DefaultData::getDriverCommission() as $key1 => $commission) {
-                                                    if($key1 == $DRIVER->type) {
+                                                    if ($key1 == $DRIVER->type) {
                                                         $rate = $commission;
                                                     }
                                                 };
-                                                $tot_commission = (float) $booking['total_cost'] * (float) $rate/100;
+                                                $tot_commission = (float) $booking['total_cost'] * (float) $rate / 100;
                                                 ?>
                                                 <tr id="row_<?php echo $booking['id']; ?>">
                                                     <td><?php echo $key; ?></td>
@@ -95,8 +96,8 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                     <td><?php echo $DRIVER->name ?></td>
                                                     <td><?php echo $booking['start_date']; ?></td>
                                                     <td><?php echo $booking['end_date']; ?></td>
-                                                    <td style="text-align: right;"><?php echo number_format($booking['total_cost'],2); ?></td>
-                                                    <td style="text-align: right;"><?php echo number_format($tot_commission,2); ?></td>
+                                                    <td style="text-align: right;"><?php echo number_format($booking['total_cost'], 2); ?></td>
+                                                    <td style="text-align: right;"><?php echo number_format($tot_commission, 2); ?></td>
 
                                                     <td>
                                                         <a href="create-commission-payment.php?id=<?php echo $booking['id']; ?>"> <button class="glyphicon glyphicon-usd arrange-btn" title="Pay Commission"></button></a>

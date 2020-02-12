@@ -35,11 +35,7 @@ $PAGES = new Page($id);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -50,6 +46,11 @@ $PAGES = new Page($id);
                                 </h2>
 
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body row">
                                 <form class="form-horizontal" method="post" action="post-and-get/pages.php" enctype="multipart/form-data"> 
 

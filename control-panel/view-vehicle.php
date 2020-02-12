@@ -6,7 +6,7 @@ $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $VEHICLE = new vehicle($id);
-    
+
     $VEHICLETYPE = new VehicleType($VEHICLE->vehicle_type);
     $DRIVERNAME = new Driver($VEHICLE->driver);
 }
@@ -43,11 +43,7 @@ if (isset($_GET['id'])) {
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -64,6 +60,11 @@ if (isset($_GET['id'])) {
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body tablebody">
                                 <!-- <div class="table-responsive">-->
                                 <table class="table table-bordered table-striped table-hover viewtable">
@@ -112,6 +113,7 @@ if (isset($_GET['id'])) {
                                         <td><?php echo $DRIVERNAME->name ?></td>
                                     </tr>
                                 </table>
+                                <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                             </div>
                         </div>
                     </div>

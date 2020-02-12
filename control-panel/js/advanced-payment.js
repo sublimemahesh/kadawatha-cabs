@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $('.do-payment').click(function () {
+//    $('.do-payment').click(function () {
+        $('#booking tbody').on('click', '.do-payment', function () {
         $('#paid_amount').val('');
         $('#due_amount').val('');
         $('#total_amount').val('');
@@ -60,10 +61,10 @@ $(document).ready(function () {
                 showConfirmButton: false
             });
             return false;
-        } else if (!$('#paid_by').val() || $('#paid_by').val().length === 0) {
+        } else if (!$('#received_by').val() || $('#received_by').val().length === 0) {
             swal({
                 title: "Error!",
-                text: "Please enter the name who done the paymnet",
+                text: "Please enter the name who received the paymnet",
                 type: 'error',
                 timer: 2000,
                 showConfirmButton: false
@@ -73,7 +74,7 @@ $(document).ready(function () {
             var receipt_no = $('#receipt_no').val();
             var receipt_date = $('#receipt_date').val();
             var paid_amount = $('#payment').val();
-            var paid_by = $('#paid_by').val();
+            var received_by = $('#received_by').val();
             var booking = $('#payment-btn').attr("booking");
 
 //            document.getElementById("#fullname").value = $('#name').val();
@@ -86,7 +87,7 @@ $(document).ready(function () {
                     receipt_no: receipt_no,
                     receipt_date: receipt_date,
                     paid_amount: paid_amount,
-                    paid_by: paid_by,
+                    received_by: received_by,
                     booking: booking,
                     option: 'ADDADVANCEDPAYMENT'
                 },

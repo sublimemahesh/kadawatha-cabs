@@ -2,7 +2,10 @@
 include_once(dirname(__FILE__) . '/../class/include.php');
 include_once(dirname(__FILE__) . '/auth.php');
 $date = '';
+$date1 = '';
 if (isset($_GET['date'])) {
+    $date = $_GET['date'];
+    $date1 = ' - ' . $_GET['date'];
     $bookings = Booking::getBookingsByStartDate($_GET['date']);
 } else {
     $bookings = Booking::all();
@@ -39,27 +42,28 @@ if (isset($_GET['date'])) {
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage All Bookings
+                                    Manage All Bookings <?php echo $date1; ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="create-booking.php">
+                                        <a href="create-booking.php?id=<?php echo $date; ?>">
                                             <i class="material-icons">add</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
@@ -67,12 +71,12 @@ if (isset($_GET['date'])) {
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Reference No</th>
                                                 <th>Customer</th>
-                                                <th>NIC</th>
+                                                <th>Contact No</th>
                                                 <th>Start Date</th>
-                                                <th>End Date</th>
-                                                <th>Total Cost (Rs)</th>
+                                                <th>Start Time</th>
+                                                <th>Start Location</th>
+                                                <th>Description</th>
                                                 <th>Status</th>
                                                 <th>Options</th>
                                             </tr>
@@ -80,12 +84,12 @@ if (isset($_GET['date'])) {
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Reference No</th>
                                                 <th>Customer</th>
-                                                <th>NIC</th>
+                                                <th>Contact No</th>
                                                 <th>Start Date</th>
-                                                <th>End Date</th>
-                                                <th>Total Cost (Rs)</th>
+                                                <th>Start Time</th>
+                                                <th>Start Location</th>
+                                                <th>Description</th>
                                                 <th>Status</th>
                                                 <th>Options</th>
                                             </tr>
@@ -98,17 +102,17 @@ if (isset($_GET['date'])) {
                                                 ?>
                                                 <tr id="row_<?php echo $booking['id']; ?>">
                                                     <td><?php echo $key; ?></td>
-                                                    <td><?php echo $booking['reference_no']; ?></td>
                                                     <td><?php echo $CUSTOMER->fullname; ?></td>
-                                                    <td><?php echo $CUSTOMER->nic; ?></td>
+                                                    <td><?php echo $CUSTOMER->mobile_number; ?></td>
                                                     <td><?php echo $booking['start_date']; ?></td>
-                                                    <td><?php echo $booking['end_date']; ?></td>
-                                                    <td><?php echo $booking['total_cost']; ?></td>
-                                                    <td><?php echo ucfirst($booking['status']); ?></td>
+                                                    <td><?php echo date("g:i a", strtotime($booking['start_time'])); ?></td>
+                                                    <td><?php echo $booking['start_from']; ?></td>
+                                                    <td><?php echo $booking['comment']; ?></td>
+                                                    <td><?php echo $booking['status']; ?></td>
 
                                                     <td> 
                                                         <a href="edit-booking.php?id=<?php echo $booking['id']; ?>"> <button class="glyphicon glyphicon-pencil edit-btn" title="Edit Booking"></button></a>
-                                                        
+
                                                     </td>
                                                 </tr>
                                                 <?php

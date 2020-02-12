@@ -51,11 +51,7 @@ if (isset($_GET['id'])) {
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -72,6 +68,11 @@ if (isset($_GET['id'])) {
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body tablebody1">
                                 <!-- <div class="table-responsive">-->
                                 <table class="table table-bordered table-striped table-hover" width="100%">
@@ -94,8 +95,8 @@ if (isset($_GET['id'])) {
                                         ?>
                                         <tr>
                                             <td><?php echo '#' . $booking['id']; ?></td>
-                                            <td class="text-right"><?php echo number_format($booking['total_cost'],2); ?></td>
-                                            <td class="text-right"><?php echo number_format($booking['total_cost'] * (int) $commission_rate / 100,2); ?></td>
+                                            <td class="text-right"><?php echo number_format($booking['total_cost'], 2); ?></td>
+                                            <td class="text-right"><?php echo number_format($booking['total_cost'] * (int) $commission_rate / 100, 2); ?></td>
                                         </tr>
                                         <?php
                                     }
@@ -106,9 +107,10 @@ if (isset($_GET['id'])) {
                                     </tr>
                                     <tr>
                                         <th>Total Commission (Rs)</th>
-                                        <td colspan="3"><?php echo number_format($COMMISSIONPAYMENT->amount,2); ?></td>
+                                        <td colspan="3"><?php echo number_format($COMMISSIONPAYMENT->amount, 2); ?></td>
                                     </tr>
                                 </table>
+                                <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                             </div>
                         </div>
                     </div>

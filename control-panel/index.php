@@ -138,7 +138,7 @@ $CANCELED_BOOKINGS = count(Booking::getTodayBookingsByStatus('canceled'));
                     </a>
 
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="card">
+                        <div class="index-card card">
                             <div class="header bg-blue-grey">
                                 <h2>
                                     BOOKINGS
@@ -156,7 +156,7 @@ $CANCELED_BOOKINGS = count(Booking::getTodayBookingsByStatus('canceled'));
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="card">
+                        <div class="index-card card">
                             <div class="header bg-blue-grey">
                                 <h2>
                                     REPORTS
@@ -175,7 +175,7 @@ $CANCELED_BOOKINGS = count(Booking::getTodayBookingsByStatus('canceled'));
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="card">
+                        <div class="index-card card">
                             <div class="header bg-blue-grey">
                                 <h2>
                                     VEHICLES
@@ -194,7 +194,7 @@ $CANCELED_BOOKINGS = count(Booking::getTodayBookingsByStatus('canceled'));
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="card">
+                        <div class="index-card card">
                             <div class="header bg-blue-grey">
                                 <h2>
                                     PACKAGES

@@ -33,11 +33,7 @@ include_once(dirname(__FILE__) . '/auth.php');
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -54,6 +50,11 @@ include_once(dirname(__FILE__) . '/auth.php');
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <!-- <div class="table-responsive">-->
                                 <div>
@@ -85,7 +86,7 @@ include_once(dirname(__FILE__) . '/auth.php');
                                                 <tr id="row_<?php echo $payment['id']; ?>">
                                                     <td><?php echo $key; ?></td>
                                                     <td><?php echo $DRIVER->name; ?></td>
-                                                    <td class="text-right"><?php echo number_format($payment['amount'],2); ?></td>
+                                                    <td class="text-right"><?php echo number_format($payment['amount'], 2); ?></td>
                                                     <td><?php echo $payment['paid_at']; ?></td>
                                                     <td>
                                                         <a href="view-payment.php?id=<?php echo $payment['id']; ?>"> <button class="glyphicon glyphicon-eye-open edit-btn" title="Edit Booking"></button></a>

@@ -46,6 +46,11 @@ if (isset($_GET['today'])) {
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet"  >
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+        <style>
+            .btn-m-b-5 {
+                margin-bottom: 5px;
+            }
+        </style>
     </head>
     <body class="theme-red">
         <?php
@@ -53,18 +58,20 @@ if (isset($_GET['today'])) {
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
                                 <h2>
-                                    Manage <?php echo ucfirst($status); ?> Bookings<?php echo $date; ?>
+                                    Manage <?php
+                                    if ($status == 'completed') {
+                                        echo 'Completed Hires' . $date;
+                                    } else {
+                                        echo ucfirst($status) . ' Bookings' . $date;
+                                    }
+                                    ?>
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
@@ -74,9 +81,13 @@ if (isset($_GET['today'])) {
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <?php
-                                
                                 if (($status1 == 2 && !isset($_GET['today'])) || ($status1 == 3 && !isset($_GET['today']))) {
                                     ?>
                                     <div class="row clearfix"></div>
@@ -119,7 +130,6 @@ if (isset($_GET['today'])) {
                                                 <th>NIC</th>
                                                 <th>Created At</th>
                                                 <th>Start Date</th>
-                                                <th>End Date</th>
                                                 <th>Total Amount (Rs)</th>
                                                 <?php
                                                 if ($status1 == 2 || $status1 == 3) {
@@ -140,7 +150,6 @@ if (isset($_GET['today'])) {
                                                 <th>NIC</th>
                                                 <th>Created At</th>
                                                 <th>Start Date</th>
-                                                <th>End Date</th>
                                                 <th>Total Amount (Rs)</th>
                                                 <?php
                                                 if ($status1 == 2 || $status1 == 3) {
@@ -171,7 +180,6 @@ if (isset($_GET['today'])) {
                                                     <td><?php echo $CUSTOMER->nic; ?></td>
                                                     <td><?php echo $booking['created_at']; ?></td>
                                                     <td><?php echo $booking['start_date']; ?></td>
-                                                    <td><?php echo $booking['end_date']; ?></td>
                                                     <td class="text-right"><?php echo $booking['total_cost']; ?></td>
                                                     <?php
                                                     if ($status1 == 2 || $status1 == 3) {
@@ -204,6 +212,10 @@ if (isset($_GET['today'])) {
                                                             <?php
                                                         } elseif ($booking['status'] == 'confirmed') {
                                                             ?>
+                                                            |
+                                                            <a href="#"  class="do-payment"  data-id="<?php echo $booking['id']; ?>" total-cost="<?php echo $booking['total_cost']; ?>">
+                                                                <button class="glyphicon glyphicon-usd confirmed-btn" data-toggle="modal" data-target="#payment-modal"  title="Advanced Payment"></button>
+                                                            </a>
                                                             |
                                                             <a href="#"  class="mark-as-completed" data-id="<?php echo $booking['id']; ?>">
                                                                 <button class="glyphicon glyphicon-ok confirmed-btn" title="Mark as Completed"></button>
@@ -325,12 +337,12 @@ if (isset($_GET['today'])) {
 
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="paid_by">Paid By</label>
+                                    <label for="received_by">Received By</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" id="paid_by" class="form-control"  autocomplete="off" name="paid_by" placeholder="Paid By">
+                                            <input type="text" id="received_by" class="form-control"  autocomplete="off" name="received_by" placeholder="Received By">
                                         </div>
                                     </div>
                                 </div>

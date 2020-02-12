@@ -40,11 +40,7 @@ $PERMISSION = new Permission($id);
         ?>
         <section class="content">
             <div class="container-fluid">
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Manage tour -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -54,7 +50,11 @@ $PERMISSION = new Permission($id);
                                     Manage Permission
                                 </h2>
                             </div>
+                            <?php
+                            $vali = new Validator();
 
+                            $vali->show_message();
+                            ?>
                             <div class="header">
                                 <!-- <div class="table-responsive">-->
                                 <div class="panel panel-default">
@@ -65,18 +65,18 @@ $PERMISSION = new Permission($id);
                                                 ?>
                                                 <div class="col-md-6">
                                                     <input class="filled-in chk-col-pink" type="checkbox" 
-                                                           
+
                                                            name="permission[]" value="<?php echo $permission['id']; ?>" id="Permission-<?php echo $permission['id']; ?>" />
                                                     <label for="Permission-<?php echo $permission['id']; ?>"><?php echo $permission['permission']; ?></label>
 
                                                 </div>
-                                            
+
                                                 <?php
                                             }
                                             ?>
                                             <div class="col-md-12">
                                                 <input type="hidden" id="userid" value="<?php echo $USER->id; ?>" name="userid"/>
-                                                 <input type="hidden" id="userid" value="<?php echo $PERMISSION->id; ?>" name="id"/>
+                                                <input type="hidden" id="userid" value="<?php echo $PERMISSION->id; ?>" name="id"/>
                                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect" name="updatePermission" value="updatePermission">Save Changes</button>
                                             </div>
                                         </div>

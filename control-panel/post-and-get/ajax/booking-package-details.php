@@ -22,4 +22,10 @@ if ($_POST['action'] == 'GETPACKAGES') {
     header('Content-type: application/json');
     exit();
 }
+if ($_POST['action'] == 'GETCATEGORY') {
+    $result = new VehicleCategory($_POST['category']);
+    echo json_encode($result);
+    header('Content-type: application/json');
+    exit();
+}
 

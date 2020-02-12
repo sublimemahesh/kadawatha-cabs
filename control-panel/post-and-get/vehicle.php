@@ -8,16 +8,20 @@ if (isset($_POST['create'])) {
     $VALID = new Validator();
 
     $VEHICLE->vehicle_type = $_POST['type'];
+    $VEHICLE->vehicle_sub_type = $_POST['sub_type'];
     $VEHICLE->owner = $_POST['owner'];
+    $VEHICLE->owner_contact_no_01 = $_POST['owner_contact_no_01'];
+    $VEHICLE->owner_contact_no_02 = $_POST['owner_contact_no_02'];
     $VEHICLE->vehicle_number = $_POST['vehicle_number'];
     $VEHICLE->vehicle_name = $_POST['vehicle_name'];
-    $VEHICLE->contact_number = $_POST['contactnum'];
     $VEHICLE->city = $_POST['city'];
     $VEHICLE->condition = $_POST['condition'];
     $VEHICLE->no_of_passenger = $_POST['noofpassenger'];
     $VEHICLE->no_of_baggage = $_POST['noofbaggage'];
     $VEHICLE->no_of_door = $_POST['noofdoor'];
     $VEHICLE->driver = $_POST['drivertype'];
+    $VEHICLE->driver_contact_no_01 = $_POST['driver_contact_no_01'];
+    $VEHICLE->driver_contact_no_02 = $_POST['driver_contact_no_02'];
 
 
     $dir_dest = '../../upload/vehicle/';
@@ -42,19 +46,15 @@ if (isset($_POST['create'])) {
         }
     }
 
-    $VEHICLE->vehicle_image = $imgName;
+//    $VEHICLE->vehicle_image = $imgName;
 
     $VALID->check($VEHICLE, [
         'vehicle_type' => ['required' => TRUE],
         'owner' => ['required' => TRUE],
         'vehicle_number' => ['required' => TRUE],
         'vehicle_name' => ['required' => TRUE],
-        'contact_number' => ['required' => TRUE],
         'city' => ['required' => TRUE],
-        'condition' => ['required' => TRUE],
-        'no_of_passenger' => ['required' => TRUE],
-        'no_of_baggage' => ['required' => TRUE],
-        'no_of_door' => ['required' => TRUE]
+        'condition' => ['required' => TRUE]
 //        ,
 //        'vehicle_image' => ['required' => TRUE]
     ]);
@@ -112,16 +112,20 @@ if (isset($_POST['update'])) {
 
 //    $VEHICLE->vehicle_image = $_POST['oldImageName'];
     $VEHICLE->vehicle_type = $_POST['type'];
+    $VEHICLE->vehicle_sub_type = $_POST['sub_type'];
     $VEHICLE->owner = $_POST['owner'];
+    $VEHICLE->owner_contact_no_01 = $_POST['owner_contact_no_01'];
+    $VEHICLE->owner_contact_no_02 = $_POST['owner_contact_no_02'];
     $VEHICLE->vehicle_number = $_POST['vehicle_number'];
     $VEHICLE->vehicle_name = $_POST['vehicle_name'];
-    $VEHICLE->contact_number = $_POST['contactnum'];
     $VEHICLE->city = $_POST['city'];
     $VEHICLE->condition = $_POST['condition'];
     $VEHICLE->no_of_passenger = $_POST['noofpassenger'];
     $VEHICLE->no_of_baggage = $_POST['noofbaggage'];
     $VEHICLE->no_of_door = $_POST['noofdoor'];
     $VEHICLE->driver = $_POST['drivertype'];
+    $VEHICLE->driver_contact_no_01 = $_POST['driver_contact_no_01'];
+    $VEHICLE->driver_contact_no_02 = $_POST['driver_contact_no_02'];
 
 
     $VALID = new Validator();
@@ -130,12 +134,8 @@ if (isset($_POST['update'])) {
         'owner' => ['required' => TRUE],
         'vehicle_number' => ['required' => TRUE],
         'vehicle_name' => ['required' => TRUE],
-        'contact_number' => ['required' => TRUE],
         'city' => ['required' => TRUE],
         'condition' => ['required' => TRUE],
-        'no_of_passenger' => ['required' => TRUE],
-        'no_of_baggage' => ['required' => TRUE],
-        'no_of_door' => ['required' => TRUE],
         'driver' => ['required' => TRUE]
     ]);
 

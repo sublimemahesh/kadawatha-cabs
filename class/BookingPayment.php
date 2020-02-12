@@ -19,12 +19,12 @@ class BookingPayment {
     public $receiptNumber;
     public $advancedTotal;
     public $receivedDate;
-    public $paidBy;
+    public $receivedBy;
 
     public function __construct($id) {
         if ($id) {
 
-            $query = "SELECT `id`,`booking`,`receipt_date`,`receipt_number`,`advanced_total`,`received_date`,`paid_by` FROM `booking_payments` WHERE `id`=" . $id;
+            $query = "SELECT `id`,`booking`,`receipt_date`,`receipt_number`,`advanced_total`,`received_date`,`received_by` FROM `booking_payments` WHERE `id`=" . $id;
 
             $db = new Database();
 
@@ -36,7 +36,7 @@ class BookingPayment {
             $this->receiptNumber = $result['receipt_number'];
             $this->advancedTotal = $result['advanced_total'];
             $this->receivedDate = $result['received_date'];
-            $this->paidBy = $result['paid_by'];
+            $this->receivedBy = $result['received_by'];
 
             return $this;
         }
@@ -46,13 +46,13 @@ class BookingPayment {
         date_default_timezone_set('Asia/Colombo');
         $date = date('Y-m-d');
 
-        $query = "INSERT INTO `booking_payments` (`booking`,`receipt_date`,`receipt_number`,`advanced_total`,`received_date`,`paid_by`) VALUES  ('"
+        $query = "INSERT INTO `booking_payments` (`booking`,`receipt_date`,`receipt_number`,`advanced_total`,`received_date`,`received_by`) VALUES  ('"
                 . $this->booking . "','"
                 . $this->receiptDate . "', '"
                 . $this->receiptNumber . "', '"
                 . $this->advancedTotal . "', '"
                 . $date . "', '"
-                . $this->paidBy . "')";
+                . $this->receivedBy . "')";
 
         $db = new Database();
 
@@ -89,7 +89,7 @@ class BookingPayment {
                 . "`receipt_number` ='" . $this->receiptNumber . "', "
                 . "`advanced_total` ='" . $this->advancedTotal . "', "
                 . "`received_date` ='" . $this->receivedDate . "', "
-                . "`paid_by` ='" . $this->paidBy . "' "
+                . "`received_by` ='" . $this->receivedBy . "' "
                 . "WHERE `id` = '" . $this->id . "'";
 
         $db = new Database();

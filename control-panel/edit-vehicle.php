@@ -7,8 +7,8 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 $VEHICLE = new vehicle($id);
-$VEHICLETYPE = new VehicleType(NULL);
-$types = $VEHICLETYPE->all();
+$TYPE = new VehicleType($VEHICLE->vehicle_type);
+$SUBTYPE = new VehicleSubType($VEHICLE->vehicle_sub_type);
 
 $DRIVER = new Driver(NULL);
 $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
@@ -39,11 +39,7 @@ $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
 
         <section class="content">
             <div class="container-fluid">  
-                <?php
-                $vali = new Validator();
 
-                $vali->show_message();
-                ?>
                 <!-- Vertical Layout -->
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -54,12 +50,17 @@ $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
                                 </h2>
                                 <ul class="header-dropdown">
                                     <li class="">
-                                        <a href="manage-vehicle.php">
+                                        <a href="manage-vehicle.php?id=<?php echo $SUBTYPE->id; ?>">
                                             <i class="material-icons">list</i> 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
+                            <?php
+                            $vali = new Validator();
+
+                            $vali->show_message();
+                            ?>
                             <div class="body">
                                 <form class="form-horizontal" method="post" action="post-and-get/vehicle.php" id="updateVehicle" enctype="multipart/form-data"> 
                                     <div class="row clearfix">
@@ -69,23 +70,21 @@ $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
                                         <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-
-                                                    <select class="form-control place-select1 show-tick" autocomplete="off" type="text" id="type" name="type" required="TRUE">
-                                                        <option value=""> -- Please Select -- </option>
-                                                        <?php foreach ($types as $type) {
-                                                            ?>
-                                                            <option value="<?php echo $type['id']; ?>" <?php
-                                                            if ($VEHICLE->vehicle_type === $type['id']) {
-                                                                echo 'selected';
-                                                            }
-                                                            ?>>
-                                                                        <?php echo $type['type']; ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-
+                                                    <input type="text" class="form-control" value="<?php echo $TYPE->type; ?>" readonly="">
+                                                    <input type="hidden" id="type" name="type" value="<?php echo $TYPE->id; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="name">Vehicle Sub Type</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" class="form-control" value="<?php echo $SUBTYPE->name; ?>" readonly="">
+                                                    <input type="hidden" id="sub_type" name="sub_type" value="<?php echo $SUBTYPE->id; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -102,6 +101,31 @@ $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
                                                     <!--<label class="form-label">Owner Name</label>-->
                                                 </div>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="owner_contact_no_01">Owner Contact Number 01</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="owner_contact_no_01" class="form-control"  autocomplete="off" name="owner_contact_no_01" required="true" placeholder="Owner Contact Number 01" value="<?php echo $VEHICLE->owner_contact_no_01; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="owner_contact_no_02">Owner Contact Number 02</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="owner_contact_no_02" class="form-control"  autocomplete="off" name="owner_contact_no_02" placeholder="Owner Contact Number 02" value="<?php echo $VEHICLE->owner_contact_no_02; ?>">
+                                                    <!--<label class="form-label">Contact Number</label>-->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -129,19 +153,6 @@ $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
                                                 <div class="form-line">
                                                     <input type="text" id="title" class="form-control"  autocomplete="off" name="vehicle_name" placeholder="Vehicle Name" required="true" value="<?php echo $VEHICLE->vehicle_name; ?>">
                                                     <!--<label class="form-label">Vehicle Name</label>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                            <label for="name">Contact Number</label>
-                                        </div>
-                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" id="title" class="form-control"  autocomplete="off" name="contactnum" required="true" placeholder="Contact Number" value="<?php echo $VEHICLE->contact_number ?>">
-                                                    <!--<label class="form-label">Contact Number</label>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -267,9 +278,34 @@ $Drivername = $DRIVER->getDriversByVehicleType($VEHICLE->vehicle_type);
                                         </div>
                                     </div>
 
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="driver_contact_no_01">Driver Contact Number 01</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="driver_contact_no_01" class="form-control"  autocomplete="off" name="driver_contact_no_01" required="true" placeholder="Driver Contact Number 01" value="<?php echo $VEHICLE->driver_contact_no_01; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                            <label for="driver_contact_no_02">Driver Contact Number 02</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" id="driver_contact_no_02" class="form-control"  autocomplete="off" name="driver_contact_no_02" placeholder="Driver Contact Number 02" value="<?php echo $VEHICLE->driver_contact_no_02; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <input type="hidden" id="id" value="<?php echo $VEHICLE->id; ?>" name="id"/>
                                         <button type="submit" id="editVehicle" class="btn btn-primary m-t-15 waves-effect" name="update" value="update">Save Changes</button>
+                                        <button  class="btn btn-info m-t-15 waves-effect" onclick="javascript:history.go(-1)">Back</button>
                                         <input type="hidden" name="update"/> 
                                     </div>
                                     <div class="row clearfix">  </div>

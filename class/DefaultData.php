@@ -17,7 +17,7 @@ class DefaultData {
         return array("1" => "Full Time", "2" => "Part Time");
     }
     public function getDriverCommission() {
-        return array("1" => "20%", "2" => "10%");
+        return array("1" => "10%", "2" => "15%");
     }
 
 }

@@ -31,17 +31,7 @@ $USER = new User($id);
 
         <section class="content">
             <div class="container-fluid"> 
-                <?php
-                if (isset($_GET['message'])) {
 
-                    $MESSAGE = New Message($_GET['message']);
-                    ?>
-                    <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
-                        <?php echo $MESSAGE->description; ?>
-                    </div>
-                    <?php
-                }
-                ?>
 
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -52,6 +42,17 @@ $USER = new User($id);
                                 </h2>
 
                             </div>
+                            <?php
+                            if (isset($_GET['message'])) {
+
+                                $MESSAGE = New Message($_GET['message']);
+                                ?>
+                                <div class="alert alert-<?php echo $MESSAGE->status; ?>" role = "alert">
+                                    <?php echo $MESSAGE->description; ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="body row">
                                 <form class="form-horizontal col-sm-9 col-md-9" method="post" action="post-and-get/edit-profile.php" enctype="multipart/form-data"> 
 

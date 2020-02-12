@@ -10,7 +10,7 @@ if ($_POST['option'] == 'ADDADVANCEDPAYMENT') {
     $PAYMENT->receiptDate = $_POST['receipt_date'];
     $PAYMENT->receiptNumber = $_POST['receipt_no'];
     $PAYMENT->advancedTotal = $_POST['paid_amount'];
-    $PAYMENT->paidBy = $_POST['paid_by'];
+    $PAYMENT->receivedBy = $_POST['received_by'];
     $result = $PAYMENT->create();
 
     if ($result) {
